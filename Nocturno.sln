@@ -1,0 +1,91 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CAD41636-5E7F-4C0F-AFE8-857DB19A201E}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{F95A703B-F991-4523-AE5D-BEA036E78CD4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{585A6BB4-7020-4561-B083-98AB82DFAE17}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{A6B4CAD5-30AD-4461-B5A0-6D720095B7DE}"
+	ProjectSection(SolutionItems) = preProject
+		PublishScripts\Templates\Nocturno.json = PublishScripts\Templates\Nocturno.json
+		PublishScripts\Templates\Nocturno.param.dev.json = PublishScripts\Templates\Nocturno.param.dev.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Model", "src\Nocturno.Model\Nocturno.Model.xproj", "{4ED0AA27-9C20-40C5-B346-C36F61B10221}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Repository", "src\Nocturno.Repository\Nocturno.Repository.xproj", "{8CAC4106-22C5-424D-B384-B17850E56B37}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service", "src\Nocturno.Service\Nocturno.Service.xproj", "{6B07C95C-6178-4AAD-BB76-2543DE7FD168}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Repository.Test", "test\Nocturno.Repository.Test\Nocturno.Repository.Test.xproj", "{401CF72D-A16D-4DF2-8A62-A82BAD0AB535}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service.Test", "test\Nocturno.Service.Test\Nocturno.Service.Test.xproj", "{745A813D-67D5-4481-B739-B78E10215173}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Web.Test", "test\Nocturno.Web.Test\Nocturno.Web.Test.xproj", "{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Web", "src\Nocturno.Web\Nocturno.Web.xproj", "{8B0A374A-83D7-458A-AB99-DF8389DF1212}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8CAC4106-22C5-424D-B384-B17850E56B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8CAC4106-22C5-424D-B384-B17850E56B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8CAC4106-22C5-424D-B384-B17850E56B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8CAC4106-22C5-424D-B384-B17850E56B37}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6B07C95C-6178-4AAD-BB76-2543DE7FD168}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B07C95C-6178-4AAD-BB76-2543DE7FD168}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B07C95C-6178-4AAD-BB76-2543DE7FD168}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B07C95C-6178-4AAD-BB76-2543DE7FD168}.Release|Any CPU.Build.0 = Release|Any CPU
+		{401CF72D-A16D-4DF2-8A62-A82BAD0AB535}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{401CF72D-A16D-4DF2-8A62-A82BAD0AB535}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{401CF72D-A16D-4DF2-8A62-A82BAD0AB535}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{401CF72D-A16D-4DF2-8A62-A82BAD0AB535}.Release|Any CPU.Build.0 = Release|Any CPU
+		{745A813D-67D5-4481-B739-B78E10215173}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{745A813D-67D5-4481-B739-B78E10215173}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{745A813D-67D5-4481-B739-B78E10215173}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{745A813D-67D5-4481-B739-B78E10215173}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B0A374A-83D7-458A-AB99-DF8389DF1212}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B0A374A-83D7-458A-AB99-DF8389DF1212}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B0A374A-83D7-458A-AB99-DF8389DF1212}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B0A374A-83D7-458A-AB99-DF8389DF1212}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{585A6BB4-7020-4561-B083-98AB82DFAE17} = {F95A703B-F991-4523-AE5D-BEA036E78CD4}
+		{A6B4CAD5-30AD-4461-B5A0-6D720095B7DE} = {F95A703B-F991-4523-AE5D-BEA036E78CD4}
+		{4ED0AA27-9C20-40C5-B346-C36F61B10221} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
+		{8CAC4106-22C5-424D-B384-B17850E56B37} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
+		{6B07C95C-6178-4AAD-BB76-2543DE7FD168} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
+		{401CF72D-A16D-4DF2-8A62-A82BAD0AB535} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
+		{745A813D-67D5-4481-B739-B78E10215173} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
+		{91218DD0-3B64-4ED4-ACCB-52FBEDA6C7FA} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
+		{8B0A374A-83D7-458A-AB99-DF8389DF1212} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
+	EndGlobalSection
+EndGlobal
