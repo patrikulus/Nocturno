@@ -6,6 +6,8 @@
     "jquery": "2.1.4",
     "jquery-validation": "1.14.0",
     "jquery-validation-unobtrusive": "3.2.4",
-    "font-awesome": "4.5.0"
+    "font-awesome": "4.5.0",
+    "bootstrap-filestyle": "1.2.1",
+    "jasny-bootstrap": "3.1.3"
   }
 }
