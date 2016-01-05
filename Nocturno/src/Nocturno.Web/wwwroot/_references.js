@@ -12,6 +12,7 @@
 /// <reference path="js/site.js" />
 /// <reference path="lib/bootstrap/dist/js/bootstrap.js" />
 /// <reference path="lib/bootstrap-filestyle/src/bootstrap-filestyle.js" />
+/// <reference path="lib/bootstrap-wysihtml5/src/bootstrap-wysihtml5.js" />
 /// <reference path="lib/jasny-bootstrap/dist/js/jasny-bootstrap.js" />
 /// <reference path="lib/jquery/dist/jquery.js" />
 /// <reference path="lib/jquery-validation/dist/jquery.validate.js" />

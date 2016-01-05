@@ -7,5 +7,9 @@ namespace Nocturno.Model.Models
 {
     public class Portfolio
     {
+        public int SectionId { get; set; }
+
+        public virtual Section Section { get; set; }
+        public virtual ICollection<PortfolioItem> PortfolioItems { get; set; }
     }
 }
