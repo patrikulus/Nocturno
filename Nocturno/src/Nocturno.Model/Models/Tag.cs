@@ -8,6 +8,6 @@ namespace Nocturno.Model.Models
 {
     public class Tag : BaseEntity
     {
-        public virtual ICollection<Article> Articles { get; set; }
+        public virtual ICollection<TagToArticle> Articles { get; set; }
     }
 }

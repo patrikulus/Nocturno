@@ -1,5 +1,4 @@
-﻿@addTagHelper "*, Microsoft.AspNet.Mvc.TagHelpers"
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -21,7 +20,7 @@
     </environment>
 
     <!-- Custom CSS -->
-    <link href="css/sb-admin.css" rel="stylesheet">
+    <link href="~/css/sb-admin.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="~/css/plugins/morris.css" rel="stylesheet">
     <!-- Custom Fonts -->
@@ -39,7 +38,9 @@
         @await Html.PartialAsync("_MenuPartial")
 
         <div id="page-wrapper">
-            @RenderBody()
+            <div class="container-fluid">
+                @RenderBody()
+            </div>
         </div>
         <!-- /#page-wrapper -->
     </div>

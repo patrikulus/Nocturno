@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">SB Admin</a>
+        <a class="navbar-brand" href="~/Admin/Home"><i class="fa fa-fw fa-moon-o"></i>Nocturno Admin</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -69,7 +69,7 @@
         </li>
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-            <ul class="dropdown-menu alert-dropdown">
+            <ul class="dropdown-menu alert alert-dropdown">
                 <li>
                     <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
                 </li>
@@ -116,41 +116,69 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
-                <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Settings" ? "active" : "")">
+                <a href="~/Admin/Settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
             </li>
-            <li>
-                <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Page" ? "active" : "")">
+                <a href="~/Admin/Page"><i class="fa fa-fw fa-file"></i> Pages</a>
             </li>
-            <li>
-                <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Section" ? "active" : "")">
+                <a href="~/Admin/Section"><i class="fa fa-fw fa-puzzle-piece"></i> Sections</a>
             </li>
-            <li>
-                <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Item" ? "active" : "")">
+                <a href="~/Admin/Item"><i class="fa fa-fw fa-clone"></i> Items</a>
             </li>
-            <li>
-                <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Blog" ? "active" : "")">
+                <a href="~/Admin/Blog"><i class="fa fa-fw fa-th-large"></i> Blogs</a>
             </li>
-            <li>
-                <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Article" ? "active" : "")">
+                <a href="~/Admin/Article"><i class="fa fa-fw fa-edit"></i> Articles</a>
             </li>
-            <li>
-                <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                <ul id="demo" class="collapse">
-                    <li>
-                        <a href="#">Dropdown Item</a>
-                    </li>
-                    <li>
-                        <a href="#">Dropdown Item</a>
-                    </li>
-                </ul>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Collection" ? "active" : "")">
+                <a href="~/Admin/Collection"><i class="fa fa-fw fa-th"></i> Collections</a>
             </li>
-            <li>
-                <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "User" ? "active" : "")">
+                <a href="~/Admin/User"><i class="fa fa-fw fa-users"></i> Users</a>
             </li>
-            <li>
-                <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Role" ? "active" : "")">
+                <a href="~/Admin/Role"><i class="fa fa-fw fa-user-secret"></i> Roles</a>
             </li>
+
+            @*<li class="active">
+                    <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li>
+                    <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                </li>
+                <li>
+                    <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                </li>
+                <li>
+                    <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                </li>
+                <li>
+                    <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                </li>
+                <li>
+                    <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                </li>
+                <li>
+                    <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                    <ul id="demo" class="collapse">
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                        <li>
+                            <a href="#">Dropdown Item</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                </li>
+                <li>
+                    <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                </li>*@
         </ul>
     </div>
     <!-- /.navbar-collapse -->

@@ -9,6 +9,6 @@ namespace Nocturno.Model.Models
         public string Synopsis { get; set; }
 
         public virtual Category Category { get; set; }
-        public virtual ICollection<Tag> Tags { get; set; }
+        public virtual ICollection<TagToArticle> Tags { get; set; }
     }
 }

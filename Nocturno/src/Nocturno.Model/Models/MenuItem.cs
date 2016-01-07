@@ -11,9 +11,9 @@ namespace Nocturno.Model.Models
         public string Hyperlink { get; set; }
         public int Order { get; set; }
         public int MenuId { get; set; }
-        public int SubmenuId { get; set; }
+        //public int SubmenuId { get; set; }
 
         public virtual Menu Menu { get; set; }
-        public virtual Menu Submenu { get; set; }
+        //public virtual Menu Submenu { get; set; }
     }
 }
