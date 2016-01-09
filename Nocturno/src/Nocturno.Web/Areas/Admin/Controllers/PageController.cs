@@ -3,6 +3,8 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Nocturno.Model.Models;
 using Nocturno.Web.Models;
+using Nocturno.Web.ViewModels.Page;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Nocturno.Web.Controllers
@@ -32,12 +34,19 @@ namespace Nocturno.Web.Controllers
             }
 
             Page page = _context.Pages.Single(m => m.Id == id);
+            ICollection<Section> sections = _context.Sections.ToList();
+            DetailsViewModel dvm = new DetailsViewModel
+            {
+                Page = page,
+                Sections = sections
+            };
+
             if (page == null)
             {
                 return HttpNotFound();
             }
 
-            return View(page);
+            return View(dvm);
         }
 
         // GET: Page/Create

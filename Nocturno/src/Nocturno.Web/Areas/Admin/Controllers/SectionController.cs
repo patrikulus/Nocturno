@@ -20,8 +20,7 @@ namespace Nocturno.Web.Controllers
         // GET: Section
         public IActionResult Index()
         {
-            var nocturnoContext = _context.Sections.Include(s => s.Page);
-            return View(nocturnoContext.ToList());
+            return View(_context.Sections.ToList());
         }
 
         // GET: Section/Details/5
@@ -44,9 +43,6 @@ namespace Nocturno.Web.Controllers
         // GET: Section/Create
         public IActionResult Create()
         {
-            //ViewData["PageId"] = new SelectList(_context.Pages, "Id", "Name");
-            ViewBag.PageId = new SelectList(_context.Pages, "Id", "Name");
-
             return View();
         }
 
@@ -61,7 +57,6 @@ namespace Nocturno.Web.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PageId = new SelectList(_context.Pages, "Id", "Name", section.PageId);
             return View(section);
         }
 
@@ -78,7 +73,6 @@ namespace Nocturno.Web.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.PageId = new SelectList(_context.Pages, "Id", "Name", section.PageId);
             return View(section);
         }
 
@@ -93,7 +87,6 @@ namespace Nocturno.Web.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.PageId = new SelectList(_context.Pages, "Id", "Name", section.PageId);
             return View(section);
         }
 

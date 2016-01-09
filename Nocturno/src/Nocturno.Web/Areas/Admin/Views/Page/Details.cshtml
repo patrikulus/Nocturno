@@ -1,4 +1,4 @@
-@model Nocturno.Model.Models.Page
+@model Nocturno.Web.ViewModels.Page.DetailsViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -12,14 +12,19 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Name)
+            @Html.DisplayNameFor(model => model.Page.Name)
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Name)
+            @Html.DisplayFor(model => model.Page.Name)
         </dd>
     </dl>
+
+    @foreach (var item in Model.Sections)
+    {
+        <checkbox>@item.Name</checkbox>
+    }
 </div>
 <p>
-    <a asp-action="Edit" asp-route-id="@Model.Id">Edit</a> |
+    <a asp-action="Edit" asp-route-id="@Model.Page">Edit</a> |
     <a asp-action="Index">Back to List</a>
 </p>

@@ -36,5 +36,6 @@ namespace Nocturno.Web.Models
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TagToArticle> TagsToArticles { get; set; }
+        public virtual DbSet<SectionToPage> SectionsToPages { get; set; }
     }
 }

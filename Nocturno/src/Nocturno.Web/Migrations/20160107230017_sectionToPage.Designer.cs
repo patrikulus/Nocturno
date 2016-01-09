@@ -8,9 +8,10 @@ using Nocturno.Web.Models;
 namespace Nocturno.Web.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160107230017_sectionToPage")]
+    partial class sectionToPage
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
