@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using Nocturno.Repository.Context;
 
-namespace Nocturno.Web.Migrations
+namespace Nocturno.Repository.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
     [Migration("00000000000000_CreateIdentitySchema")]

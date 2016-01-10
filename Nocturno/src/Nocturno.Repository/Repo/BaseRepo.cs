@@ -1,5 +1,6 @@
 ﻿using Microsoft.Data.Entity;
 using Nocturno.Repository.Context;
+using Nocturno.Repository.Extensions;
 using Nocturno.Repository.IRepo;
 using System;
 using System.Collections.Generic;
@@ -10,26 +11,26 @@ namespace Nocturno.Repository.Repo
 {
     public class BaseRepo<TEntity> : IBaseRepo<TEntity> where TEntity : class
     {
-        private readonly NocturnoContext _db;
+        private readonly NocturnoContext _context;
 
-        public BaseRepo(NocturnoContext db)
+        public BaseRepo(NocturnoContext context)
         {
-            _db = db;
+            _context = context;
         }
 
         public void Add(TEntity entity)
         {
-            _db.Set<TEntity>().Add(entity);
+            _context.Set<TEntity>().Add(entity);
         }
 
         public void Update(TEntity entity)
         {
-            _db.Entry(entity).State = EntityState.Modified;
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Remove(TEntity entity)
         {
-            _db.Set<TEntity>().Remove(entity);
+            _context.Set<TEntity>().Remove(entity);
         }
 
         public void DeleteById(int id)
@@ -39,26 +40,22 @@ namespace Nocturno.Repository.Repo
 
         public IQueryable<TEntity> GetAll()
         {
-            return _db.Set<TEntity>().AsQueryable();
+            return _context.Set<TEntity>().AsQueryable();
         }
 
         public TEntity GetById(int id)
         {
-            //return _db.Set<TEntity>().Find(id);
-            return null;
+            return _context.Set<TEntity>().Find(id);
         }
 
         public void SaveChanges()
         {
-            _db.SaveChanges();
+            _context.SaveChanges();
         }
 
         public void Dispose()
         {
-            if (_db != null)
-            {
-                _db.Dispose();
-            }
+            _context?.Dispose();
         }
     }
 }

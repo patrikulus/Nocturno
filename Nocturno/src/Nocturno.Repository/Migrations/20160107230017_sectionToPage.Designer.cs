@@ -5,7 +5,7 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using Nocturno.Repository.Context;
 
-namespace Nocturno.Web.Migrations
+namespace Nocturno.Repository.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
     [Migration("20160107230017_sectionToPage")]

@@ -1,16 +1,17 @@
+using System;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using Nocturno.Repository.Context;
-using System;
 
-namespace Nocturno.Web.Migrations
+namespace Nocturno.Repository.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20160110215120_propertyUpdate")]
+    partial class propertyUpdate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
@@ -346,6 +347,8 @@ namespace Nocturno.Web.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<string>("Name");
+
+                    b.Property<string>("Type");
 
                     b.Property<string>("Value");
 

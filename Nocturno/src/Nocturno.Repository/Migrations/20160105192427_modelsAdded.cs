@@ -1,9 +1,8 @@
-using System;
-using System.Collections.Generic;
-using Microsoft.Data.Entity.Migrations;
 using Microsoft.Data.Entity.Metadata;
+using Microsoft.Data.Entity.Migrations;
+using System;
 
-namespace Nocturno.Web.Migrations
+namespace Nocturno.Repository.Migrations
 {
     public partial class modelsAdded : Migration
     {

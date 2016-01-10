@@ -9,5 +9,6 @@ namespace Nocturno.Model.Models
     public class Property : BaseEntity
     {
         public string Value { get; set; }
+        public string Type { get; set; }
     }
 }
