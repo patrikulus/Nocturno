@@ -1,12 +1,8 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Nocturno.Model.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Nocturno.Web.Models
+namespace Nocturno.Repository.Context
 {
     public partial class NocturnoContext : IdentityDbContext<ApplicationUser>
     {
@@ -17,10 +13,6 @@ namespace Nocturno.Web.Models
             // For example, you can rename the ASP.NET Identity table names and more.
             // Add your customizations after calling base.OnModelCreating(builder);
         }
-
-        //public DbSet<Article> Articles { get; set; }
-        //public DbSet<Section> Sections { get; set; }
-        //public DbSet<Category> Categories { get; set; }
 
         public virtual DbSet<Article> Articles { get; set; }
         public virtual DbSet<Blog> Blogs { get; set; }

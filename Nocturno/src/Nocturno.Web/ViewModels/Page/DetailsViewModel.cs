@@ -9,6 +9,6 @@ namespace Nocturno.Web.ViewModels.Page
     public class DetailsViewModel
     {
         public Model.Models.Page Page { get; set; }
-        public ICollection<Section> Sections { get; set; }
+        public ICollection<Model.Models.Section> Sections { get; set; }
     }
 }

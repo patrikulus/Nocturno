@@ -6,7 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Nocturno.Model.Models;
-using Nocturno.Web.Models;
+using Nocturno.Repository.Context;
 using Nocturno.Web.Services;
 using System;
 using System.Collections.Generic;
