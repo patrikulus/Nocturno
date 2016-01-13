@@ -1,18 +1,14 @@
 ﻿using Nocturno.Model.Models;
 using Nocturno.Repository.Context;
 using Nocturno.Repository.Repo;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Xunit;
 
 namespace Nocturno.Repository.Test.Repo
 {
-    [TestFixture]
     public class PageRepoTests
     {
-        [Test, Ignore("Not implemented yet")]
+        [Fact]
         public void ShouldReturnAllPagesContainingSpecifiedSection()
         {
             // Arrange
@@ -20,16 +16,31 @@ namespace Nocturno.Repository.Test.Repo
 
             // Act
             // TODO implement this test
+
+            // Assert
         }
 
-        [Test]
+        [Fact]
         public void FooTest()
         {
+            // Arrange
+
             var context = new NocturnoContext();
             var repo = new PageRepo(context);
-            var page = repo.GetAll().FirstOrDefault(x => x.Name == "Home");
-            var section = context.Sections.FirstOrDefault(x => x.Name == "Menu");
-            repo.AddSectionToPage(section, page);
+            var page = new Page
+            {
+                Name = "Test",
+            };
+
+            // Act
+            repo.Add(page);
+            //context.SaveChanges();
+
+            var result = repo.GetAll().Where(x => x.Name == "Test");
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count());
         }
     }
 }
