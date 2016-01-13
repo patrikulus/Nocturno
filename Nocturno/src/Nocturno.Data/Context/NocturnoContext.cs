@@ -2,6 +2,7 @@
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.ChangeTracking;
+using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
 using Nocturno.Data.Models;
@@ -11,9 +12,11 @@ namespace Nocturno.Data.Context
     public partial class NocturnoContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         private readonly IConfigurationRoot _config;
+        private readonly bool _useInMemory;
 
-        public NocturnoContext()
+        public NocturnoContext(bool useInMemory = false)
         {
+            _useInMemory = useInMemory;
         }
 
         public NocturnoContext(IConfigurationRoot config)
@@ -32,7 +35,15 @@ namespace Nocturno.Data.Context
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet5-Nocturno.Web-c39e82c0-12eb-4545-b4ae-a0f99b820a74;Trusted_Connection=True;MultipleActiveResultSets=true");
+            if (_useInMemory)
+            {
+                optionsBuilder.UseInMemoryDatabase();
+            }
+            else
+            {
+                optionsBuilder.UseSqlServer("Server=(localdb)\\mssqllocaldb;Database=aspnet5-Nocturno.Web-c39e82c0-12eb-4545-b4ae-a0f99b820a74;Trusted_Connection=True;MultipleActiveResultSets=true");
+            }
+
             base.OnConfiguring(optionsBuilder);
         }
 

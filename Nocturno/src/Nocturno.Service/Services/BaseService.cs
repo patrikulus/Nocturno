@@ -1,13 +1,11 @@
 ﻿using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
 using Nocturno.Data.Extensions;
-using Nocturno.Service.IServ;
+using Nocturno.Service.IServices;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace Nocturno.Service.Serv
+namespace Nocturno.Service.Services
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {

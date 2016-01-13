@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Nocturno.Service.IServ
+namespace Nocturno.Service.IServices
 {
     public interface IBaseService<TEntity> where TEntity : class
     {
