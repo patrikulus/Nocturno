@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nocturno.Repository.IRepo
+namespace Nocturno.Data.IRepo
 {
     public interface IBaseRepo<TEntity> : IDisposable where TEntity : class
     {

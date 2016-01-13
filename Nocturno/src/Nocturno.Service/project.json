@@ -4,8 +4,7 @@
     "dependencies": {
         "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final",
         "Microsoft.AspNet.Mvc.ViewFeatures": "6.0.0-rc1-final",
-        "Nocturno.Data": "1.0.0-*",
-        "Nocturno.Repository": "1.0.0-*"
+        "Nocturno.Data": "1.0.0-*"
     },
 
     "frameworks": {

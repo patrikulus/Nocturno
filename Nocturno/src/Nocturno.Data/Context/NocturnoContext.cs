@@ -6,9 +6,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
 using Nocturno.Data.Models;
 
-namespace Nocturno.Repository.Context
+namespace Nocturno.Data.Context
 {
-    public partial class NocturnoContext : IdentityDbContext<ApplicationUser>
+    public partial class NocturnoContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         private readonly IConfigurationRoot _config;
 

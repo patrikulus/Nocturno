@@ -1,5 +1,6 @@
-﻿using Nocturno.Repository.Common;
-using Nocturno.Repository.IRepo;
+﻿using Microsoft.Data.Entity;
+using Nocturno.Data.Context;
+using Nocturno.Data.Extensions;
 using Nocturno.Service.IServ;
 using System;
 using System.Collections.Generic;
@@ -10,36 +11,46 @@ namespace Nocturno.Service.Serv
 {
     public class BaseService<TEntity> : IBaseService<TEntity> where TEntity : class
     {
-        private readonly IUnitOfWork _uow;
-        private readonly IBaseRepo<TEntity> _repo;
+        protected readonly IDbContext _db;
 
-        public BaseService(IUnitOfWork uow, IBaseRepo<TEntity> repo)
+        public BaseService(IDbContext db)
         {
-            _uow = uow;
-            _repo = repo;
+            _db = db;
         }
 
         public void Create(TEntity entity)
         {
-            _repo.Add(entity);
-            _uow.Commit();
+            _db.Add(entity);
         }
 
         public void Delete(TEntity entity)
         {
-            _repo.Remove(entity);
-            _uow.Commit();
+            _db.Remove(entity);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return _repo.GetAll();
+            return _db.Set<TEntity>();
+        }
+
+        public TEntity GetById(int id)
+        {
+            return _db.Set<TEntity>().Find(id);
+        }
+
+        public TEntity GetByName(string name)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Commit()
+        {
+            _db.SaveChanges();
         }
 
         public void Update(TEntity entity)
         {
-            _repo.Update(entity);
-            _uow.Commit();
+            _db.Entry(entity).State = EntityState.Modified;
         }
     }
 }

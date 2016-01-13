@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Nocturno.Repository.Common
+namespace Nocturno.Data.Common
 {
     public interface IUnitOfWork : IDisposable
     {

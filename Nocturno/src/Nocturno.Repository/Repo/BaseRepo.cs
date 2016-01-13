@@ -1,13 +1,13 @@
 ﻿using Microsoft.Data.Entity;
-using Nocturno.Repository.Context;
-using Nocturno.Repository.Extensions;
-using Nocturno.Repository.IRepo;
+using Nocturno.Data.Context;
+using Nocturno.Data.Extensions;
+using Nocturno.Data.IRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nocturno.Repository.Repo
+namespace Nocturno.Data.Repo
 {
     public class BaseRepo<TEntity> : IBaseRepo<TEntity> where TEntity : class
     {

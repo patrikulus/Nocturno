@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Microsoft.Data.Entity.Migrations;
 using Microsoft.Data.Entity.Metadata;
 
-namespace Nocturno.Repository.Migrations
+namespace Nocturno.Data.Migrations
 {
     public partial class changedM2MName : Migration
     {

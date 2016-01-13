@@ -8,8 +8,14 @@ namespace Nocturno.Service.IServ
 
         void Delete(TEntity entity);
 
+        void Update(TEntity entity);
+
         IEnumerable<TEntity> GetAll();
 
-        void Update(TEntity entity);
+        TEntity GetById(int id);
+
+        TEntity GetByName(string name);
+
+        void Commit();
     }
 }

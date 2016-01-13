@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using Microsoft.Data.Entity.Migrations;
 
-namespace Nocturno.Repository.Migrations
+namespace Nocturno.Data.Migrations
 {
     public partial class propertyUpdate : Migration
     {

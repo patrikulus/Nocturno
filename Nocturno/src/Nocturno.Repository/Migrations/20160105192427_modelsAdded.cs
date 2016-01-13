@@ -2,7 +2,7 @@ using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 using System;
 
-namespace Nocturno.Repository.Migrations
+namespace Nocturno.Data.Migrations
 {
     public partial class modelsAdded : Migration
     {

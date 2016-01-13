@@ -1,7 +1,7 @@
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
 
-namespace Nocturno.Repository.Migrations
+namespace Nocturno.Data.Migrations
 {
     public partial class sectionToPage : Migration
     {

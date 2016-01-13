@@ -1,12 +1,12 @@
 ﻿using Nocturno.Data.Models;
-using Nocturno.Repository.Context;
-using Nocturno.Repository.IRepo;
+using Nocturno.Data.Context;
+using Nocturno.Data.IRepo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nocturno.Repository.Repo
+namespace Nocturno.Data.Repo
 {
     public class PageRepo : BaseRepo<Page>, IPageRepo
     {

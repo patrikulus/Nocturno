@@ -25,7 +25,6 @@
         "Microsoft.Extensions.Logging.Debug": "1.0.0-rc1-final",
         "Microsoft.VisualStudio.Web.BrowserLink.Loader": "14.0.0-rc1-final",
         "Nocturno.Data": "1.0.0-*",
-        "Nocturno.Repository": "1.0.0-*",
         "Nocturno.Service": "1.0.0-*"
     },
 

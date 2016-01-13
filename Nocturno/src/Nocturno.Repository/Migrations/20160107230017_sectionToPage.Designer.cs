@@ -3,9 +3,9 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Data.Entity.Metadata;
 using Microsoft.Data.Entity.Migrations;
-using Nocturno.Repository.Context;
+using Nocturno.Data.Context;
 
-namespace Nocturno.Repository.Migrations
+namespace Nocturno.Data.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
     [Migration("20160107230017_sectionToPage")]

@@ -5,11 +5,8 @@ using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Nocturno.Data.Context;
 using Nocturno.Data.Models;
-using Nocturno.Repository.Common;
-using Nocturno.Repository.Context;
-using Nocturno.Repository.IRepo;
-using Nocturno.Repository.Repo;
 using Nocturno.Service.IServ;
 using Nocturno.Service.Serv;
 using Nocturno.Web.Services;
@@ -59,11 +56,9 @@ namespace Nocturno.Web
             // Add application services.
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
-            services.AddTransient<IPageRepo, PageRepo>();
-            services.AddTransient<IPageSectionRepo, PageSectionRepo>();
             services.AddTransient<IPageService, PageService>();
 
-            services.AddSingleton<IUnitOfWork, UnitOfWork>();
+            services.AddSingleton<IDbContext, NocturnoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

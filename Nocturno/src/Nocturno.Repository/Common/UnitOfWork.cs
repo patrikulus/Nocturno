@@ -1,10 +1,10 @@
-﻿using Nocturno.Repository.Context;
+﻿using Nocturno.Data.Context;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Nocturno.Repository.Common
+namespace Nocturno.Data.Common
 {
     public class UnitOfWork : IUnitOfWork
     {
