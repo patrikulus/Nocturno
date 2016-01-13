@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Model.Models
 {
-    public class SectionToPage : BaseEntity
+    public class PageSection
     {
         public int SectionId { get; set; }
         public int PageId { get; set; }

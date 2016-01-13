@@ -1,16 +1,18 @@
-﻿{
+{
   "version": "1.0.0-*",
   "compilationOptions": {
     "emitEntryPoint": true
   },
 
   "dependencies": {
-    "Microsoft.AspNet.IISPlatformHandler": "1.0.0-rc1-final",
-    "Microsoft.AspNet.Server.Kestrel": "1.0.0-rc1-final"
+    "Nocturno.Model": "1.0.0-*",
+    "Nocturno.Repository": "1.0.0-*",
+    "NUnit": "3.0.1",
+    "NUnitLite": "3.0.1"
   },
 
   "commands": {
-    "web": "Microsoft.AspNet.Server.Kestrel"
+    "test": "Nunit.Repository.Test"
   },
 
   "frameworks": {

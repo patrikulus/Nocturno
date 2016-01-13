@@ -16,8 +16,21 @@ namespace Nocturno.Repository.Repo
 
         public IQueryable<Page> GetAllPagesContainingSection(Section section)
         {
-            //base.GetAll().Where(p => p.Sections.Contains(section));
-            return null;
+            var result = GetAll()
+                        .Where(p => p.Sections.Select(x => x.SectionId)
+                        .Contains(section.Id));
+            return result;
+        }
+
+        public bool AddSectionToPage(Section section, Page page)
+        {
+            // .Add(new PageSection
+            //  {
+            //      PageId = page.Id,
+            //      SectionId = section.Id
+            //  });
+
+            return true;
         }
     }
 }

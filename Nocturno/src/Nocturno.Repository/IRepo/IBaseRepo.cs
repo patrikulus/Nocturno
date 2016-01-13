@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Repository.IRepo
 {
-    internal interface IBaseRepo<TEntity> : IDisposable where TEntity : class
+    public interface IBaseRepo<TEntity> : IDisposable where TEntity : class
     {
         void Add(TEntity entity);
 

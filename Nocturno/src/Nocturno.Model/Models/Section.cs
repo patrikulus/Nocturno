@@ -5,7 +5,7 @@ namespace Nocturno.Model.Models
 {
     public class Section : BaseEntity
     {
-        public virtual ICollection<SectionToPage> Pages { get; set; }
+        public virtual ICollection<PageSection> Pages { get; set; }
 
         public virtual ICollection<Menu> Menus { get; set; }
         public virtual ICollection<Blog> Blogs { get; set; }

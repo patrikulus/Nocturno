@@ -6,10 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Repository.IRepo
 {
-    public interface IPageRepo : IBaseRepo<Page>
+    public interface IPageSectionRepo : IBaseRepo<PageSection>
     {
-        IQueryable<Page> GetAllPagesContainingSection(Section section);
-
-        bool AddSectionToPage(Section section, Page page);
     }
 }

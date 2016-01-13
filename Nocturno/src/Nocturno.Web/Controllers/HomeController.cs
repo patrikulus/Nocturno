@@ -1,8 +1,10 @@
-﻿using System;
+﻿using Microsoft.AspNet.Mvc;
+using Nocturno.Repository.Context;
+using Nocturno.Repository.Repo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNet.Mvc;
 
 namespace Nocturno.Web.Controllers
 {
@@ -10,6 +12,11 @@ namespace Nocturno.Web.Controllers
     {
         public IActionResult Index()
         {
+            var context = new NocturnoContext();
+            var repo = new PageRepo(context);
+            //var page = repo.GetAll().FirstOrDefault(x => x.Name == "Home");
+            //var section = context.Sections.FirstOrDefault(x => x.Name == "Menu");
+            //repo.AddSectionToPage(section, page);
             return View();
         }
 
