@@ -1,4 +1,4 @@
-﻿using Nocturno.Model.Models;
+﻿using Nocturno.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace Nocturno.Web.ViewModels.Page
 {
     public class DetailsViewModel
     {
-        public Model.Models.Page Page { get; set; }
-        public ICollection<Model.Models.Section> Sections { get; set; }
+        public Data.Models.Page Page { get; set; }
+        public ICollection<Data.Models.Section> Sections { get; set; }
     }
 }

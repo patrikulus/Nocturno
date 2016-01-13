@@ -1,4 +1,4 @@
-@model IEnumerable<Nocturno.Model.Models.Page>
+@model IEnumerable<Nocturno.Data.Models.Page>
 
 @{
     ViewData["Title"] = "Pages";
@@ -31,17 +31,18 @@
         </th>
         <th></th>
     </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-            <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
-            <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
-    </tr>
-}
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
+                <a class="btn btn-info" asp-action="Details" asp-route-id="@item.Id">Details</a>
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+    }
 </table>

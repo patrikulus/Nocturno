@@ -6,10 +6,10 @@
     "projectUrl": "",
     "licenseUrl": "",
     "tooling": {
-      "defaultNamespace": "Nocturno.Web.Test"
+        "defaultNamespace": "Nocturno.Web.Test"
     },
     "dependencies": {
-        "Nocturno.Model": "1.0.0-*",
+        "Nocturno.Data": "1.0.0-*",
         "Nocturno.Repository": "1.0.0-*",
         "Nocturno.Service": "1.0.0-*",
         "Nocturno.Web": "1.0.0-*",

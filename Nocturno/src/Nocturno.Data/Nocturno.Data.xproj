@@ -7,8 +7,8 @@
 
   <Import Project="$(VSToolsPath)\DNX\Microsoft.DNX.Props" Condition="'$(VSToolsPath)' != ''" />
   <PropertyGroup Label="Globals">
-    <ProjectGuid>4ed0aa27-9c20-40c5-b346-c36f61b10221</ProjectGuid>
-    <RootNamespace>Nocturno.Model</RootNamespace>
+    <ProjectGuid>9a55b6ff-698e-4a45-b2ba-8d927dd980cf</ProjectGuid>
+    <RootNamespace>Nocturno.Data</RootNamespace>
     <BaseIntermediateOutputPath Condition="'$(BaseIntermediateOutputPath)'=='' ">..\..\artifacts\obj\$(MSBuildProjectName)</BaseIntermediateOutputPath>
     <OutputPath Condition="'$(OutputPath)'=='' ">..\..\artifacts\bin\$(MSBuildProjectName)\</OutputPath>
   </PropertyGroup>

@@ -1,7 +1,7 @@
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
-using Nocturno.Model.Models;
+using Nocturno.Data.Models;
 using Nocturno.Repository.Context;
 using Nocturno.Web.ViewModels.Page;
 using System.Collections.Generic;

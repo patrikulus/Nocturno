@@ -4,7 +4,7 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
-using Nocturno.Model.Models;
+using Nocturno.Data.Models;
 using Nocturno.Web.Services;
 using Nocturno.Web.ViewModels.Account;
 using System;

@@ -5,7 +5,7 @@ using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using Nocturno.Model.Models;
+using Nocturno.Data.Models;
 using Nocturno.Repository.Common;
 using Nocturno.Repository.Context;
 using Nocturno.Repository.IRepo;

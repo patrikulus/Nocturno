@@ -1,4 +1,4 @@
-﻿using Nocturno.Model.Models;
+﻿using Nocturno.Data.Models;
 using Nocturno.Repository.Common;
 using Nocturno.Repository.IRepo;
 using Nocturno.Service.IServ;

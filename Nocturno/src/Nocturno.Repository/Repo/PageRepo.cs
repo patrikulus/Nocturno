@@ -1,4 +1,4 @@
-﻿using Nocturno.Model.Models;
+﻿using Nocturno.Data.Models;
 using Nocturno.Repository.Context;
 using Nocturno.Repository.IRepo;
 using System;

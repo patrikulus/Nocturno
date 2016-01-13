@@ -23,8 +23,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 		PublishScripts\Templates\Nocturno.param.dev.json = PublishScripts\Templates\Nocturno.param.dev.json
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Model", "src\Nocturno.Model\Nocturno.Model.xproj", "{4ED0AA27-9C20-40C5-B346-C36F61B10221}"
-EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Repository", "src\Nocturno.Repository\Nocturno.Repository.xproj", "{8CAC4106-22C5-424D-B384-B17850E56B37}"
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service", "src\Nocturno.Service\Nocturno.Service.xproj", "{6B07C95C-6178-4AAD-BB76-2543DE7FD168}"
@@ -39,16 +37,14 @@ Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service.Test", "te
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Web.Test", "test\Nocturno.Web.Test\Nocturno.Web.Test.xproj", "{0AF631BE-46C4-4B3A-BA88-7EEB52C5BF6F}"
 EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Data", "src\Nocturno.Data\Nocturno.Data.xproj", "{9A55B6FF-698E-4A45-B2BA-8D927DD980CF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4ED0AA27-9C20-40C5-B346-C36F61B10221}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8CAC4106-22C5-424D-B384-B17850E56B37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8CAC4106-22C5-424D-B384-B17850E56B37}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8CAC4106-22C5-424D-B384-B17850E56B37}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -73,6 +69,10 @@ Global
 		{0AF631BE-46C4-4B3A-BA88-7EEB52C5BF6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AF631BE-46C4-4B3A-BA88-7EEB52C5BF6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF631BE-46C4-4B3A-BA88-7EEB52C5BF6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A55B6FF-698E-4A45-B2BA-8D927DD980CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A55B6FF-698E-4A45-B2BA-8D927DD980CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A55B6FF-698E-4A45-B2BA-8D927DD980CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A55B6FF-698E-4A45-B2BA-8D927DD980CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,12 +80,12 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{585A6BB4-7020-4561-B083-98AB82DFAE17} = {F95A703B-F991-4523-AE5D-BEA036E78CD4}
 		{A6B4CAD5-30AD-4461-B5A0-6D720095B7DE} = {F95A703B-F991-4523-AE5D-BEA036E78CD4}
-		{4ED0AA27-9C20-40C5-B346-C36F61B10221} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
 		{8CAC4106-22C5-424D-B384-B17850E56B37} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
 		{6B07C95C-6178-4AAD-BB76-2543DE7FD168} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
 		{8B0A374A-83D7-458A-AB99-DF8389DF1212} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
 		{6E5C681E-F5E4-4D4A-A104-FA98A72141D4} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
 		{9199B18A-3E6D-4BB2-9AFE-6D4B531AD48C} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
 		{0AF631BE-46C4-4B3A-BA88-7EEB52C5BF6F} = {6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}
+		{9A55B6FF-698E-4A45-B2BA-8D927DD980CF} = {6E3E8C9C-FCF1-4228-9A73-DA56FE506CCF}
 	EndGlobalSection
 EndGlobal

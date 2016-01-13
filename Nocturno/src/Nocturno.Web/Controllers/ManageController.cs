@@ -2,7 +2,7 @@
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Extensions.Logging;
-using Nocturno.Model.Models;
+using Nocturno.Data.Models;
 using Nocturno.Web.Services;
 using Nocturno.Web.ViewModels.Manage;
 using System;

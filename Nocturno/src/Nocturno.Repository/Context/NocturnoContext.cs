@@ -4,7 +4,7 @@ using Microsoft.Data.Entity;
 using Microsoft.Data.Entity.ChangeTracking;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.PlatformAbstractions;
-using Nocturno.Model.Models;
+using Nocturno.Data.Models;
 
 namespace Nocturno.Repository.Context
 {

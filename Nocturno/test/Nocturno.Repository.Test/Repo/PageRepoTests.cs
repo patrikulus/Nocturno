@@ -1,4 +1,4 @@
-﻿using Nocturno.Model.Models;
+﻿using Nocturno.Data.Models;
 using Nocturno.Repository.Context;
 using Nocturno.Repository.Repo;
 using System.Linq;
@@ -24,7 +24,6 @@ namespace Nocturno.Repository.Test.Repo
         public void FooTest()
         {
             // Arrange
-
             var context = new NocturnoContext();
             var repo = new PageRepo(context);
             var page = new Page
@@ -40,7 +39,7 @@ namespace Nocturno.Repository.Test.Repo
 
             // Assert
             Assert.NotNull(result);
-            Assert.Equal(2, result.Count());
+            Assert.Equal(1, result.Count());
         }
     }
 }
