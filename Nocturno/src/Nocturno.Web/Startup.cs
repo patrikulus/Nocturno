@@ -59,7 +59,7 @@ namespace Nocturno.Web
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<ISectionService, SectionService>();
 
-            services.AddSingleton<IDbContext, NocturnoContext>();
+            services.AddScoped<IDbContext, NocturnoContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
