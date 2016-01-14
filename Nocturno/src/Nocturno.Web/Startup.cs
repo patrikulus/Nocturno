@@ -107,7 +107,12 @@ namespace Nocturno.Web
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{page?}",
+                    defaults: new { controller = "Home", action = "Index" });
+
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller=Home}/{action=Index}/{id?}");
             });
         }
 

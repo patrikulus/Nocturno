@@ -9,9 +9,13 @@ namespace Nocturno.Web.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        public IActionResult Index(string page)
         {
-            return View();
+            if (string.IsNullOrWhiteSpace(page))
+            {
+                page = string.Empty;
+            }
+            return View("Index", page);
         }
 
         public IActionResult About()
