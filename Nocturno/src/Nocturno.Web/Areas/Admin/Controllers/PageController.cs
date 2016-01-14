@@ -1,28 +1,29 @@
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Service.IServices;
 using Nocturno.Web.ViewModels.Page;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Nocturno.Web.Controllers
+namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class PageController : Controller
     {
-        private NocturnoContext _context;
+        private readonly IPageService _pageService;
+        private readonly ISectionService _sectionService;
 
-        public PageController(NocturnoContext context)
+        public PageController(IPageService pageService, ISectionService sectionService)
         {
-            _context = context;
+            _pageService = pageService;
+            _sectionService = sectionService;
         }
 
         // GET: Page
         public IActionResult Index()
         {
-            return View(_context.Pages.ToList());
+            return View(_pageService.GetAll().ToList());
         }
 
         // GET: Page/Details/5
@@ -33,8 +34,8 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            Page page = _context.Pages.Single(m => m.Id == id);
-            ICollection<Section> sections = _context.Sections.ToList();
+            Page page = _pageService.GetById(id);
+            ICollection<Section> sections = _sectionService.GetAll().ToList();
             DetailsViewModel dvm = new DetailsViewModel
             {
                 Page = page,
@@ -62,8 +63,8 @@ namespace Nocturno.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Pages.Add(page);
-                _context.SaveChanges();
+                _pageService.Create(page);
+                _pageService.Commit();
                 return RedirectToAction("Index");
             }
             return View(page);
@@ -77,7 +78,7 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            Page page = _context.Pages.Single(m => m.Id == id);
+            Page page = _pageService.GetById(id);
             if (page == null)
             {
                 return HttpNotFound();
@@ -92,8 +93,8 @@ namespace Nocturno.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(page);
-                _context.SaveChanges();
+                _pageService.Update(page);
+                _pageService.Commit();
                 return RedirectToAction("Index");
             }
             return View(page);
@@ -108,7 +109,7 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            Page page = _context.Pages.Single(m => m.Id == id);
+            Page page = _pageService.GetById(id);
             if (page == null)
             {
                 return HttpNotFound();
@@ -122,9 +123,9 @@ namespace Nocturno.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Page page = _context.Pages.Single(m => m.Id == id);
-            _context.Pages.Remove(page);
-            _context.SaveChanges();
+            Page page = _pageService.GetById(id);
+            _pageService.Delete(page);
+            _pageService.Commit();
             return RedirectToAction("Index");
         }
     }

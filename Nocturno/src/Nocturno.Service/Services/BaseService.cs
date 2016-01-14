@@ -16,39 +16,39 @@ namespace Nocturno.Service.Services
             _db = db;
         }
 
-        public void Create(TEntity entity)
+        public virtual void Create(TEntity entity)
         {
             _db.Add(entity);
         }
 
-        public void Delete(TEntity entity)
+        public virtual void Delete(TEntity entity)
         {
             _db.Remove(entity);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public virtual IEnumerable<TEntity> GetAll()
         {
             return _db.Set<TEntity>();
         }
 
-        public TEntity GetById(int id)
+        public virtual TEntity GetById(int? id)
         {
             return _db.Set<TEntity>().Find(id);
         }
 
-        public TEntity GetByName(string name)
+        public virtual TEntity GetByName(string name)
         {
             throw new NotImplementedException();
         }
 
-        public void Commit()
+        public virtual void Commit()
         {
             _db.SaveChanges();
         }
 
-        public void Update(TEntity entity)
+        public virtual void Update(TEntity entity)
         {
-            _db.Entry(entity).State = EntityState.Modified;
+            _db.Update(entity);
         }
     }
 }

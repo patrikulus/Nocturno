@@ -57,6 +57,7 @@ namespace Nocturno.Web
             services.AddTransient<IEmailSender, AuthMessageSender>();
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IPageService, PageService>();
+            services.AddTransient<ISectionService, SectionService>();
 
             services.AddSingleton<IDbContext, NocturnoContext>();
         }

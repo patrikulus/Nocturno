@@ -1,11 +1,14 @@
 ﻿using Microsoft.AspNet.Mvc;
 
-[Area("Admin")]
-public class HomeController : Controller
+namespace Nocturno.Web.Areas.Admin.Controllers
 {
-    // GET: /<controller>/
-    public IActionResult Index()
+    [Area("Admin")]
+    public class HomeController : Controller
     {
-        return View();
+        // GET: /<controller>/
+        public IActionResult Index()
+        {
+            return View();
+        }
     }
 }

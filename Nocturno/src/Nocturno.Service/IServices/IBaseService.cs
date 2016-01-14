@@ -12,7 +12,7 @@ namespace Nocturno.Service.IServices
 
         IEnumerable<TEntity> GetAll();
 
-        TEntity GetById(int id);
+        TEntity GetById(int? id);
 
         TEntity GetByName(string name);
 
