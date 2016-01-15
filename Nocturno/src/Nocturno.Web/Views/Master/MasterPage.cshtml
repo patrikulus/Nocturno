@@ -1,0 +1,103 @@
+﻿@model ICollection<Section>
+
+@section Navigation {
+    @if (Model.Any(x => x.Name == "Navigation"))
+    {
+        @Html.Partial("~/Views/Sections/_Navigation.cshtml")
+    }
+}
+
+@section HeaderTop {
+    @if (Model.Any(x => x.Name == "HeaderTop"))
+    {
+        @Html.Partial("~/Views/Sections/_HeaderTop.cshtml")
+    }
+}
+
+@section Breadcrumb {
+    @if (Model.Any(x => x.Name == "Breadcrumb"))
+    {
+        @Html.Partial("~/Views/Sections/_Breadcrumb.cshtml")
+    }
+}
+
+@section HeaderBottom {
+    @if (Model.Any(x => x.Name == "HeaderBottom"))
+    {
+        @Html.Partial("~/Views/Sections/_HeaderBottom.cshtml")
+    }
+}
+
+@section MainTop {
+    @if (Model.Any(x => x.Name == "MainTop"))
+    {
+        @Html.Partial("~/Views/Sections/_MainTop.cshtml")
+    }
+}
+
+@section MainMiddle {
+    @if (Model.Any(x => x.Name == "MainMiddle"))
+    {
+        @Html.Partial("~/Views/Sections/_MainMiddle.cshtml")
+    }
+}
+
+@section MainBottom {
+    @if (Model.Any(x => x.Name == "MainBottom"))
+    {
+        @Html.Partial("~/Views/Sections/_MainBottom.cshtml")
+    }
+}
+
+@section LeftSidebar {
+    @if (Model.Any(x => x.Name == "LeftSidebar"))
+    {
+        @Html.Partial("~/Views/Sections/_LeftSidebar.cshtml")
+    }
+}
+
+@section RightSidebar {
+    @if (Model.Any(x => x.Name == "RightSidebar"))
+    {
+        @Html.Partial("~/Views/Sections/_RightSidebar.cshtml")
+    }
+}
+
+@section FooterTop {
+    @if (Model.Any(x => x.Name == "FooterTop"))
+    {
+        @Html.Partial("~/Views/Sections/_FooterTop.cshtml")
+    }
+}
+
+@section FooterBottom {
+    @if (Model.Any(x => x.Name == "FooterBottom"))
+    {
+        @Html.Partial("~/Views/Sections/_FooterBottom.cshtml")
+    }
+}
+
+@section Scripts {
+    <environment names="Development">
+        <script src="~/lib/jquery/dist/jquery.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment names="Staging,Production">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.1.4.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.5/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>
+
+    <script>
+        $('.carousel').carousel({
+            interval: 5000 //changes the speed
+        })
+    </script>
+}
