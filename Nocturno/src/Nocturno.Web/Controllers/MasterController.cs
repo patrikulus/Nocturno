@@ -14,7 +14,8 @@ namespace Nocturno.Web.Controllers
         {
             var model = new List<Section>
             {
-                new Section {Name = "Navigation"}
+                new Section {Name = "Navigation"},
+                new Section {Name = "Breadcrumb"}
             };
 
             return View("MasterPage", model);
