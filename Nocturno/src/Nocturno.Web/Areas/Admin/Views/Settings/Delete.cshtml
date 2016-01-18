@@ -1,4 +1,4 @@
-@model Nocturno.Model.Models.SectionToPage
+@model Nocturno.Data.Models.Setting
 
 @{
     ViewData["Title"] = "Delete";
@@ -9,14 +9,26 @@
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
-    <h4>SectionToPage</h4>
+    <h4>Setting</h4>
     <hr />
     <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IsMandatory)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.IsMandatory)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Name)
         </dt>
         <dd>
             @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Value)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Value)
         </dd>
     </dl>
     

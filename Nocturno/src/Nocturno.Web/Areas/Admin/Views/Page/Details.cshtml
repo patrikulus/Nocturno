@@ -1,4 +1,4 @@
-@model Nocturno.Web.ViewModels.Page.DetailsViewModel
+@model Nocturno.Web.Areas.Admin.ViewModels.PageViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -26,6 +26,16 @@
                 @item.Name
             </dd>
         }
+        @if (!Model.Sections.Any())
+        {
+            <dd></dd>
+        }
+        <dt>
+            Is in menu
+        </dt>
+        <dd>
+            @(Model.IsInMenu ? "yes" : "no")
+        </dd>
     </dl>
 
                        

@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Models
 {
-    public class Property : BaseEntity
+    public class Setting : BaseEntity
     {
         public string Value { get; set; }
+        public bool IsMandatory { get; set; }
     }
 }

@@ -22,7 +22,7 @@ namespace Nocturno.Data.Context
         DbSet<MenuItem> MenuItems { get; set; }
         DbSet<Page> Pages { get; set; }
         DbSet<Portfolio> Portfolios { get; set; }
-        DbSet<Property> Properties { get; set; }
+        DbSet<Setting> Properties { get; set; }
         DbSet<Section> Sections { get; set; }
         DbSet<Tag> Tags { get; set; }
         DbSet<TagToArticle> TagsToArticles { get; set; }

@@ -25,7 +25,7 @@
                 @for (int i = 0; i < Model.Sections.Count(); i++)
                 {
                     <div class="checkbox checkbox-primary">
-                        @Html.CheckBoxFor(x => x.ActiveSections[Model.Sections[i].Name], new { @class = "styled" })
+                        <input asp-for="ActiveSections[Model.Sections[i].Name]" class="styled" />
                         <label>
                             @Model.Sections[i].Name
                         </label>
@@ -37,7 +37,7 @@
             <label class="col-md-2 control-label">Add to menu</label>
             <div class="col-md-10">
                 <div class="checkbox checkbox-primary">
-                    <input asp-for="IsInMenu" class="styled"/>
+                    <input asp-for="IsInMenu" class="styled" />
                     <label>
                     </label>
                 </div>

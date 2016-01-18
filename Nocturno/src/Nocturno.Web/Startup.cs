@@ -58,6 +58,7 @@ namespace Nocturno.Web
             services.AddTransient<ISmsSender, AuthMessageSender>();
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<ISectionService, SectionService>();
+            services.AddTransient<IMenuService, MenuService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
         }

@@ -1,4 +1,3 @@
-@using Nocturno.Data.Models
 @model Nocturno.Web.Areas.Admin.ViewModels.PageViewModel
 
 @{
@@ -25,12 +24,12 @@
         <div class="form-group">
             <label class="col-md-2 control-label">Sections</label>
             <div class="col-md-10">
-                @foreach (var item in Model.Sections)
+                @for (int i = 0; i < Model.Sections.Count(); i++)
                 {
                     <div class="checkbox checkbox-primary">
-                        <input id="checkbox2" class="styled" type="checkbox" @(Model.ActiveSections[item.Name] ? "checked" : "")>
-                        <label for="checkbox2">
-                            @item.Name
+                        <input asp-for="ActiveSections[Model.Sections[i].Name]" class="styled" />
+                        <label>
+                            @Model.Sections[i].Name
                         </label>
                     </div>
                 }

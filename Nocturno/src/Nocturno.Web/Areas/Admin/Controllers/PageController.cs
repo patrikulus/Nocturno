@@ -15,11 +15,13 @@ namespace Nocturno.Web.Areas.Admin.Controllers
     {
         private readonly IPageService _pageService;
         private readonly ISectionService _sectionService;
+        private readonly IMenuService _menuService;
 
-        public PageController(IPageService pageService, ISectionService sectionService)
+        public PageController(IPageService pageService, ISectionService sectionService, IMenuService menuService)
         {
             _pageService = pageService;
             _sectionService = sectionService;
+            _menuService = menuService;
         }
 
         // GET: Page
@@ -37,19 +39,19 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             }
 
             Page page = _pageService.GetById(id);
-            ICollection<Section> sections = _sectionService.GetAllSectionsForPage(id);
-            DetailsViewModel dvm = new DetailsViewModel
-            {
-                Page = page,
-                Sections = sections
-            };
-
             if (page == null)
             {
                 return HttpNotFound();
             }
 
-            return View(dvm);
+            PageViewModel model = new PageViewModel
+            {
+                Page = page,
+                Sections = _sectionService.GetAllSectionsForPage(id),
+                IsInMenu = _menuService.CheckIfPageExistsInMenu(page)
+            };
+
+            return View(model);
         }
 
         // GET: Page/Create
@@ -59,7 +61,8 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             {
                 Page = null,
                 Sections = _sectionService.GetAll().ToList(),
-                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(null)
+                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(null),
+                IsInMenu = true
             };
             return View(model);
         }
@@ -72,6 +75,12 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _pageService.Create(model.Page);
+                var sections = model.ActiveSections.Where(x => x.Value == true).Select(x => x.Key);
+                _sectionService.AddPageSections(sections, model.Page.Id);
+                if (model.IsInMenu)
+                {
+                    _menuService.AddToMenu(model.Page);
+                }
                 _pageService.Commit();
                 return RedirectToAction("Index");
             }
@@ -96,7 +105,8 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             {
                 Page = page,
                 Sections = _sectionService.GetAll().ToList(),
-                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(id)
+                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(id),
+                IsInMenu = _menuService.CheckIfPageExistsInMenu(page)
             };
 
             return View(model);
@@ -110,6 +120,16 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 _pageService.Update(model.Page);
+                var sections = model.ActiveSections.Where(x => x.Value == true).Select(x => x.Key);
+                _sectionService.UpdatePageSections(sections, model.Page.Id);
+                if (model.IsInMenu)
+                {
+                    _menuService.AddToMenu(model.Page);
+                }
+                else
+                {
+                    _menuService.RemoveFromMenu(model.Page);
+                }
                 _pageService.Commit();
                 return RedirectToAction("Index");
             }

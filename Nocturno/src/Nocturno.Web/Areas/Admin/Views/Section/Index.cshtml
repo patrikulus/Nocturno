@@ -1,34 +1,44 @@
-@model IEnumerable<Nocturno.Data.Models.Section>
-
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Sections";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            @ViewData["Title"]
+        </h1>
+    </div>
+</div>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
+<table class="table table-bordered text-center" style="height: 768px;">
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th></th>
+        <td colspan="3" class="bg-info">Navigation</td>
     </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-    }
+    <tr>
+        <td colspan="3" class="bg-warning">Header Top</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="bg-success">Breadcrumb</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="bg-warning">Header Bottom</td>
+    </tr>
+    <tr>
+        <td rowspan="3" class="bg-danger">Left sidebar</td>
+        <td class="bg-info">Main Top</td>
+        <td rowspan="3" class="bg-danger">Right sidebar</td>
+    </tr>
+    <tr>
+        <td class="bg-success">Main Middle</td>
+    </tr>
+    <tr>
+        <td class="bg-info">Main Bottom</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="bg-warning">Footer Top</td>
+    </tr>
+    <tr>
+        <td colspan="3" class="bg-success">Footer Bottom</td>
+    </tr>
 </table>

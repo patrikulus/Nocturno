@@ -58,7 +58,7 @@ namespace Nocturno.Data.Context
         public virtual DbSet<MenuItem> MenuItems { get; set; }
         public virtual DbSet<Page> Pages { get; set; }
         public virtual DbSet<Portfolio> Portfolios { get; set; }
-        public virtual DbSet<Property> Properties { get; set; }
+        public virtual DbSet<Setting> Properties { get; set; }
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TagToArticle> TagsToArticles { get; set; }

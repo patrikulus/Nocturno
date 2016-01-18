@@ -8,9 +8,10 @@ using Nocturno.Data.Context;
 namespace Nocturno.Data.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
-    partial class NocturnoContextModelSnapshot : ModelSnapshot
+    [Migration("20160118204639_changedPropertyToSetting")]
+    partial class changedPropertyToSetting
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
             modelBuilder
                 .HasAnnotation("ProductVersion", "7.0.0-rc1-16348")
