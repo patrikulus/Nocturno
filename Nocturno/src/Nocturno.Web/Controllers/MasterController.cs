@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Service.Services;
+using Nocturno.Web.ViewModels.Master;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,12 +12,19 @@ namespace Nocturno.Web.Controllers
 {
     public class MasterController : Controller
     {
+        private MenuService _service = new MenuService(new NocturnoContext());
+
         public IActionResult Index(string name, int? page)
         {
-            var model = new List<Section>
+            var sections = new List<Section>
             {
                 new Section {Name = "Navigation"},
                 new Section {Name = "Breadcrumb"}
+            };
+            var model = new MasterViewModel
+            {
+                Sections = sections,
+                Menu = _service.GetMainMenu()
             };
 
             return View("MasterPage", model);

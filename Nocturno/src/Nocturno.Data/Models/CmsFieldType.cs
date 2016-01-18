@@ -8,7 +8,5 @@ namespace Nocturno.Data.Models
 {
     public class CmsFieldType : BaseEntity
     {
-        public string Type { get; set; }
-        public string Value { get; set; }
     }
 }

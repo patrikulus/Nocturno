@@ -8,5 +8,7 @@ namespace Nocturno.Service.IServices
 {
     public interface ISectionService : IBaseService<Section>
     {
+        Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId);
+        List<Section> GetAllSectionsForPage(int? pageId);
     }
 }

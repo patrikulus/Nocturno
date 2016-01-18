@@ -8,6 +8,6 @@ namespace Nocturno.Data.Models
 {
     public class Page : BaseEntity
     {
-        public virtual ICollection<PageSection> Sections { get; set; }
+        public virtual ICollection<SectionToPage> Sections { get; set; }
     }
 }

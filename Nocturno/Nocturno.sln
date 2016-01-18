@@ -17,12 +17,15 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{585A6BB4-7020-4561-B083-98AB82DFAE17}"
 	ProjectSection(SolutionItems) = preProject
 		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+		PublishScripts\Scripts\Deploy-DockerAzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-DockerAzureResourceGroup.ps1
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{A6B4CAD5-30AD-4461-B5A0-6D720095B7DE}"
 	ProjectSection(SolutionItems) = preProject
 		PublishScripts\Templates\Nocturno.json = PublishScripts\Templates\Nocturno.json
 		PublishScripts\Templates\Nocturno.param.dev.json = PublishScripts\Templates\Nocturno.param.dev.json
+		PublishScripts\Templates\Nocturno.WebDockerVM.json = PublishScripts\Templates\Nocturno.WebDockerVM.json
+		PublishScripts\Templates\Nocturno.WebDockerVM.param.dev.json = PublishScripts\Templates\Nocturno.WebDockerVM.param.dev.json
 	EndProjectSection
 EndProject
 Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service", "src\Nocturno.Service\Nocturno.Service.xproj", "{6B07C95C-6178-4AAD-BB76-2543DE7FD168}"

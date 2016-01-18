@@ -1,7 +1,9 @@
+using Microsoft.AspNet.Http.Internal;
 using Microsoft.AspNet.Mvc;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
 using Nocturno.Service.IServices;
+using Nocturno.Web.Areas.Admin.ViewModels;
 using Nocturno.Web.ViewModels.Page;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,7 +37,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             }
 
             Page page = _pageService.GetById(id);
-            ICollection<Section> sections = _sectionService.GetAll().ToList();
+            ICollection<Section> sections = _sectionService.GetAllSectionsForPage(id);
             DetailsViewModel dvm = new DetailsViewModel
             {
                 Page = page,
@@ -53,21 +55,27 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         // GET: Page/Create
         public IActionResult Create()
         {
-            return View();
+            var model = new PageViewModel
+            {
+                Page = null,
+                Sections = _sectionService.GetAll().ToList(),
+                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(null)
+            };
+            return View(model);
         }
 
         // POST: Page/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Page page)
+        public IActionResult Create(PageViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _pageService.Create(page);
+                _pageService.Create(model.Page);
                 _pageService.Commit();
                 return RedirectToAction("Index");
             }
-            return View(page);
+            return View(model.Page);
         }
 
         // GET: Page/Edit/5
@@ -83,21 +91,29 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            return View(page);
+
+            var model = new PageViewModel
+            {
+                Page = page,
+                Sections = _sectionService.GetAll().ToList(),
+                ActiveSections = _sectionService.GetAllSectionsForPageWithFlag(id)
+            };
+
+            return View(model);
         }
 
         // POST: Page/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Page page)
+        public IActionResult Edit(PageViewModel model)
         {
             if (ModelState.IsValid)
             {
-                _pageService.Update(page);
+                _pageService.Update(model.Page);
                 _pageService.Commit();
                 return RedirectToAction("Index");
             }
-            return View(page);
+            return View(model.Page);
         }
 
         // GET: Page/Delete/5

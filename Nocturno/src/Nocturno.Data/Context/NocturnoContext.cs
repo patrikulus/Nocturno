@@ -26,7 +26,8 @@ namespace Nocturno.Data.Context
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.Entity<PageSection>().HasKey(x => new { x.SectionId, x.PageId });
+            builder.Entity<SectionToPage>().HasKey(x => new { x.SectionId, x.PageId });
+            builder.Entity<CmsContentTypeToFieldType>().HasKey(x => new { x.CmsContentTypeId, x.CmsFieldTypeId });
             base.OnModelCreating(builder);
             // Customize the ASP.NET Identity model and override the defaults if needed.
             // For example, you can rename the ASP.NET Identity table names and more.
@@ -61,6 +62,10 @@ namespace Nocturno.Data.Context
         public virtual DbSet<Section> Sections { get; set; }
         public virtual DbSet<Tag> Tags { get; set; }
         public virtual DbSet<TagToArticle> TagsToArticles { get; set; }
-        public virtual DbSet<PageSection> SectionsToPages { get; set; }
+        public virtual DbSet<SectionToPage> SectionsToPages { get; set; }
+
+        public virtual DbSet<CmsContentType> CmsContentTypes { get; set; }
+        public virtual DbSet<CmsFieldType> CmsFieldTypes { get; set; }
+        public virtual DbSet<CmsContentTypeToFieldType> CmsContentTypeToFieldTypes { get; set; }
     }
 }
