@@ -1,0 +1,76 @@
+@model IEnumerable<Nocturno.Data.Models.File>
+
+@{
+    ViewData["Title"] = "Files";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-files-o"></i>
+            @ViewData["Title"]
+        </h1>
+    </div>
+</div>
+
+<form method="post" asp-action="Index" enctype="multipart/form-data">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <input type="file" class="filestyle" data-buttonName="btn-primary" name="files" multiple />
+        </div>
+        <div class="form-group col-md-6">
+            <input type="submit" class="btn btn-primary" value="Upload" />
+        </div>
+    </div>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            Modified
+        </th>
+        <th>
+            Size (KB)
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                <i class="fa fa-2x fa-fw fa-@item.Icon"></i>
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateModified)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SizeInKiloBytes)
+            </td>
+
+            <td>
+                @*<a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |*@
+                <a asp-action="Download" class="btn btn-success">Download</a>
+                <a asp-action="Delete" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+
+@section Scripts {
+    <script type="text/javascript" src="~/lib/bootstrap-filestyle/src/bootstrap-filestyle.min.js"></script>
+    <script>
+        $(":file").filestyle({ buttonName: "btn-primary" });
+    </script>
+}

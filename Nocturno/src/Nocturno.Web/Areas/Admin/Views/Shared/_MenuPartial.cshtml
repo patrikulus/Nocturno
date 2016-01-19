@@ -11,7 +11,7 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <li class="dropdown">
+        @*<li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
             <ul class="dropdown-menu message-dropdown">
                 <li class="message-preview">
@@ -93,7 +93,7 @@
                     <a href="#">View All</a>
                 </li>
             </ul>
-        </li>
+        </li>*@
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
             <ul class="dropdown-menu">
@@ -120,23 +120,32 @@
                 <a href="~/Admin/Settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
             </li>
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Page" ? "active" : "")">
-                <a href="~/Admin/Page"><i class="fa fa-fw fa-file"></i> Pages</a>
+                <a href="~/Admin/Page"><i class="fa fa-fw fa-file-text-o"></i> Pages</a>
             </li>
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Section" ? "active" : "")">
                 <a href="~/Admin/Section"><i class="fa fa-fw fa-puzzle-piece"></i> Sections</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Item" ? "active" : "")">
-                <a href="~/Admin/Item"><i class="fa fa-fw fa-clone"></i> Items</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Content" ? "active" : "")">
+                <a href="~/Admin/Content"><i class="fa fa-fw fa-cube"></i> Content</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Blog" ? "active" : "")">
-                <a href="~/Admin/Blog"><i class="fa fa-fw fa-th-large"></i> Blogs</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "ContentType" ? "active" : "")">
+                <a href="~/Admin/ContentType"><i class="fa fa-fw fa-cubes"></i> Content Types</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Article" ? "active" : "")">
-                <a href="~/Admin/Article"><i class="fa fa-fw fa-edit"></i> Articles</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "File" ? "active" : "")">
+                <a href="~/Admin/File"><i class="fa fa-fw fa-files-o"></i> Files</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Collection" ? "active" : "")">
-                <a href="~/Admin/Collection"><i class="fa fa-fw fa-th"></i> Collections</a>
-            </li>
+            @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Item" ? "active" : "")">
+                    <a href="~/Admin/Item"><i class="fa fa-fw fa-clone"></i> Items</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Blog" ? "active" : "")">
+                    <a href="~/Admin/Blog"><i class="fa fa-fw fa-th-large"></i> Blogs</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Article" ? "active" : "")">
+                    <a href="~/Admin/Article"><i class="fa fa-fw fa-edit"></i> Articles</a>
+                </li>
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Collection" ? "active" : "")">
+                    <a href="~/Admin/Collection"><i class="fa fa-fw fa-th"></i> Collections</a>
+                </li>*@
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "User" ? "active" : "")">
                 <a href="~/Admin/User"><i class="fa fa-fw fa-users"></i> Users</a>
             </li>

@@ -67,5 +67,7 @@ namespace Nocturno.Data.Context
         public virtual DbSet<CmsContentType> CmsContentTypes { get; set; }
         public virtual DbSet<CmsFieldType> CmsFieldTypes { get; set; }
         public virtual DbSet<CmsContentTypeToFieldType> CmsContentTypeToFieldTypes { get; set; }
+
+        public virtual DbSet<FileType> FileTypes { get; set; }
     }
 }

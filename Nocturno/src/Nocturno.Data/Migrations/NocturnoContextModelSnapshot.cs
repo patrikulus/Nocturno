@@ -275,6 +275,20 @@ namespace Nocturno.Data.Migrations
                     b.HasKey("Id");
                 });
 
+            modelBuilder.Entity("Nocturno.Data.Models.FileType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Extension");
+
+                    b.Property<string>("Icon");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("Nocturno.Data.Models.Item", b =>
                 {
                     b.Property<int>("Id")

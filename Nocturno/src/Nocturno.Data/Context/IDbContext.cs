@@ -27,6 +27,7 @@ namespace Nocturno.Data.Context
         DbSet<Tag> Tags { get; set; }
         DbSet<TagToArticle> TagsToArticles { get; set; }
         DbSet<SectionToPage> SectionsToPages { get; set; }
+        DbSet<FileType> FileTypes { get; set; }
 
         EntityEntry<TEntity> Add<TEntity>(TEntity entity, GraphBehavior behavior = GraphBehavior.IncludeDependents) where TEntity : class;
 

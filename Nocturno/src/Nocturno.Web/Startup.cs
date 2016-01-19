@@ -59,6 +59,7 @@ namespace Nocturno.Web
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IFileService, FileService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
         }
