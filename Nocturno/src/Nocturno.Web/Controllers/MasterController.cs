@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNet.Mvc;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Service.IServices;
 using Nocturno.Service.Services;
 using Nocturno.Web.ViewModels.Master;
 using System;
@@ -12,7 +13,12 @@ namespace Nocturno.Web.Controllers
 {
     public class MasterController : Controller
     {
-        private MenuService _service = new MenuService(new NocturnoContext());
+        private readonly IMenuService _service;
+
+        public MasterController(IMenuService service)
+        {
+            _service = service;
+        }
 
         public IActionResult Index(string name, int? page)
         {

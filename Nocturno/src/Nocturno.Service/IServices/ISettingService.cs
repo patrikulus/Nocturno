@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Service.IServices
 {
-    public interface ISettingService : IBaseService<Setting>
+    public interface ISettingService
     {
+        List<string> GetAllAvailableThemes();
     }
 }

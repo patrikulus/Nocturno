@@ -10,6 +10,7 @@ using Nocturno.Data.Models;
 using Nocturno.Service.IServices;
 using Nocturno.Service.Services;
 using Nocturno.Web.Services;
+using Nocturno.Web.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -60,12 +61,17 @@ namespace Nocturno.Web
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IFileService, FileService>();
+            services.AddTransient<ISettingService, SettingService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
+            services.AddTransient<IDbInitializer, NocturnoInitializer>();
+
+            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.AddOptions();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IDbInitializer dbInitializer)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -116,6 +122,8 @@ namespace Nocturno.Web
                 //    name: "default",
                 //    template: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            dbInitializer.InitializeDatabase();
         }
 
         // Entry point for the application.
