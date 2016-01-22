@@ -1,11 +1,15 @@
 ﻿using Microsoft.AspNet.Hosting;
+using Newtonsoft.Json;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Data.Settings;
 using Nocturno.Service.IServices;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.Extensions.Configuration;
 
 namespace Nocturno.Service.Services
 {
@@ -26,6 +30,20 @@ namespace Nocturno.Service.Services
             var content = _environment.WebRootFileProvider.GetDirectoryContents(ThemesPath);
             var themes = content.Select(x => x.Name).ToList();
             return themes;
+        }
+
+        public void UpdateConfig(NocturnoSettings settings, string configPath)
+        {
+            JsonSerializer serializer = new JsonSerializer();
+            NocturnoSettings NocturnoSettings = settings;
+
+            using (StreamWriter sw = new StreamWriter(new FileStream(configPath, FileMode.Create)))
+            {
+                using (JsonWriter writer = new JsonTextWriter(sw))
+                {
+                    serializer.Serialize(writer, new { NocturnoSettings });
+                }
+            }
         }
     }
 }

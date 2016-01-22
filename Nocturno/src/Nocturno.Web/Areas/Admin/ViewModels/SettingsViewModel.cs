@@ -1,4 +1,4 @@
-﻿using Nocturno.Web.Settings;
+﻿using Nocturno.Data.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,7 +8,7 @@ namespace Nocturno.Web.Areas.Admin.ViewModels
 {
     public class SettingsViewModel
     {
-        public AppSettings AppSettings { get; set; }
+        public NocturnoSettings NocturnoSettings { get; set; }
         public List<string> Themes { get; set; }
     }
 }

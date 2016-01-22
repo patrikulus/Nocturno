@@ -7,10 +7,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Data.Settings;
 using Nocturno.Service.IServices;
 using Nocturno.Service.Services;
 using Nocturno.Web.Services;
-using Nocturno.Web.Settings;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,6 +25,7 @@ namespace Nocturno.Web
             // Set up configuration sources.
             var builder = new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json")
+                .AddJsonFile("nocturnosettings.json")
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true);
 
             if (env.IsDevelopment())
@@ -62,11 +63,12 @@ namespace Nocturno.Web
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<ISettingService, SettingService>();
+            services.AddTransient<IContentTypeService, ContentTypeService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
             services.AddTransient<IDbInitializer, NocturnoInitializer>();
 
-            services.Configure<AppSettings>(Configuration.GetSection("AppSettings"));
+            services.Configure<NocturnoSettings>(Configuration.GetSection("NocturnoSettings"));
             services.AddOptions();
         }
 

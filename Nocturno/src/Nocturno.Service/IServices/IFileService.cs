@@ -11,6 +11,8 @@ namespace Nocturno.Service.IServices
     {
         Task UploadFileAsync(ICollection<IFormFile> files);
 
+        void DeleteFile(string name);
+
         IEnumerable<File> GetAllFiles();
     }
 }

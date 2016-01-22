@@ -44,6 +44,18 @@ namespace Nocturno.Service.Services
             }
         }
 
+        public void DeleteFile(string name)
+        {
+            var content = _environment.WebRootFileProvider.GetDirectoryContents(UploadsPath);
+            var firstOrDefault = content.FirstOrDefault(x => x.Name == name);
+            if (firstOrDefault != null)
+            {
+                var path = Path.Combine(UploadsPath, name);
+                System.IO.File.Delete(path);
+            }
+
+        }
+
         public IEnumerable<File> GetAllFiles()
         {
             List<File> files = new List<File>();

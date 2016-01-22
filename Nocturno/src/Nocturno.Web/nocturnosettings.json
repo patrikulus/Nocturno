@@ -1,6 +1,1 @@
-﻿{
-    "SiteName": "Nocturno ASP.NET 5 CMS",
-    "SiteLogo": "",
-    "SiteTheme": "default",
-    "AdminTheme": "default"
-}
+{"NocturnoSettings":{"SiteName":"foo","SiteLogo":"","SiteTheme":"default.css","AdminTheme":"default.css"}}

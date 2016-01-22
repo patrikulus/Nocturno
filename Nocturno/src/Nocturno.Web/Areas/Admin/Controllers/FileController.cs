@@ -41,6 +41,12 @@ namespace Nocturno.Web.Controllers
             return View(_fileService.GetAllFiles());
         }
 
+        public IActionResult Delete(string id)
+        {
+            _fileService.DeleteFile(id);
+            return View("Index", _fileService.GetAllFiles());
+        }
+
         //// GET: File/Details/5
         //public IActionResult Details(int? id)
         //{
