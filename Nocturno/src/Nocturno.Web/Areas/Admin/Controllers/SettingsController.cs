@@ -1,20 +1,12 @@
-using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Mvc;
-using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.OptionsModel;
 using Microsoft.Extensions.PlatformAbstractions;
-using Newtonsoft.Json;
-using Nocturno.Data.Context;
-using Nocturno.Data.Models;
 using Nocturno.Data.Settings;
 using Nocturno.Service.IServices;
 using Nocturno.Web.Areas.Admin.ViewModels;
 using System.IO;
-using System.Linq;
 
-namespace Nocturno.Web.Controllers
+namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class SettingsController : Controller
@@ -22,7 +14,7 @@ namespace Nocturno.Web.Controllers
         private readonly ISettingService _settingService;
         private NocturnoSettings _options;
         private IApplicationEnvironment _environment;
-        private string _configPath;
+        private readonly string _configPath;
 
         public SettingsController(ISettingService settingService, IOptions<NocturnoSettings> optionsAccessor, IApplicationEnvironment environment)
         {

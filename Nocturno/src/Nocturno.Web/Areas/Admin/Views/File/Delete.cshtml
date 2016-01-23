@@ -1,11 +1,11 @@
-@model Nocturno.Data.Models.File
+@model string
 
 @{
     ViewData["Title"] = "Delete";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>@ViewData["Title"]</h2>
 
 <h3>Are you sure you want to delete this?</h3>
 <div>
@@ -13,35 +13,17 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Icon)
+            Name
         </dt>
         <dd>
-            @Html.DisplayFor(model => model.Icon)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.SizeInKiloBytes)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.SizeInKiloBytes)
-        </dd>
-        <dt>
-            @Html.DisplayNameFor(model => model.UploadDate)
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.UploadDate)
+            @Model
         </dd>
     </dl>
-    
+
     <form asp-action="Delete">
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            <a asp-action="Index">Back to List</a>
+            <a asp-action="DeleteConfirmed" asp-route-id="@Model" class="btn btn-danger">Delete</a>
+            <a asp-action="Index" class="btn btn-default">Back to List</a>
         </div>
     </form>
 </div>

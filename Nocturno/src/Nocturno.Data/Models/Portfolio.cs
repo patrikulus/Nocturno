@@ -8,9 +8,7 @@ namespace Nocturno.Data.Models
 {
     public class Portfolio : BaseEntity
     {
-        public int SectionId { get; set; }
-
-        public virtual Section Section { get; set; }
-        public virtual ICollection<PortfolioItem> PortfolioItems { get; set; }
+        public ICollection<PortfolioItem> PortfolioItems { get; set; }
+        public ICollection<PortfolioNode> PortfolioNodes { get; set; }
     }
 }

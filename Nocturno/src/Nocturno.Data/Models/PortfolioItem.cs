@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Models
 {
-    public class PortfolioItem : BaseContent
+    public class PortfolioItem : MinimalContent
     {
-        public int PortfolioId { get; set; }
-        public string Hyperlink { get; set; }
+        public string ImageUrl { get; set; }
 
-        public virtual Portfolio Portfolio { get; set; }
+        public int PortfolioId { get; set; }
+        public Portfolio Portfolio { get; set; }
     }
 }

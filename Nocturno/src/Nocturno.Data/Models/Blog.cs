@@ -8,6 +8,7 @@ namespace Nocturno.Data.Models
 {
     public class Blog : BaseContent
     {
-        public virtual ICollection<Article> Articles { get; set; }
+        public ICollection<Article> Articles { get; set; }
+        public ICollection<BlogNode> BlogNodes { get; set; }
     }
 }

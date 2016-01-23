@@ -20,7 +20,7 @@ namespace Nocturno.Service.Services
             {
                 return new List<Section>();
             }
-            List<Section> result = _db.SectionsToPages.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
+            List<Section> result = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
             return result;
         }
 
@@ -29,7 +29,7 @@ namespace Nocturno.Service.Services
             foreach (var sectionName in sections)
             {
                 var section = _db.Sections.FirstOrDefault(x => x.Name == sectionName);
-                _db.SectionsToPages.Add(new SectionToPage
+                _db.Nodes.Add(new Node
                 {
                     PageId = pageId,
                     SectionId = section.Id
@@ -42,9 +42,9 @@ namespace Nocturno.Service.Services
             foreach (var sectionName in sections)
             {
                 var section = _db.Sections.FirstOrDefault(x => x.Name == sectionName);
-                if (!_db.SectionsToPages.Any(x => x.PageId == pageId && x.SectionId == section.Id))
+                if (!_db.Nodes.Any(x => x.PageId == pageId && x.SectionId == section.Id))
                 {
-                    _db.SectionsToPages.Add(new SectionToPage
+                    _db.Nodes.Add(new Node
                     {
                         PageId = pageId,
                         SectionId = section.Id
@@ -52,14 +52,14 @@ namespace Nocturno.Service.Services
                 }
             }
 
-            var collection = _db.SectionsToPages.Where(x => x.PageId == pageId).Select(x => x.Section.Name);
+            var collection = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section.Name);
             var difference = collection.Except(sections);
 
             foreach (var item in difference)
             {
                 var sectionId = _db.Sections.FirstOrDefault(x => x.Name == item).Id;
-                var section = _db.SectionsToPages.FirstOrDefault(x => x.SectionId == sectionId && x.PageId == pageId);
-                _db.SectionsToPages.Remove(section);
+                var section = _db.Nodes.FirstOrDefault(x => x.SectionId == sectionId && x.PageId == pageId);
+                _db.Nodes.Remove(section);
             }
         }
 
@@ -71,9 +71,9 @@ namespace Nocturno.Service.Services
             }
             var result = GetAll().ToDictionary(section => section.Name, section => false);
 
-            List<Section> collection = _db.SectionsToPages.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
+            List<Section> sections = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
 
-            foreach (var section in collection)
+            foreach (var section in sections)
             {
                 result[section.Name] = true;
             }

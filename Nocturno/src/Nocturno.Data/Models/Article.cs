@@ -5,10 +5,14 @@ namespace Nocturno.Data.Models
 {
     public class Article : BaseContent
     {
-        public int CategoryId { get; set; }
         public string Synopsis { get; set; }
 
-        public virtual Category Category { get; set; }
-        public virtual ICollection<TagToArticle> Tags { get; set; }
+        public int BlogId { get; set; }
+        public Blog Blog { get; set; }
+
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
+
+        public ICollection<ArticleTag> ArticleTags { get; set; }
     }
 }

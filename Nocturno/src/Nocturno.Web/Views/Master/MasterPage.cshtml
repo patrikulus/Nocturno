@@ -3,77 +3,77 @@
 @section Navigation {
     @if (Model.Sections.Any(x => x.Name == "Navigation"))
     {
-        @Html.Partial("~/Views/Sections/_Navigation.cshtml", Model.Menu)
+        @Html.Partial("~/Views/Sections/_Navigation.cshtml", Model.Navigation)
     }
 }
 
 @section HeaderTop {
     @if (Model.Sections.Any(x => x.Name == "HeaderTop"))
     {
-        @Html.Partial("~/Views/Sections/_HeaderTop.cshtml")
+        @Html.Partial("~/Views/Sections/_HeaderTop.cshtml", Model.HeaderTop)
     }
 }
 
 @section Breadcrumb {
     @if (Model.Sections.Any(x => x.Name == "Breadcrumb"))
     {
-        @Html.Partial("~/Views/Sections/_Breadcrumb.cshtml")
+        @Html.Partial("~/Views/Sections/_Breadcrumb.cshtml", Model.Breadcrumb)
     }
 }
 
 @section HeaderBottom {
     @if (Model.Sections.Any(x => x.Name == "HeaderBottom"))
     {
-        @Html.Partial("~/Views/Sections/_HeaderBottom.cshtml")
+        @Html.Partial("~/Views/Sections/_HeaderBottom.cshtml", Model.HeaderBottom)
     }
 }
 
 @section MainTop {
     @if (Model.Sections.Any(x => x.Name == "MainTop"))
     {
-        @Html.Partial("~/Views/Sections/_MainTop.cshtml")
+        @Html.Partial("~/Views/Sections/_MainTop.cshtml", Model.MainTop)
     }
 }
 
 @section MainMiddle {
     @if (Model.Sections.Any(x => x.Name == "MainMiddle"))
     {
-        @Html.Partial("~/Views/Sections/_MainMiddle.cshtml")
+        @Html.Partial("~/Views/Sections/_MainMiddle.cshtml", Model.MainMiddle)
     }
 }
 
 @section MainBottom {
     @if (Model.Sections.Any(x => x.Name == "MainBottom"))
     {
-        @Html.Partial("~/Views/Sections/_MainBottom.cshtml")
+        @Html.Partial("~/Views/Sections/_MainBottom.cshtml", Model.MainBottom)
     }
 }
 
 @section LeftSidebar {
     @if (Model.Sections.Any(x => x.Name == "LeftSidebar"))
     {
-        @Html.Partial("~/Views/Sections/_LeftSidebar.cshtml")
+        @Html.Partial("~/Views/Sections/_LeftSidebar.cshtml", Model.LeftSidebar)
     }
 }
 
 @section RightSidebar {
     @if (Model.Sections.Any(x => x.Name == "RightSidebar"))
     {
-        @Html.Partial("~/Views/Sections/_RightSidebar.cshtml")
+        @Html.Partial("~/Views/Sections/_RightSidebar.cshtml", Model.RightSidebar)
     }
 }
 
 @section FooterTop {
     @if (Model.Sections.Any(x => x.Name == "FooterTop"))
     {
-        @Html.Partial("~/Views/Sections/_FooterTop.cshtml")
+        @Html.Partial("~/Views/Sections/_FooterTop.cshtml", Model.FooterTop)
     }
 }
 
 @section FooterBottom {
     @if (Model.Sections.Any(x => x.Name == "FooterBottom"))
     {
-        @Html.Partial("~/Views/Sections/_FooterBottom.cshtml")
+        @Html.Partial("~/Views/Sections/_FooterBottom.cshtml", Model.FooterBottom)
     }
 }
 
@@ -97,7 +97,7 @@
 
     <script>
         $('.carousel').carousel({
-            interval: 5000 //changes the speed
+            interval: 8000 //changes the speed
         })
     </script>
 }

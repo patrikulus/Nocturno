@@ -53,7 +53,6 @@ namespace Nocturno.Service.Services
                 var path = Path.Combine(UploadsPath, name);
                 System.IO.File.Delete(path);
             }
-
         }
 
         public IEnumerable<File> GetAllFiles()
