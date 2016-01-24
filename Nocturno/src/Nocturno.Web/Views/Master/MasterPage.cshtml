@@ -3,77 +3,77 @@
 @section Navigation {
     @if (Model.Sections.Any(x => x.Name == "Navigation"))
     {
-        @Html.Partial("~/Views/Sections/_Navigation.cshtml", Model.Navigation)
+        @Html.Partial("~/Views/Sections/_Navigation.cshtml", Model.Menu)
     }
 }
 
 @section HeaderTop {
-    @if (Model.Sections.Any(x => x.Name == "HeaderTop"))
+    @if (Model.Sections.Any(x => x.Name == "Header Top"))
     {
-        @Html.Partial("~/Views/Sections/_HeaderTop.cshtml", Model.HeaderTop)
+        @Html.Partial("~/Views/Sections/_HeaderTop.cshtml", Model.Nodes["Header Top"])
     }
 }
 
 @section Breadcrumb {
     @if (Model.Sections.Any(x => x.Name == "Breadcrumb"))
     {
-        @Html.Partial("~/Views/Sections/_Breadcrumb.cshtml", Model.Breadcrumb)
+        @Html.Partial("~/Views/Sections/_Breadcrumb.cshtml", Model.Nodes["Breadcrumb"])
     }
 }
 
 @section HeaderBottom {
-    @if (Model.Sections.Any(x => x.Name == "HeaderBottom"))
+    @if (Model.Sections.Any(x => x.Name == "Header Bottom"))
     {
-        @Html.Partial("~/Views/Sections/_HeaderBottom.cshtml", Model.HeaderBottom)
+        @Html.Partial("~/Views/Sections/_HeaderBottom.cshtml", Model.Nodes["Header Bottom"])
     }
 }
 
 @section MainTop {
-    @if (Model.Sections.Any(x => x.Name == "MainTop"))
+    @if (Model.Sections.Any(x => x.Name == "Main Top"))
     {
-        @Html.Partial("~/Views/Sections/_MainTop.cshtml", Model.MainTop)
+        @Html.Partial("~/Views/Sections/_MainTop.cshtml", Model.Nodes["Main Top"])
     }
 }
 
 @section MainMiddle {
-    @if (Model.Sections.Any(x => x.Name == "MainMiddle"))
+    @if (Model.Sections.Any(x => x.Name == "Main Middle"))
     {
-        @Html.Partial("~/Views/Sections/_MainMiddle.cshtml", Model.MainMiddle)
+        @Html.Partial("~/Views/Sections/_MainMiddle.cshtml", Model.Nodes["Main Middle"])
     }
 }
 
 @section MainBottom {
-    @if (Model.Sections.Any(x => x.Name == "MainBottom"))
+    @if (Model.Sections.Any(x => x.Name == "Main Bottom"))
     {
-        @Html.Partial("~/Views/Sections/_MainBottom.cshtml", Model.MainBottom)
+        @Html.Partial("~/Views/Sections/_MainBottom.cshtml", Model.Nodes["Main Bottom"])
     }
 }
 
 @section LeftSidebar {
-    @if (Model.Sections.Any(x => x.Name == "LeftSidebar"))
+    @if (Model.Sections.Any(x => x.Name == "Left Sidebar"))
     {
-        @Html.Partial("~/Views/Sections/_LeftSidebar.cshtml", Model.LeftSidebar)
+        @Html.Partial("~/Views/Sections/_LeftSidebar.cshtml", Model.Nodes["Left Sidebar"])
     }
 }
 
 @section RightSidebar {
-    @if (Model.Sections.Any(x => x.Name == "RightSidebar"))
+    @if (Model.Sections.Any(x => x.Name == "Right Sidebar"))
     {
-        @Html.Partial("~/Views/Sections/_RightSidebar.cshtml", Model.RightSidebar)
+        @Html.Partial("~/Views/Sections/_RightSidebar.cshtml", Model.Nodes["Right Sidebar"])
     }
 }
 
 @section FooterTop {
-    @if (Model.Sections.Any(x => x.Name == "FooterTop"))
+    @if (Model.Sections.Any(x => x.Name == "Footer Top"))
     {
-        @Html.Partial("~/Views/Sections/_FooterTop.cshtml", Model.FooterTop)
+        @Html.Partial("~/Views/Sections/_FooterTop.cshtml", Model.Nodes["Footer Top"])
     }
 }
 
 @section FooterBottom {
-    @if (Model.Sections.Any(x => x.Name == "FooterBottom"))
+    @if (Model.Sections.Any(x => x.Name == "Footer Bottom"))
     {
-        @Html.Partial("~/Views/Sections/_FooterBottom.cshtml", Model.FooterBottom)
+        @Html.Partial("~/Views/Sections/_FooterBottom.cshtml", Model.Nodes["Footer Bottom"])
     }
 }
 

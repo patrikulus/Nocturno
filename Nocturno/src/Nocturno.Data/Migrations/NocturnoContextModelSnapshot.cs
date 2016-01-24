@@ -416,6 +416,8 @@ namespace Nocturno.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("ServiceType");
+
                     b.HasKey("Id");
                 });
 
@@ -426,7 +428,7 @@ namespace Nocturno.Data.Migrations
 
                     b.Property<string>("Hyperlink");
 
-                    b.Property<string>("IconUrl");
+                    b.Property<string>("Icon");
 
                     b.Property<string>("Name");
 
@@ -448,6 +450,16 @@ namespace Nocturno.Data.Migrations
                     b.Property<int>("NodeId");
 
                     b.HasKey("ServiceId", "NodeId");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
                 });
 
             modelBuilder.Entity("Nocturno.Data.Models.Setting", b =>

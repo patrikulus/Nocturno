@@ -1,1 +1,15 @@
 ﻿@model Nocturno.Data.Models.Node
+
+@foreach (var item in Model.SimpleTextNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_SimpleText.cshtml", item.SimpleText)
+    </div>
+}
+
+@foreach (var item in Model.ServiceNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Service.cshtml", item.Service)
+    </div>
+}

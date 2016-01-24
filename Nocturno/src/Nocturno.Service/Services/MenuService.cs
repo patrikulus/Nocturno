@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.Data.Entity;
 
 namespace Nocturno.Service.Services
 {
@@ -64,7 +65,7 @@ namespace Nocturno.Service.Services
 
         public Menu GetMainMenu()
         {
-            var menu = _db.Menus.FirstOrDefault(x => x.Name == MainMenu);
+            var menu = _db.Menus.Include(x => x.MenuItems).FirstOrDefault(x => x.Name == MainMenu);
             return menu;
         }
 

@@ -53,13 +53,21 @@ namespace Nocturno.Service.Services
             }
 
             var collection = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section.Name);
-            var difference = collection.Except(sections);
+            var difference = new List<string>();
+
+            foreach (var item in collection)
+            {
+                if (!sections.Contains(item))
+                {
+                    difference.Add(item);
+                }
+            }
 
             foreach (var item in difference)
             {
                 var sectionId = _db.Sections.FirstOrDefault(x => x.Name == item).Id;
-                var section = _db.Nodes.FirstOrDefault(x => x.SectionId == sectionId && x.PageId == pageId);
-                _db.Nodes.Remove(section);
+                var node = _db.Nodes.FirstOrDefault(x => x.SectionId == sectionId && x.PageId == pageId);
+                _db.Nodes.Remove(node);
             }
         }
 

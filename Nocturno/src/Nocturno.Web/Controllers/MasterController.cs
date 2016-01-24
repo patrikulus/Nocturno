@@ -13,26 +13,43 @@ namespace Nocturno.Web.Controllers
 {
     public class MasterController : Controller
     {
-        private readonly IMenuService _service;
+        private readonly IMenuService _menuService;
+        private readonly IPageService _pageService;
+        private readonly ISectionService _sectionService;
 
-        public MasterController(IMenuService service)
+        public MasterController(IMenuService menuService, IPageService pageService, ISectionService sectionService)
         {
-            _service = service;
+            _menuService = menuService;
+            _pageService = pageService;
+            _sectionService = sectionService;
         }
 
         public IActionResult Index(string name, int? page)
         {
-            var sections = new List<Section>
+            var pages = _pageService.GetAll().ToList();
+            if (name == null)
             {
-                new Section {Name = "Navigation"},
-                new Section {Name = "Breadcrumb"}
-            };
+                name = "Home";
+            }
+
+            var currentPage = pages.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
+            if (currentPage == null)
+            {
+                return View("Error");
+            }
+
+            var sections = _sectionService.GetAllSectionsForPage(currentPage.Id);
+
             var model = new MasterViewModel
             {
                 Sections = sections,
-                Menu = _service.GetMainMenu()
+                Menu = _menuService.GetMainMenu(),
+                Nodes = _pageService.GetNodesDictionary(name)
             };
 
+            // TestData
+
+            // End TestData
             return View("MasterPage", model);
         }
 

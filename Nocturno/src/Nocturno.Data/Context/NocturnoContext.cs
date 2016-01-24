@@ -167,6 +167,7 @@ namespace Nocturno.Data.Context
         public DbSet<Section> Sections { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<ServiceItem> ServiceItems { get; set; }
+        public DbSet<ServiceType> ServiceTypes { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<SimpleText> SimpleTexts { get; set; }
         public DbSet<Slider> Sliders { get; set; }

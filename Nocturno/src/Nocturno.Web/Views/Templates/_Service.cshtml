@@ -1,0 +1,107 @@
+﻿@using System.ComponentModel.Design
+@model Nocturno.Data.Models.Service
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            @Model.Name
+        </h1>
+    </div>
+
+    @switch (Model.ServiceType)
+    {
+        case "Panel":
+            foreach (var item in Model.ServiceItems)
+            {
+
+                <div class="col-md-4">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4><i class="fa fa-fw @item.Icon"></i> @item.Name</h4>
+                        </div>
+                        <div class="panel-body">
+                            <p>@Html.Raw(item.Synopsis)</p>
+                            <a href="@item.Hyperlink" class="btn btn-default">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            break;
+        case "Big Icon":
+            foreach (var item in Model.ServiceItems)
+            {
+                <div class="col-md-3 col-sm-6">
+                    <div class="panel panel-default text-center">
+                        <div class="panel-heading">
+                            <span class="fa-stack fa-5x">
+                                <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                <i class="fa @item.Icon fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </div>
+                        <div class="panel-body">
+                            <h4>@item.Name</h4>
+                            <p>@Html.Raw(item.Synopsis)</p>
+                            <a href="@item.Hyperlink" class="btn btn-primary">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            }
+            break;
+        case "Tab":
+            int tabIndex = 0;
+
+            <div class="col-lg-12">
+                <ul id="myTab" class="nav nav-tabs nav-justified">
+                    @{ tabIndex = 0; }
+                    @foreach (var item in Model.ServiceItems)
+                    {
+                        tabIndex++;
+                        <li class="@(tabIndex == 1 ? "active" : "")">
+                            <a href="#service@(tabIndex)" data-toggle="tab"><i class="fa @item.Icon"></i> @item.Name</a>
+                        </li>
+                    }
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    @{ tabIndex = 0; }
+                    @foreach (var item in Model.ServiceItems)
+                    {
+                        tabIndex++;
+                        <div class="tab-pane fade @(tabIndex == 1 ? "active in" : "")" id="service@(tabIndex)">
+                            <h4>@item.Name</h4>
+                            <p>@Html.Raw(item.Text)</p>
+                        </div>
+                    }
+                </div>
+            </div>
+            break;
+        case "List":
+            int index = 0;
+            int itemsCount = Model.ServiceItems.Count;
+            var items = Model.ServiceItems.ToList();
+            var loopCount = itemsCount / 3 + itemsCount % 3;
+
+            for (int i = 0; i < loopCount; i++)
+            {
+                <div class="col-md-4">
+                    @for (int j = index; j < (index + 3) && j < itemsCount; j++)
+                    {
+                        <div class="media">
+                            <div class="pull-left">
+                                <span class="fa-stack fa-2x">
+                                    <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                                    <i class="fa @items[j].Icon fa-stack-1x fa-inverse"></i>
+                                </span>
+                            </div>
+                            <div class="media-body">
+                                <h4 class="media-heading">@items[j].Name</h4>
+                                <p>@Html.Raw(items[j].Synopsis)</p>
+                            </div>
+                        </div>
+                    }
+                    @{ index += 3; }
+                </div>
+            }
+            break;
+    }
+</div>

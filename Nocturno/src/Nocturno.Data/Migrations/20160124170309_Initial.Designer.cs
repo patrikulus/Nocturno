@@ -8,7 +8,7 @@ using Nocturno.Data.Context;
 namespace Nocturno.Data.Migrations
 {
     [DbContext(typeof(NocturnoContext))]
-    [Migration("20160123201353_Initial")]
+    [Migration("20160124170309_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -417,6 +417,8 @@ namespace Nocturno.Data.Migrations
 
                     b.Property<string>("Name");
 
+                    b.Property<string>("ServiceType");
+
                     b.HasKey("Id");
                 });
 
@@ -427,7 +429,7 @@ namespace Nocturno.Data.Migrations
 
                     b.Property<string>("Hyperlink");
 
-                    b.Property<string>("IconUrl");
+                    b.Property<string>("Icon");
 
                     b.Property<string>("Name");
 
@@ -449,6 +451,16 @@ namespace Nocturno.Data.Migrations
                     b.Property<int>("NodeId");
 
                     b.HasKey("ServiceId", "NodeId");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.ServiceType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
                 });
 
             modelBuilder.Entity("Nocturno.Data.Models.Setting", b =>

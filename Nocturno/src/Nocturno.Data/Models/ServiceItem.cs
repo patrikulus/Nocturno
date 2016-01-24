@@ -9,7 +9,7 @@ namespace Nocturno.Data.Models
     public class ServiceItem : MinimalContent
     {
         public string Synopsis { get; set; }
-        public string IconUrl { get; set; }
+        public string Icon { get; set; }
         public string Hyperlink { get; set; }
 
         public int ServiceId { get; set; }

@@ -154,11 +154,24 @@ namespace Nocturno.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
+                    Name = table.Column<string>(nullable: true),
+                    ServiceType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Service", x => x.Id);
+                });
+            migrationBuilder.CreateTable(
+                name: "ServiceType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ServiceType", x => x.Id);
                 });
             migrationBuilder.CreateTable(
                 name: "Setting",
@@ -430,7 +443,7 @@ namespace Nocturno.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
                     Hyperlink = table.Column<string>(nullable: true),
-                    IconUrl = table.Column<string>(nullable: true),
+                    Icon = table.Column<string>(nullable: true),
                     Name = table.Column<string>(nullable: true),
                     ServiceId = table.Column<int>(nullable: false),
                     Synopsis = table.Column<string>(nullable: true),
@@ -767,6 +780,7 @@ namespace Nocturno.Data.Migrations
             migrationBuilder.DropTable("PortfolioNode");
             migrationBuilder.DropTable("ServiceItem");
             migrationBuilder.DropTable("ServiceNode");
+            migrationBuilder.DropTable("ServiceType");
             migrationBuilder.DropTable("Setting");
             migrationBuilder.DropTable("SimplePanelNode");
             migrationBuilder.DropTable("SimpleTextNode");
