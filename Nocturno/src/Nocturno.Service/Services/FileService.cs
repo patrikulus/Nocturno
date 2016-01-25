@@ -15,33 +15,15 @@ namespace Nocturno.Service.Services
 {
     public class FileService : IFileService
     {
+        private const string UploadsPath = "uploads";
+
         private readonly IDbContext _db;
         private readonly IHostingEnvironment _environment;
-        private const string UploadsPath = "uploads";
 
         public FileService(IDbContext db, IHostingEnvironment environment)
         {
             _db = db;
             _environment = environment;
-        }
-
-        private string GetFileExtension(string fileName)
-        {
-            var parts = fileName.Split('.');
-            return parts.Last();
-        }
-
-        public async Task UploadFileAsync(ICollection<IFormFile> files)
-        {
-            var uploads = Path.Combine(_environment.WebRootPath, UploadsPath);
-            foreach (var file in files)
-            {
-                if (file.Length > 0)
-                {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    await file.SaveAsAsync(Path.Combine(uploads, fileName));
-                }
-            }
         }
 
         public void DeleteFile(string name)
@@ -77,6 +59,25 @@ namespace Nocturno.Service.Services
             }
 
             return files;
+        }
+
+        public async Task UploadFileAsync(ICollection<IFormFile> files)
+        {
+            var uploads = Path.Combine(_environment.WebRootPath, UploadsPath);
+            foreach (var file in files)
+            {
+                if (file.Length > 0)
+                {
+                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
+                    await file.SaveAsAsync(Path.Combine(uploads, fileName));
+                }
+            }
+        }
+
+        private string GetFileExtension(string fileName)
+        {
+            var parts = fileName.Split('.');
+            return parts.Last();
         }
     }
 }

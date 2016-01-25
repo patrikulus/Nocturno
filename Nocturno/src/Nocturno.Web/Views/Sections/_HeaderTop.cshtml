@@ -1,1 +1,6 @@
 ﻿@model Nocturno.Data.Models.Node
+
+@foreach (var item in Model.SliderNodes)
+{
+        @Html.Partial("~/Views/Templates/_Slider.cshtml", item.Slider)
+}

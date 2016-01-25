@@ -16,12 +16,18 @@ namespace Nocturno.Web.Controllers
         private readonly IMenuService _menuService;
         private readonly IPageService _pageService;
         private readonly ISectionService _sectionService;
+        private readonly ISettingService _settingService;
 
-        public MasterController(IMenuService menuService, IPageService pageService, ISectionService sectionService)
+        public MasterController(
+            IMenuService menuService,
+            IPageService pageService,
+            ISectionService sectionService,
+            ISettingService settingService)
         {
             _menuService = menuService;
             _pageService = pageService;
             _sectionService = sectionService;
+            _settingService = settingService;
         }
 
         public IActionResult Index(string name, int? page)
@@ -35,7 +41,8 @@ namespace Nocturno.Web.Controllers
             var currentPage = pages.FirstOrDefault(x => x.Name.ToLower() == name.ToLower());
             if (currentPage == null)
             {
-                return View("Error");
+                var settings = _settingService.GetAllSettingsDictionary();
+                return View("Error", settings);
             }
 
             var sections = _sectionService.GetAllSectionsForPage(currentPage.Id);
@@ -44,32 +51,11 @@ namespace Nocturno.Web.Controllers
             {
                 Sections = sections,
                 Menu = _menuService.GetMainMenu(),
-                Nodes = _pageService.GetNodesDictionary(name)
+                Nodes = _pageService.GetNodesDictionary(name),
+                Settings = _settingService.GetAllSettingsDictionary()
             };
 
-            // TestData
-
-            // End TestData
             return View("MasterPage", model);
-        }
-
-        public IActionResult About()
-        {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
-        }
-
-        public IActionResult Contact()
-        {
-            ViewData["Message"] = "Your contact page.";
-
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
         }
     }
 }

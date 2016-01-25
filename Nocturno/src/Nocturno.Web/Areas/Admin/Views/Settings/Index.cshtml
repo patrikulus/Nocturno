@@ -1,4 +1,4 @@
-@model Nocturno.Web.Areas.Admin.ViewModels.SettingsViewModel
+@model IEnumerable<Nocturno.Data.Models.Setting>
 
 @{
     ViewData["Title"] = "Settings";
@@ -14,45 +14,29 @@
     </div>
 </div>
 
-<p>
-    <a class="btn btn-primary" asp-action="Create">Create New</a>
-</p>
 <table class="table">
     <tr>
         <th>
-            Name
+            @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            Value
+            @Html.DisplayNameFor(model => model.Value)
         </th>
+        <th></th>
     </tr>
 
-    <tr>
-        <td>
-            Site name:
-        </td>
-        <td>
-            @Model.NocturnoSettings.SiteName
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Logo:
-        </td>
-        <td>
-            <img src="~/uploads/@Model.NocturnoSettings.SiteLogo" style="max-width: 300px; max-height: 150px;" />
-        </td>
-    </tr>
-    <tr>
-        <td>
-            Theme:
-        </td>
-        <td></td>
-    </tr>
-    <tr>
-        <td>
-            Admin Theme:
-        </td>
-        <td></td>
-    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Value)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+            </td>
+        </tr>
+    }
 </table>

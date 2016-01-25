@@ -126,13 +126,38 @@
                 <a href="~/Admin/Section"><i class="fa fa-fw fa-puzzle-piece"></i> Sections</a>
             </li>
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Content" ? "active" : "")">
-                <a href="~/Admin/Content"><i class="fa fa-fw fa-cube"></i> Content</a>
+                <a href="#" data-toggle="collapse" data-target="#content"><i class="fa fa-fw fa-cube"></i> Content <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="content" class="collapse">
+                    <li>
+                        <a href="~/Admin/SimpleText"><i class="fa fa-fw fa-cube"></i> Simple content</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/SimpleText"><i class="fa fa-fw fa-cubes"></i> Collection</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/SimpleText"><i class="fa fa-fw fa-camera"></i> Gallery</a>
+                    </li>
+                    <li>
+                        <a href="~/Admin/SimpleText"><i class="fa fa-fw fa-briefcase"></i> Business card</a>
+                    </li>
+                </ul>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "ContentType" ? "active" : "")">
-                <a href="~/Admin/ContentType"><i class="fa fa-fw fa-cubes"></i> Content Types</a>
+            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Menu" ? "active" : "")">
+                <a href="~/Admin/ContentType"><i class="fa fa-fw fa-book"></i> Menu</a>
             </li>
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "File" ? "active" : "")">
                 <a href="~/Admin/File"><i class="fa fa-fw fa-files-o"></i> Files</a>
+            </li>
+            <li>
+                <a href="#" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                <ul id="demo" class="collapse">
+                    <li>
+                        <a href="#">Dropdown Item</a>
+                    </li>
+                    <li>
+                        <a href="#">Dropdown Item</a>
+                    </li>
+                </ul>
             </li>
             @*<li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Item" ? "active" : "")">
                     <a href="~/Admin/Item"><i class="fa fa-fw fa-clone"></i> Items</a>
@@ -149,9 +174,7 @@
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "User" ? "active" : "")">
                 <a href="~/Admin/User"><i class="fa fa-fw fa-users"></i> Users</a>
             </li>
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Role" ? "active" : "")">
-                <a href="~/Admin/Role"><i class="fa fa-fw fa-user-secret"></i> Roles</a>
-            </li>
+            
 
             @*<li class="active">
                     <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>

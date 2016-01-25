@@ -97,7 +97,12 @@
 
     <script>
         $('.carousel').carousel({
-            interval: 8000 //changes the speed
+            interval: 5000 //changes the speed
         })
     </script>
+}
+
+@section Metadata {
+   @Html.Partial("~/Views/Sections/_Metadata.cshtml", Model.Settings)
+
 }

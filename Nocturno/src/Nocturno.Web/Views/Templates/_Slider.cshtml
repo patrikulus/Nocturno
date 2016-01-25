@@ -1,0 +1,45 @@
+﻿@model Nocturno.Data.Models.Slider
+@{
+    var index = 0;
+}
+
+<header id="myCarousel" class="carousel slide">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+        @foreach (var item in Model.SliderItems)
+        {
+            <li data-target="#myCarousel" data-slide-to="@(index)" class="@(index == 0 ? "active" : "")"></li>
+            {
+                index++;
+            }
+        }
+        @{
+        index = 0;
+        }
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        @foreach (var item in Model.SliderItems)
+        {
+            <div class="item @(index == 0 ? "active" : "")">
+                <div class="fill" style="background-image: url('@item.ImageUrl');"></div>
+                <div class="carousel-caption">
+                    <h2>@item.Name</h2>
+                </div>
+            </div>
+            {
+                index++;
+            }
+        }
+            
+    </div>
+
+    <!-- Controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+        <span class="icon-prev"></span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+        <span class="icon-next"></span>
+    </a>
+</header>

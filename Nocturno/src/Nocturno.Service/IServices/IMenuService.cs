@@ -10,10 +10,10 @@ namespace Nocturno.Service.IServices
     {
         void AddToMenu(Page page, string menuName = "Main");
 
-        void RemoveFromMenu(Page page, string menuName = "Main");
+        bool CheckIfPageExistsInMenu(Page page, string menuName = "Main");
 
         Menu GetMainMenu();
 
-        bool CheckIfPageExistsInMenu(Page page, string menuName = "Main");
+        void RemoveFromMenu(Page page, string menuName = "Main");
     }
 }

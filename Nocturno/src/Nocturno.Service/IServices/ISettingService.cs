@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Service.IServices
 {
-    public interface ISettingService
+    public interface ISettingService : IBaseService<Setting>
     {
         List<string> GetAllAvailableThemes();
 
-        void UpdateConfig(NocturnoSettings settings, string configPath);
+        IDictionary<string, string> GetAllSettingsDictionary();
     }
 }

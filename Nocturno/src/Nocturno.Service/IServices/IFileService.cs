@@ -9,10 +9,10 @@ namespace Nocturno.Service.IServices
 {
     public interface IFileService
     {
-        Task UploadFileAsync(ICollection<IFormFile> files);
-
         void DeleteFile(string name);
 
         IEnumerable<File> GetAllFiles();
+
+        Task UploadFileAsync(ICollection<IFormFile> files);
     }
 }

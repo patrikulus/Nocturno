@@ -11,6 +11,7 @@ namespace Nocturno.Web.ViewModels.Master
         public IEnumerable<Data.Models.Section> Sections { get; set; }
         public Menu Menu { get; set; }
         public IDictionary<string, Node> Nodes { get; set; }
+        public IDictionary<string, string> Settings { get; set; } 
 
         //public Node Navigation { get; set; }
         //public Node HeaderTop { get; set; }

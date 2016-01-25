@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Hosting;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
@@ -9,19 +10,17 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Configuration;
 
 namespace Nocturno.Service.Services
 {
-    public class SettingService : ISettingService
+    public class SettingService : BaseService<Setting>, ISettingService
     {
-        private readonly IDbContext _db;
-        private readonly IHostingEnvironment _environment;
         private const string ThemesPath = "css/themes";
 
-        public SettingService(IDbContext db, IHostingEnvironment environment)
+        private readonly IHostingEnvironment _environment;
+
+        public SettingService(IDbContext db, IHostingEnvironment environment) : base(db)
         {
-            _db = db;
             _environment = environment;
         }
 
@@ -32,18 +31,10 @@ namespace Nocturno.Service.Services
             return themes;
         }
 
-        public void UpdateConfig(NocturnoSettings settings, string configPath)
+        public IDictionary<string, string> GetAllSettingsDictionary()
         {
-            JsonSerializer serializer = new JsonSerializer();
-            NocturnoSettings NocturnoSettings = settings;
-
-            using (StreamWriter sw = new StreamWriter(new FileStream(configPath, FileMode.Create)))
-            {
-                using (JsonWriter writer = new JsonTextWriter(sw))
-                {
-                    serializer.Serialize(writer, new { NocturnoSettings });
-                }
-            }
+            var settings = GetAll();
+            return settings.ToDictionary(setting => setting.Name, setting => setting.Value);
         }
     }
 }

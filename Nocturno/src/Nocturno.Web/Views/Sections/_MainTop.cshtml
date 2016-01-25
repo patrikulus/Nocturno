@@ -1,5 +1,12 @@
 ﻿@model Nocturno.Data.Models.Node
 
+@foreach (var item in Model.BanerNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Baner.cshtml", item.Baner)
+    </div>
+}
+
 @foreach (var item in Model.SimpleTextNodes)
 {
     <div class="container">
@@ -12,4 +19,23 @@
     <div class="container">
         @Html.Partial("~/Views/Templates/_Service.cshtml", item.Service)
     </div>
+}
+
+@foreach (var item in Model.PortfolioNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Portfolio.cshtml", item.Portfolio)
+    </div>
+}
+
+@foreach (var item in Model.SliderNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Slider.cshtml", item.Slider)
+    </div>
+}
+
+@foreach (var item in Model.SimplePanelNodes)
+{
+        @Html.Partial("~/Views/Templates/_SimplePanel.cshtml", item.SimplePanel)
 }

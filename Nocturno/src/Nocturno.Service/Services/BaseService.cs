@@ -16,6 +16,11 @@ namespace Nocturno.Service.Services
             _db = db;
         }
 
+        public virtual void Commit()
+        {
+            _db.SaveChanges();
+        }
+
         public virtual void Create(TEntity entity)
         {
             _db.Add(entity);
@@ -39,11 +44,6 @@ namespace Nocturno.Service.Services
         public virtual TEntity GetByName(string name)
         {
             throw new NotImplementedException();
-        }
-
-        public virtual void Commit()
-        {
-            _db.SaveChanges();
         }
 
         public virtual void Update(TEntity entity)

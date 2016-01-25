@@ -4,11 +4,11 @@ namespace Nocturno.Service.IServices
 {
     public interface IBaseService<TEntity> where TEntity : class
     {
+        void Commit();
+
         void Create(TEntity entity);
 
         void Delete(TEntity entity);
-
-        void Update(TEntity entity);
 
         IEnumerable<TEntity> GetAll();
 
@@ -16,6 +16,6 @@ namespace Nocturno.Service.IServices
 
         TEntity GetByName(string name);
 
-        void Commit();
+        void Update(TEntity entity);
     }
 }

@@ -14,16 +14,6 @@ namespace Nocturno.Service.Services
         {
         }
 
-        public List<Section> GetAllSectionsForPage(int? pageId)
-        {
-            if (pageId == null)
-            {
-                return new List<Section>();
-            }
-            List<Section> result = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
-            return result;
-        }
-
         public void AddPageSections(IEnumerable<string> sections, int pageId)
         {
             foreach (var sectionName in sections)
@@ -35,6 +25,33 @@ namespace Nocturno.Service.Services
                     SectionId = section.Id
                 });
             }
+        }
+
+        public List<Section> GetAllSectionsForPage(int? pageId)
+        {
+            if (pageId == null)
+            {
+                return new List<Section>();
+            }
+            List<Section> result = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
+            return result;
+        }
+
+        public Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId)
+        {
+            if (pageId == null)
+            {
+                return null;
+            }
+            var result = GetAll().ToDictionary(section => section.Name, section => false);
+
+            List<Section> sections = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
+
+            foreach (var section in sections)
+            {
+                result[section.Name] = true;
+            }
+            return result;
         }
 
         public void UpdatePageSections(IEnumerable<string> sections, int pageId)
@@ -69,23 +86,6 @@ namespace Nocturno.Service.Services
                 var node = _db.Nodes.FirstOrDefault(x => x.SectionId == sectionId && x.PageId == pageId);
                 _db.Nodes.Remove(node);
             }
-        }
-
-        public Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId)
-        {
-            if (pageId == null)
-            {
-                return null;
-            }
-            var result = GetAll().ToDictionary(section => section.Name, section => false);
-
-            List<Section> sections = _db.Nodes.Where(x => x.PageId == pageId).Select(x => x.Section).ToList();
-
-            foreach (var section in sections)
-            {
-                result[section.Name] = true;
-            }
-            return result;
         }
     }
 }

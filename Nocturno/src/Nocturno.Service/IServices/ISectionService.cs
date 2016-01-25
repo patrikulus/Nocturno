@@ -8,11 +8,11 @@ namespace Nocturno.Service.IServices
 {
     public interface ISectionService : IBaseService<Section>
     {
-        Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId);
+        void AddPageSections(IEnumerable<string> sections, int pageId);
 
         List<Section> GetAllSectionsForPage(int? pageId);
 
-        void AddPageSections(IEnumerable<string> sections, int pageId);
+        Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId);
 
         void UpdatePageSections(IEnumerable<string> sections, int pageId);
     }

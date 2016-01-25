@@ -1,0 +1,41 @@
+﻿@if (ViewContext.RouteData.Values["page"] != null)
+{
+    int pageNumber = 0;
+    if (int.TryParse(ViewContext.RouteData.Values["page"].ToString(), out pageNumber))
+    {
+        //TODO Page [pageNumber]
+    }
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                @ViewContext.RouteData.Values["name"].ToString()
+                <small>@ViewContext.RouteData.Values["page"].ToString()</small>
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="~/Home">Home</a>
+                </li>
+                <li>
+                    <a href="~/@ViewContext.RouteData.Values["name"].ToString()">@ViewContext.RouteData.Values["name"].ToString()</a>
+                </li>
+                <li class="active">@ViewContext.RouteData.Values["page"].ToString()</li>
+            </ol>
+        </div>
+    </div>
+}
+else
+{
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">
+                @ViewContext.RouteData.Values["name"].ToString()
+            </h1>
+            <ol class="breadcrumb">
+                <li>
+                    <a href="~/Home">Home</a>
+                </li>
+                <li class="active">@ViewContext.RouteData.Values["name"].ToString()</li>
+            </ol>
+        </div>
+    </div>
+}

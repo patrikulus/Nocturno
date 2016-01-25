@@ -19,6 +19,18 @@ namespace Nocturno.Data.Context
 
         public void InitializeDatabase()
         {
+            if (!_db.Settings.Any())
+            {
+                var settings = new List<Setting>
+                {
+                    new Setting {Name = "Site name", Value = "Nocturno CMS Site"},
+                    new Setting {Name = "Site theme", Value = "default.css"},
+                    new Setting {Name = "Admin theme", Value = "default.css"},
+                };
+                _db.Settings.AddRange(settings);
+                _db.SaveChanges();
+            }
+
             if (!_db.Sections.Any())
             {
                 var sections = new List<Section>
