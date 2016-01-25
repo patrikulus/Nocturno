@@ -25,6 +25,7 @@ namespace Nocturno.Data.Context
                     new Setting {Name = "Site name", Value = "Nocturno CMS Site"},
                     new Setting {Name = "Site theme", Value = "default.css"},
                     new Setting {Name = "Admin theme", Value = "default.css"},
+                    new Setting {Name= "E-mail", Value = "p.lotzwi@outlook.com"}
                 };
                 _db.Settings.AddRange(settings);
                 _db.SaveChanges();
@@ -516,21 +517,21 @@ namespace Nocturno.Data.Context
                 _db.SaveChanges();
             }
 
-            if (!_db.Services.Any())
+            if (_db.Collections.FirstOrDefault(x => x.Name == "Hello Collection") == null)
             {
-                _db.Services.Add(new Service
+                _db.Collections.Add(new Collection
                 {
-                    Name = "Hello Service",
-                    ServiceType = "Big Icon"
+                    Name = "Hello Collection",
+                    CollectionType = "Big Icon"
                 });
                 _db.SaveChanges();
             }
 
-            if (!_db.ServiceItems.Any())
+            if (!_db.CollectionItems.Any())
             {
-                var serviceItems = new List<ServiceItem>
+                var serviceItems = new List<CollectionItem>
                 {
-                    new ServiceItem
+                    new CollectionItem
                     {
                         Name = "First item",
                         Synopsis = "This is first service item.",
@@ -542,9 +543,9 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-mixcloud",
-                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
+                        CollectionId = _db.Collections.FirstOrDefault(x => x.Name == "Hello Collection").Id
                     },
-                    new ServiceItem
+                    new CollectionItem
                     {
                         Name = "Second item",
                         Synopsis = "This is second <b>service</b> item.",
@@ -556,9 +557,9 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-archive",
-                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
+                        CollectionId = _db.Collections.FirstOrDefault(x => x.Name == "Hello Collection").Id
         },
-                    new ServiceItem
+                    new CollectionItem
                     {
                         Name = "Third item",
                         Synopsis = "This is <i>third</i> service item.",
@@ -570,10 +571,10 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-bank",
-                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
+                        CollectionId = _db.Collections.FirstOrDefault(x => x.Name == "Hello Collection").Id
                     }
                 };
-                _db.ServiceItems.AddRange(serviceItems);
+                _db.CollectionItems.AddRange(serviceItems);
                 _db.SaveChanges();
             }
         }

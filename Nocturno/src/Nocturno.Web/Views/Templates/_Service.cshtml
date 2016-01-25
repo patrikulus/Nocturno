@@ -1,5 +1,5 @@
 ﻿@using System.ComponentModel.Design
-@model Nocturno.Data.Models.Service
+@model Nocturno.Data.Models.Collection
 
 <div class="row">
     <div class="col-lg-12">
@@ -8,10 +8,10 @@
         </h1>
     </div>
 
-    @switch (Model.ServiceType)
+    @switch (Model.CollectionType)
     {
         case "Panel":
-            foreach (var item in Model.ServiceItems)
+            foreach (var item in Model.CollectionItems)
             {
 
                 <div class="col-md-4">
@@ -29,7 +29,7 @@
             }
             break;
         case "Big Icon":
-            foreach (var item in Model.ServiceItems)
+            foreach (var item in Model.CollectionItems)
             {
                 <div class="col-md-3 col-sm-6">
                     <div class="panel panel-default text-center">
@@ -54,7 +54,7 @@
             <div class="col-lg-12">
                 <ul id="myTab" class="nav nav-tabs nav-justified">
                     @{ tabIndex = 0; }
-                    @foreach (var item in Model.ServiceItems)
+                    @foreach (var item in Model.CollectionItems)
                     {
                         tabIndex++;
                         <li class="@(tabIndex == 1 ? "active" : "")">
@@ -64,7 +64,7 @@
                 </ul>
                 <div id="myTabContent" class="tab-content">
                     @{ tabIndex = 0; }
-                    @foreach (var item in Model.ServiceItems)
+                    @foreach (var item in Model.CollectionItems)
                     {
                         tabIndex++;
                         <div class="tab-pane fade @(tabIndex == 1 ? "active in" : "")" id="service@(tabIndex)">
@@ -77,8 +77,8 @@
             break;
         case "List":
             int index = 0;
-            int itemsCount = Model.ServiceItems.Count;
-            var items = Model.ServiceItems.ToList();
+            int itemsCount = Model.CollectionItems.Count;
+            var items = Model.CollectionItems.ToList();
             var loopCount = itemsCount / 3 + itemsCount % 3;
 
             for (int i = 0; i < loopCount; i++)

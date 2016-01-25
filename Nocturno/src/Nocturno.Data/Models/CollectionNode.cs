@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Models
 {
-    public class ServiceNode
+    public class CollectionNode
     {
-        public int ServiceId { get; set; }
-        public Service Service { get; set; }
+        public int CollectionId { get; set; }
+        public Collection Collection { get; set; }
 
         public int NodeId { get; set; }
         public Node Node { get; set; }

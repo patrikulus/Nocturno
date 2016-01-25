@@ -1,12 +1,12 @@
 ﻿@model Nocturno.Data.Models.Service
 @{
     int index = 0;
-    int itemsCount = Model.ServiceItems.Count;
-    var items = Model.ServiceItems.ToList();
+    int itemsCount = Model.CollectionItems.Count;
+    var items = Model.CollectionItems.ToList();
     var loopCount = itemsCount / 3 + itemsCount % 3;
 
 
-    @foreach (var item in Model.ServiceItems)
+    @foreach (var item in Model.CollectionItems)
     {
         <div class="col-md-3 col-sm-6">
             <div class="panel panel-default text-center">

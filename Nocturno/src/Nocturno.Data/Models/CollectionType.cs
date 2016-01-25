@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Models
 {
-    public class ServiceType : BaseEntity
+    public class CollectionType : BaseEntity
     {
     }
 }

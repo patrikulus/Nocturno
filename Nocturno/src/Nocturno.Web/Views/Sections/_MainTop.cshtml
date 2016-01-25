@@ -14,10 +14,10 @@
     </div>
 }
 
-@foreach (var item in Model.ServiceNodes)
+@foreach (var item in Model.CollectionNodes)
 {
     <div class="container">
-        @Html.Partial("~/Views/Templates/_Service.cshtml", item.Service)
+        @Html.Partial("~/Views/Templates/_Collection.cshtml", item.Collection)
     </div>
 }
 

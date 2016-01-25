@@ -2,7 +2,7 @@
 //using Microsoft.Extensions.OptionsModel;
 //using Microsoft.Extensions.PlatformAbstractions;
 //using Nocturno.Data.Settings;
-//using Nocturno.Service.IServices;
+//using Nocturno.Collection.IServices;
 //using Nocturno.Web.Areas.Admin.ViewModels;
 //using System.IO;
 

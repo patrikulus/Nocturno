@@ -3,25 +3,32 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Service.IServices;
 using System.Linq;
 
 namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ServiceItemController : Controller
+    public class CollectionItemController : Controller
     {
-        private NocturnoContext _context;
+        private readonly ICollectionItemService _collectionItemService;
+        private readonly ICollectionService _collectionService;
+        private readonly IIconService _iconService;
 
-        public ServiceItemController(NocturnoContext context)
+        public CollectionItemController(
+            ICollectionItemService collectionItemService,
+            ICollectionService collectionService,
+            IIconService iconService)
         {
-            _context = context;
+            _collectionItemService = collectionItemService;
+            _collectionService = collectionService;
+            _iconService = iconService;
         }
 
         // GET: ServiceItem
         public IActionResult Index()
         {
-            var nocturnoContext = _context.ServiceItems.Include(s => s.Service);
-            return View(nocturnoContext.ToList());
+            return RedirectToAction("Index", "Collection");
         }
 
         // GET: ServiceItem/Details/5
@@ -32,7 +39,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            ServiceItem serviceItem = _context.ServiceItems.Single(m => m.Id == id);
+            CollectionItem serviceItem = _collectionItemService.GetById(id);
             if (serviceItem == null)
             {
                 return HttpNotFound();
@@ -44,22 +51,24 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         // GET: ServiceItem/Create
         public IActionResult Create()
         {
-            ViewBag.Services = new SelectList(_context.Services.ToList(), "Id", "Name");
+            ViewBag.Collections = new SelectList(_collectionService.GetAll(), "Id", "Name");
+            ViewBag.Icons = new SelectList(_iconService.GetAll(), "Name", "Name");
             return View();
         }
 
         // POST: ServiceItem/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ServiceItem serviceItem)
+        public IActionResult Create(CollectionItem serviceItem)
         {
             if (ModelState.IsValid)
             {
-                _context.ServiceItems.Add(serviceItem);
-                _context.SaveChanges();
+                _collectionItemService.Create(serviceItem);
+                _collectionItemService.Commit();
                 return RedirectToAction("Index");
             }
-            ViewBag.Services = new SelectList(_context.Services, "Id", "Name", serviceItem.ServiceId);
+            ViewBag.Services = new SelectList(_collectionService.GetAll(), "Id", "Name", serviceItem.CollectionId);
+            ViewBag.Icons = new SelectList(_iconService.GetAll(), "Name", "Name", serviceItem.Icon);
             return View(serviceItem);
         }
 
@@ -71,27 +80,29 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            ServiceItem serviceItem = _context.ServiceItems.Single(m => m.Id == id);
+            CollectionItem serviceItem = _collectionItemService.GetById(id);
             if (serviceItem == null)
             {
                 return HttpNotFound();
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Service", serviceItem.ServiceId);
+            ViewBag.Collections = new SelectList(_collectionService.GetAll(), "Id", "Name", serviceItem.CollectionId);
+            ViewBag.Icons = new SelectList(_iconService.GetAll(), "Name", "Name", serviceItem.Icon);
             return View(serviceItem);
         }
 
         // POST: ServiceItem/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(ServiceItem serviceItem)
+        public IActionResult Edit(CollectionItem serviceItem)
         {
             if (ModelState.IsValid)
             {
-                _context.Update(serviceItem);
-                _context.SaveChanges();
+                _collectionItemService.Update(serviceItem);
+                _collectionItemService.Commit();
                 return RedirectToAction("Index");
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Service", serviceItem.ServiceId);
+            ViewBag.Collections = new SelectList(_collectionService.GetAll(), "Id", "Name", serviceItem.CollectionId);
+            ViewBag.Icons = new SelectList(_iconService.GetAll(), "Name", "Name", serviceItem.Icon);
             return View(serviceItem);
         }
 
@@ -104,7 +115,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            ServiceItem serviceItem = _context.ServiceItems.Single(m => m.Id == id);
+            CollectionItem serviceItem = _collectionItemService.GetById(id);
             if (serviceItem == null)
             {
                 return HttpNotFound();
@@ -118,9 +129,9 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            ServiceItem serviceItem = _context.ServiceItems.Single(m => m.Id == id);
-            _context.ServiceItems.Remove(serviceItem);
-            _context.SaveChanges();
+            CollectionItem serviceItem = _collectionItemService.GetById(id);
+            _collectionItemService.Delete(serviceItem);
+            _collectionItemService.Commit();
             return RedirectToAction("Index");
         }
     }

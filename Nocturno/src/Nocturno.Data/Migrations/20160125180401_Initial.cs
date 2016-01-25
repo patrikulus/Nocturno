@@ -87,6 +87,31 @@ namespace Nocturno.Data.Migrations
                     table.PrimaryKey("PK_Category", x => x.Id);
                 });
             migrationBuilder.CreateTable(
+                name: "Collection",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CollectionType = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Collection", x => x.Id);
+                });
+            migrationBuilder.CreateTable(
+                name: "CollectionType",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    Name = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CollectionType", x => x.Id);
+                });
+            migrationBuilder.CreateTable(
                 name: "FileType",
                 columns: table => new
                 {
@@ -147,31 +172,6 @@ namespace Nocturno.Data.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Section", x => x.Id);
-                });
-            migrationBuilder.CreateTable(
-                name: "Service",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true),
-                    ServiceType = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Service", x => x.Id);
-                });
-            migrationBuilder.CreateTable(
-                name: "ServiceType",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Name = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServiceType", x => x.Id);
                 });
             migrationBuilder.CreateTable(
                 name: "Setting",
@@ -371,6 +371,30 @@ namespace Nocturno.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
             migrationBuilder.CreateTable(
+                name: "CollectionItem",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
+                    CollectionId = table.Column<int>(nullable: false),
+                    Hyperlink = table.Column<string>(nullable: true),
+                    Icon = table.Column<string>(nullable: true),
+                    Name = table.Column<string>(nullable: true),
+                    Synopsis = table.Column<string>(nullable: true),
+                    Text = table.Column<string>(nullable: true),
+                    Title = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CollectionItem", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CollectionItem_Collection_CollectionId",
+                        column: x => x.CollectionId,
+                        principalTable: "Collection",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            migrationBuilder.CreateTable(
                 name: "PortfolioItem",
                 columns: table => new
                 {
@@ -433,30 +457,6 @@ namespace Nocturno.Data.Migrations
                         name: "FK_Node_Section_SectionId",
                         column: x => x.SectionId,
                         principalTable: "Section",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-            migrationBuilder.CreateTable(
-                name: "ServiceItem",
-                columns: table => new
-                {
-                    Id = table.Column<int>(nullable: false)
-                        .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Hyperlink = table.Column<string>(nullable: true),
-                    Icon = table.Column<string>(nullable: true),
-                    Name = table.Column<string>(nullable: true),
-                    ServiceId = table.Column<int>(nullable: false),
-                    Synopsis = table.Column<string>(nullable: true),
-                    Text = table.Column<string>(nullable: true),
-                    Title = table.Column<string>(nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServiceItem", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ServiceItem_Service_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Service",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -611,6 +611,29 @@ namespace Nocturno.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
             migrationBuilder.CreateTable(
+                name: "CollectionNode",
+                columns: table => new
+                {
+                    CollectionId = table.Column<int>(nullable: false),
+                    NodeId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CollectionNode", x => new { x.CollectionId, x.NodeId });
+                    table.ForeignKey(
+                        name: "FK_CollectionNode_Collection_CollectionId",
+                        column: x => x.CollectionId,
+                        principalTable: "Collection",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CollectionNode_Node_NodeId",
+                        column: x => x.NodeId,
+                        principalTable: "Node",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+            migrationBuilder.CreateTable(
                 name: "PortfolioNode",
                 columns: table => new
                 {
@@ -630,29 +653,6 @@ namespace Nocturno.Data.Migrations
                         name: "FK_PortfolioNode_Portfolio_PortfolioId",
                         column: x => x.PortfolioId,
                         principalTable: "Portfolio",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-            migrationBuilder.CreateTable(
-                name: "ServiceNode",
-                columns: table => new
-                {
-                    ServiceId = table.Column<int>(nullable: false),
-                    NodeId = table.Column<int>(nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ServiceNode", x => new { x.ServiceId, x.NodeId });
-                    table.ForeignKey(
-                        name: "FK_ServiceNode_Node_NodeId",
-                        column: x => x.NodeId,
-                        principalTable: "Node",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ServiceNode_Service_ServiceId",
-                        column: x => x.ServiceId,
-                        principalTable: "Service",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -773,14 +773,14 @@ namespace Nocturno.Data.Migrations
             migrationBuilder.DropTable("BlogNode");
             migrationBuilder.DropTable("BusinessItem");
             migrationBuilder.DropTable("BusinessNode");
+            migrationBuilder.DropTable("CollectionItem");
+            migrationBuilder.DropTable("CollectionNode");
+            migrationBuilder.DropTable("CollectionType");
             migrationBuilder.DropTable("FileType");
             migrationBuilder.DropTable("Icon");
             migrationBuilder.DropTable("MenuItem");
             migrationBuilder.DropTable("PortfolioItem");
             migrationBuilder.DropTable("PortfolioNode");
-            migrationBuilder.DropTable("ServiceItem");
-            migrationBuilder.DropTable("ServiceNode");
-            migrationBuilder.DropTable("ServiceType");
             migrationBuilder.DropTable("Setting");
             migrationBuilder.DropTable("SimplePanelNode");
             migrationBuilder.DropTable("SimpleTextNode");
@@ -791,9 +791,9 @@ namespace Nocturno.Data.Migrations
             migrationBuilder.DropTable("Tag");
             migrationBuilder.DropTable("Baner");
             migrationBuilder.DropTable("Business");
+            migrationBuilder.DropTable("Collection");
             migrationBuilder.DropTable("Menu");
             migrationBuilder.DropTable("Portfolio");
-            migrationBuilder.DropTable("Service");
             migrationBuilder.DropTable("SimplePanel");
             migrationBuilder.DropTable("SimpleText");
             migrationBuilder.DropTable("Node");

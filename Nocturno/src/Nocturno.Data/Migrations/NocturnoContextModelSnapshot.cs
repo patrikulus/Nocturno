@@ -288,6 +288,59 @@ namespace Nocturno.Data.Migrations
                     b.HasKey("Id");
                 });
 
+            modelBuilder.Entity("Nocturno.Data.Models.Collection", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("CollectionType");
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.CollectionItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<int>("CollectionId");
+
+                    b.Property<string>("Hyperlink");
+
+                    b.Property<string>("Icon");
+
+                    b.Property<string>("Name");
+
+                    b.Property<string>("Synopsis");
+
+                    b.Property<string>("Text");
+
+                    b.Property<string>("Title");
+
+                    b.HasKey("Id");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.CollectionNode", b =>
+                {
+                    b.Property<int>("CollectionId");
+
+                    b.Property<int>("NodeId");
+
+                    b.HasKey("CollectionId", "NodeId");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.CollectionType", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Name");
+
+                    b.HasKey("Id");
+                });
+
             modelBuilder.Entity("Nocturno.Data.Models.FileType", b =>
                 {
                     b.Property<int>("Id")
@@ -400,59 +453,6 @@ namespace Nocturno.Data.Migrations
                 });
 
             modelBuilder.Entity("Nocturno.Data.Models.Section", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.Service", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Name");
-
-                    b.Property<string>("ServiceType");
-
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.ServiceItem", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Hyperlink");
-
-                    b.Property<string>("Icon");
-
-                    b.Property<string>("Name");
-
-                    b.Property<int>("ServiceId");
-
-                    b.Property<string>("Synopsis");
-
-                    b.Property<string>("Text");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Id");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.ServiceNode", b =>
-                {
-                    b.Property<int>("ServiceId");
-
-                    b.Property<int>("NodeId");
-
-                    b.HasKey("ServiceId", "NodeId");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.ServiceType", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
@@ -678,6 +678,24 @@ namespace Nocturno.Data.Migrations
                         .HasForeignKey("NodeId");
                 });
 
+            modelBuilder.Entity("Nocturno.Data.Models.CollectionItem", b =>
+                {
+                    b.HasOne("Nocturno.Data.Models.Collection")
+                        .WithMany()
+                        .HasForeignKey("CollectionId");
+                });
+
+            modelBuilder.Entity("Nocturno.Data.Models.CollectionNode", b =>
+                {
+                    b.HasOne("Nocturno.Data.Models.Collection")
+                        .WithMany()
+                        .HasForeignKey("CollectionId");
+
+                    b.HasOne("Nocturno.Data.Models.Node")
+                        .WithMany()
+                        .HasForeignKey("NodeId");
+                });
+
             modelBuilder.Entity("Nocturno.Data.Models.Menu", b =>
                 {
                     b.HasOne("Nocturno.Data.Models.Section")
@@ -719,24 +737,6 @@ namespace Nocturno.Data.Migrations
                     b.HasOne("Nocturno.Data.Models.Portfolio")
                         .WithMany()
                         .HasForeignKey("PortfolioId");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.ServiceItem", b =>
-                {
-                    b.HasOne("Nocturno.Data.Models.Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId");
-                });
-
-            modelBuilder.Entity("Nocturno.Data.Models.ServiceNode", b =>
-                {
-                    b.HasOne("Nocturno.Data.Models.Node")
-                        .WithMany()
-                        .HasForeignKey("NodeId");
-
-                    b.HasOne("Nocturno.Data.Models.Service")
-                        .WithMany()
-                        .HasForeignKey("ServiceId");
                 });
 
             modelBuilder.Entity("Nocturno.Data.Models.SimplePanelNode", b =>

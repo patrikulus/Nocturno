@@ -8,7 +8,7 @@ namespace Nocturno.Web.Areas.Admin.ViewModels
 {
     public class ServiceItemViewModel
     {
-        public ServiceItem ServiceItem { get; set; }
-        public ICollection<Data.Models.Service> Services { get; set; }
+        public CollectionItem ServiceItem { get; set; }
+        public ICollection<Data.Models.Collection> Services { get; set; }
     }
 }

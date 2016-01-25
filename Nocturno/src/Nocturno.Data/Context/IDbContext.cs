@@ -27,8 +27,8 @@ namespace Nocturno.Data.Context
         DbSet<Portfolio> Portfolios { get; set; }
         DbSet<PortfolioItem> PortfolioItems { get; set; }
         DbSet<Section> Sections { get; set; }
-        DbSet<Service> Services { get; set; }
-        DbSet<ServiceItem> ServiceItems { get; set; }
+        DbSet<Collection> Collections { get; set; }
+        DbSet<CollectionItem> CollectionItems { get; set; }
         DbSet<Setting> Settings { get; set; }
         DbSet<SimpleText> SimpleTexts { get; set; }
         DbSet<Slider> Sliders { get; set; }

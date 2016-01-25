@@ -20,7 +20,7 @@ namespace Nocturno.Data.Models
         public ICollection<BlogNode> BlogNodes { get; set; }
         public ICollection<BusinessNode> BusinessNodes { get; set; }
         public ICollection<PortfolioNode> PortfolioNodes { get; set; }
-        public ICollection<ServiceNode> ServiceNodes { get; set; }
+        public ICollection<CollectionNode> CollectionNodes { get; set; }
         public ICollection<SimplePanelNode> SimplePanelNodes { get; set; }
         public ICollection<SimpleTextNode> SimpleTextNodes { get; set; }
         public ICollection<SliderNode> SliderNodes { get; set; }

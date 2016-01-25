@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Models
 {
-    public class ServiceItem : MinimalContent
+    public class CollectionItem : MinimalContent
     {
         public string Synopsis { get; set; }
         public string Icon { get; set; }
         public string Hyperlink { get; set; }
 
-        public int ServiceId { get; set; }
-        public Service Service { get; set; }
+        public int CollectionId { get; set; }
+        public Collection Collection { get; set; }
     }
 }

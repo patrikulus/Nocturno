@@ -1,4 +1,4 @@
-@model Nocturno.Web.Areas.Admin.ViewModels.ServiceViewModel
+@model Nocturno.Web.Areas.Admin.ViewModels.CollectionViewModel
 
 @{
     ViewData["Title"] = "Collections";
@@ -28,25 +28,25 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model.Services)
+    @foreach (var item in Model.Collections)
     {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ServiceType)
+                @Html.DisplayFor(modelItem => item.CollectionType)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Preview</a>
+                @*<a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Preview</a>*@
                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     }
 </table>
 <p>
-    <a asp-action="Create" asp-controller="ServiceItem" class="btn btn-primary">Create new item</a>
+    <a asp-action="Create" asp-controller="CollectionItem" class="btn btn-primary">Create new item</a>
 </p>
 <table class="table">
     <tr>
@@ -60,12 +60,11 @@
         <th>
             Title
         </th>
-        
 
         <th></th>
     </tr>
 
-    @foreach (var item in Model.ServiceItems)
+    @foreach (var item in Model.CollectionItems)
     {
         <tr>
 
@@ -73,17 +72,16 @@
                 @Html.DisplayFor(modelItem => item.Name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Service.Name)
+                @Html.DisplayFor(modelItem => item.Collection.Name)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
-            
 
             <td>
-                <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-warning">Edit</a>
-                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-info">Preview</a>
-                <a asp-action="Delete" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-danger">Delete</a>
+                <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="CollectionItem" class="btn btn-warning">Edit</a>
+                @*<a asp-action="Details" asp-route-id="@item.Id" asp-controller="CollectionItem" class="btn btn-info">Preview</a>*@
+                <a asp-action="Delete" asp-route-id="@item.Id" asp-controller="CollectionItem" class="btn btn-danger">Delete</a>
             </td>
         </tr>
     }

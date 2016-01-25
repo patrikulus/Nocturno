@@ -16,18 +16,18 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             _context = context;
         }
 
-        // GET: Service
+        // GET: Collection
         public IActionResult Index()
         {
-            var model = new ServiceViewModel
+            var model = new CollectionViewModel
             {
-                Services = _context.Services.ToList(),
-                ServiceItems = _context.ServiceItems.Include(s => s.Service).ToList()
+                Collections = _context.Collections.ToList(),
+                CollectionItems = _context.CollectionItems.Include(s => s.Collection).ToList()
             };
             return View(model);
         }
 
-        // GET: Service/Details/5
+        // GET: Collection/Details/5
         public IActionResult Details(int? id)
         {
             if (id == null)
@@ -35,7 +35,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Data.Models.Service service = _context.Services.Single(m => m.Id == id);
+            Data.Models.Collection service = _context.Collections.Single(m => m.Id == id);
             if (service == null)
             {
                 return HttpNotFound();
@@ -44,28 +44,28 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             return View(service);
         }
 
-        // GET: Service/Create
+        // GET: Collection/Create
         public IActionResult Create()
         {
             ViewBag.ServiceTypes = null;
             return View();
         }
 
-        // POST: Service/Create
+        // POST: Collection/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Data.Models.Service service)
+        public IActionResult Create(Data.Models.Collection service)
         {
             if (ModelState.IsValid)
             {
-                _context.Services.Add(service);
+                _context.Collections.Add(service);
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(service);
         }
 
-        // GET: Service/Edit/5
+        // GET: Collection/Edit/5
         public IActionResult Edit(int? id)
         {
             if (id == null)
@@ -73,7 +73,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Data.Models.Service service = _context.Services.Single(m => m.Id == id);
+            Data.Models.Collection service = _context.Collections.Single(m => m.Id == id);
             if (service == null)
             {
                 return HttpNotFound();
@@ -81,10 +81,10 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             return View(service);
         }
 
-        // POST: Service/Edit/5
+        // POST: Collection/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(Data.Models.Service service)
+        public IActionResult Edit(Data.Models.Collection service)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             return View(service);
         }
 
-        // GET: Service/Delete/5
+        // GET: Collection/Delete/5
         [ActionName("Delete")]
         public IActionResult Delete(int? id)
         {
@@ -104,7 +104,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Data.Models.Service service = _context.Services.Single(m => m.Id == id);
+            Data.Models.Collection service = _context.Collections.Single(m => m.Id == id);
             if (service == null)
             {
                 return HttpNotFound();
@@ -113,13 +113,13 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             return View(service);
         }
 
-        // POST: Service/Delete/5
+        // POST: Collection/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Data.Models.Service service = _context.Services.Single(m => m.Id == id);
-            _context.Services.Remove(service);
+            Data.Models.Collection service = _context.Collections.Single(m => m.Id == id);
+            _context.Collections.Remove(service);
             _context.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -32,7 +32,7 @@ namespace Nocturno.Service.Services
                 .Include(x => x.BlogNodes).ThenInclude(x => x.Blog).ThenInclude(x => x.Articles)
                 .Include(x => x.BusinessNodes).ThenInclude(x => x.Business).ThenInclude(x => x.BusinessItems)
                 .Include(x => x.PortfolioNodes).ThenInclude(x => x.Portfolio).ThenInclude(x => x.PortfolioItems)
-                .Include(x => x.ServiceNodes).ThenInclude(x => x.Service).ThenInclude(x => x.ServiceItems)
+                .Include(x => x.CollectionNodes).ThenInclude(x => x.Collection).ThenInclude(x => x.CollectionItems)
                 .Include(x => x.SliderNodes).ThenInclude(x => x.Slider).ThenInclude(x => x.SliderItems)
                 .Include(x => x.SimplePanelNodes).ThenInclude(x => x.SimplePanel)
                 .Include(x => x.SimpleTextNodes).ThenInclude(x => x.SimpleText)

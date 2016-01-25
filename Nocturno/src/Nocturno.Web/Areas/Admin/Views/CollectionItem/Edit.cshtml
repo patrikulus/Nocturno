@@ -1,4 +1,4 @@
-@model Nocturno.Data.Models.ServiceItem
+@model Nocturno.Data.Models.CollectionItem
 
 @{
     ViewData["Title"] = "Edit";
@@ -14,20 +14,6 @@
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="Id" />
         <div class="form-group">
-            <label asp-for="Hyperlink" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Hyperlink" class="form-control" />
-                <span asp-validation-for="Hyperlink" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Icon" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Icon" class="form-control" />
-                <span asp-validation-for="Icon" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="Name" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="Name" class="form-control" />
@@ -35,10 +21,10 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ServiceId" class="control-label col-md-2">ServiceId</label>
+            <label asp-for="Title" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="ServiceId" class="form-control" />
-                <span asp-validation-for="ServiceId" class="text-danger" />
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -51,31 +37,49 @@
         <div class="form-group">
             <label asp-for="Text" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Text" class="form-control" />
+                <textarea asp-for="Text" class="form-control" id="textarea"></textarea>
                 <span asp-validation-for="Text" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <label asp-for="Hyperlink" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger" />
+                <input asp-for="Hyperlink" class="form-control" />
+                <span asp-validation-for="Hyperlink" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Icon" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="Icon" asp-items="@ViewBag.Icons" class="form-control"></select>
+                <span asp-validation-for="Icon" class="text-danger" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Collection" asp-s class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="CollectionId" asp-items="@ViewBag.Collections" class="form-control"></select>
             </div>
         </div>
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-default">Back to List</a>
 </div>
 
 @section Scripts {
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+    <script src="~/lib/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js"></script>
+    <script>
+        $('#textarea').wysihtml5();
+    </script>
 }

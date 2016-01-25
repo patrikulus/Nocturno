@@ -36,7 +36,7 @@ namespace Nocturno.Data.Context
             builder.Entity<BlogNode>().HasKey(x => new { x.BlogId, x.NodeId });
             builder.Entity<BusinessNode>().HasKey(x => new { x.BusinessId, x.NodeId });
             builder.Entity<PortfolioNode>().HasKey(x => new { x.PortfolioId, x.NodeId });
-            builder.Entity<ServiceNode>().HasKey(x => new { x.ServiceId, x.NodeId });
+            builder.Entity<CollectionNode>().HasKey(x => new { ServiceId = x.CollectionId, x.NodeId });
             builder.Entity<SimplePanelNode>().HasKey(x => new { x.SimplePanelId, x.NodeId });
             builder.Entity<SimpleTextNode>().HasKey(x => new { x.SimpleTextId, x.NodeId });
             builder.Entity<SliderNode>().HasKey(x => new { x.SliderId, x.NodeId });
@@ -91,14 +91,14 @@ namespace Nocturno.Data.Context
                 .WithMany(x => x.PortfolioNodes)
                 .HasForeignKey(x => x.NodeId);
 
-            builder.Entity<ServiceNode>()
-                .HasOne(x => x.Service)
-                .WithMany(x => x.ServiceNodes)
-                .HasForeignKey(x => x.ServiceId);
+            builder.Entity<CollectionNode>()
+                .HasOne(x => x.Collection)
+                .WithMany(x => x.CollectionNodes)
+                .HasForeignKey(x => x.CollectionId);
 
-            builder.Entity<ServiceNode>()
+            builder.Entity<CollectionNode>()
                 .HasOne(x => x.Node)
-                .WithMany(x => x.ServiceNodes)
+                .WithMany(x => x.CollectionNodes)
                 .HasForeignKey(x => x.NodeId);
 
             builder.Entity<SimplePanelNode>()
@@ -165,9 +165,9 @@ namespace Nocturno.Data.Context
         public DbSet<Portfolio> Portfolios { get; set; }
         public DbSet<PortfolioItem> PortfolioItems { get; set; }
         public DbSet<Section> Sections { get; set; }
-        public DbSet<Service> Services { get; set; }
-        public DbSet<ServiceItem> ServiceItems { get; set; }
-        public DbSet<ServiceType> ServiceTypes { get; set; }
+        public DbSet<Collection> Collections { get; set; }
+        public DbSet<CollectionItem> CollectionItems { get; set; }
+        public DbSet<CollectionType> CollectionTypes { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<SimpleText> SimpleTexts { get; set; }
         public DbSet<Slider> Sliders { get; set; }

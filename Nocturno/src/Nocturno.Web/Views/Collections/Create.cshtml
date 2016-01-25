@@ -1,4 +1,4 @@
-@model Nocturno.Data.Models.File
+@model Nocturno.Data.Models.Collection
 
 @{
     ViewData["Title"] = "Create";
@@ -9,14 +9,14 @@
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>File</h4>
+        <h4>Collection</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">
-            <label asp-for="Icon" class="col-md-2 control-label"></label>
+            <label asp-for="CollectionType" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="Icon" class="form-control" />
-                <span asp-validation-for="Icon" class="text-danger" />
+                <input asp-for="CollectionType" class="form-control" />
+                <span asp-validation-for="CollectionType" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -26,20 +26,6 @@
                 <span asp-validation-for="Name" class="text-danger" />
             </div>
         </div>
-        <div class="form-group">
-            <label asp-for="SizeInKiloBytes" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="SizeInKiloBytes" class="form-control" />
-                <span asp-validation-for="SizeInKiloBytes" class="text-danger" />
-            </div>
-        </div>
-        @*<div class="form-group">
-                <label asp-for="UploadDate" class="col-md-2 control-label"></label>
-                <div class="col-md-10">
-                    <input asp-for="UploadDate" class="form-control" />
-                    <span asp-validation-for="UploadDate" class="text-danger" />
-                </div>
-            </div>*@
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Create" class="btn btn-default" />

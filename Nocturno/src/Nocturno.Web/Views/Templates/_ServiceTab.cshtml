@@ -5,7 +5,7 @@
     <div class="col-lg-12">
         <ul id="myTab" class="nav nav-tabs nav-justified">
             @{ index = 0; }
-            @foreach (var item in Model.ServiceItems)
+            @foreach (var item in Model.CollectionItems)
             {
                 index++;
                 <li class="active">
@@ -15,7 +15,7 @@
         </ul>
         <div id="myTabContent" class="tab-content">
             @{ index = 0; }
-            @foreach (var item in Model.ServiceItems)
+            @foreach (var item in Model.CollectionItems)
             {
                 index++;
                 <div class="tab-pane fade active in" id="service(@index)">

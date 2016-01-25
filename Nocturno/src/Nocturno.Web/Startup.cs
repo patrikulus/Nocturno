@@ -63,6 +63,9 @@ namespace Nocturno.Web
             services.AddTransient<IMenuService, MenuService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<ISettingService, SettingService>();
+            services.AddTransient<ICollectionService, CollectionService>();
+            services.AddTransient<ICollectionItemService, CollectionItemService>();
+            services.AddTransient<IIconService, IconService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
             services.AddTransient<IDbInitializer, NocturnoInitializer>();
