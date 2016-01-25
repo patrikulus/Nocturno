@@ -34,9 +34,9 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="ServiceId" class="col-md-2 control-label"></label>
+            <label asp-for="ServiceId" asp-s class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <select asp-for="ServiceId" class ="form-control"></select>
+                <select asp-for="ServiceId" asp-items="@ViewBag.Services" class="form-control"></select>
             </div>
         </div>
         <div class="form-group">

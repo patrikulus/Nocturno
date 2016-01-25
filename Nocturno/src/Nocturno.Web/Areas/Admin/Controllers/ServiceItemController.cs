@@ -10,7 +10,6 @@ namespace Nocturno.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class ServiceItemController : Controller
     {
-        
         private NocturnoContext _context;
 
         public ServiceItemController(NocturnoContext context)
@@ -45,7 +44,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         // GET: ServiceItem/Create
         public IActionResult Create()
         {
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Service");
+            ViewBag.Services = new SelectList(_context.Services.ToList(), "Id", "Name");
             return View();
         }
 
@@ -60,7 +59,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewData["ServiceId"] = new SelectList(_context.Services, "Id", "Service", serviceItem.ServiceId);
+            ViewBag.Services = new SelectList(_context.Services, "Id", "Name", serviceItem.ServiceId);
             return View(serviceItem);
         }
 

@@ -22,7 +22,7 @@
         <div class="form-group">
             <label asp-for="ServiceType" class="col-md-2 control-label"></label>
             <div class="col-md-10">
-                <input asp-for="ServiceType" class="form-control" />
+                <select asp-for="ServiceType" asp-items="@ViewBag.ServiceTypes" class="form-control"></select>
                 <span asp-validation-for="ServiceType" class="text-danger" />
             </div>
         </div>

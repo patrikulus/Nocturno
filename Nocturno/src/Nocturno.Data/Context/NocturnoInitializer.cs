@@ -542,7 +542,7 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-mixcloud",
-                        ServiceId = 1
+                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
                     },
                     new ServiceItem
                     {
@@ -556,8 +556,8 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-archive",
-                        ServiceId = 1
-                    },
+                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
+        },
                     new ServiceItem
                     {
                         Name = "Third item",
@@ -570,7 +570,7 @@ namespace Nocturno.Data.Context
                         Title = "First item title",
                         Hyperlink = "#",
                         Icon = "fa-bank",
-                        ServiceId = 1
+                        ServiceId = _db.Services.FirstOrDefault(x => x.Name == "Hello Service").Id
                     }
                 };
                 _db.ServiceItems.AddRange(serviceItems);

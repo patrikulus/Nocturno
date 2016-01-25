@@ -47,6 +47,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         // GET: Service/Create
         public IActionResult Create()
         {
+            ViewBag.ServiceTypes = null;
             return View();
         }
 
