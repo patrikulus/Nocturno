@@ -1,0 +1,81 @@
+@model Nocturno.Data.Models.ServiceItem
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>ServiceItem</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="Hyperlink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Hyperlink" class="form-control" />
+                <span asp-validation-for="Hyperlink" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Icon" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Icon" class="form-control" />
+                <span asp-validation-for="Icon" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ServiceId" class="control-label col-md-2">ServiceId</label>
+            <div class="col-md-10">
+                <select asp-for="ServiceId" class="form-control" />
+                <span asp-validation-for="ServiceId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Synopsis" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Synopsis" class="form-control" />
+                <span asp-validation-for="Synopsis" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

@@ -41,13 +41,13 @@ namespace Nocturno.Service.Services
         {
             List<File> files = new List<File>();
             var content = _environment.WebRootFileProvider.GetDirectoryContents(UploadsPath);
-            var types = _db.FileTypes.AsQueryable();
+            var types = _db.FileTypes.ToList();
             foreach (var directoryContent in content)
             {
                 string extension = GetFileExtension(directoryContent.Name);
-                string icon = types.FirstOrDefault(x => x.Extension == extension) != null
-                    ? types.FirstOrDefault(x => x.Extension == extension).Icon
-                    : "file-o";
+                string icon = types.FirstOrDefault(x => x.Name == extension) != null
+                    ? types.FirstOrDefault(x => x.Name == extension).Icon
+                    : "fa-file-o";
                 var file = new File
                 {
                     Name = directoryContent.Name,

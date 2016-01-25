@@ -1,0 +1,90 @@
+@model Nocturno.Web.Areas.Admin.ViewModels.ServiceViewModel
+
+@{
+    ViewData["Title"] = "Collections";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-cubes"></i>
+            @ViewData["Title"]
+        </h1>
+    </div>
+</div>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create new collection</a>
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Type
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Services)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceType)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">Preview</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    <a asp-action="Create" asp-controller="ServiceItem" class="btn btn-primary">Create new item</a>
+</p>
+<table class="table">
+    <tr>
+
+        <th>
+            Name
+        </th>
+        <th>
+            Collection
+        </th>
+        <th>
+            Title
+        </th>
+        
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.ServiceItems)
+    {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Service.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-warning">Edit</a>
+                <a asp-action="Details" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-info">Preview</a>
+                <a asp-action="Delete" asp-route-id="@item.Id" asp-controller="ServiceItem" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
