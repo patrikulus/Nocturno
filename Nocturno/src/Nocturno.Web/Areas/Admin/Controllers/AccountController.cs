@@ -1,20 +1,19 @@
-﻿using Microsoft.AspNet.Authorization;
+﻿using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
-using Microsoft.Data.Entity;
 using Microsoft.Extensions.Logging;
 using Nocturno.Data.Models;
+using Nocturno.Web.Controllers;
 using Nocturno.Web.Services;
 using Nocturno.Web.ViewModels.Account;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
 
-namespace Nocturno.Web.Controllers
+namespace Nocturno.Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     [Authorize]
     public class AccountController : Controller
     {

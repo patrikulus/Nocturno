@@ -24,7 +24,7 @@ namespace Nocturno.Data.Context
                 {
                     new Setting {Name = "Site name", Value = "Nocturno CMS Site"},
                     new Setting {Name = "Site theme", Value = "default.css"},
-                    new Setting {Name = "Admin theme", Value = "default.css"},
+                    new Setting {Name = "Site owner", Value = "Patryk Lotzwi"},
                     new Setting {Name= "E-mail", Value = "p.lotzwi@outlook.com"}
                 };
                 _db.Settings.AddRange(settings);
