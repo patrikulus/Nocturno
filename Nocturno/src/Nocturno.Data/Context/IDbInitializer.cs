@@ -7,6 +7,6 @@ namespace Nocturno.Data.Context
 {
     public interface IDbInitializer
     {
-        void InitializeDatabase();
+        void InitializeDatabaseAsync();
     }
 }

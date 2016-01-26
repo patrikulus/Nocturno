@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNet.Builder;
 using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.Configuration;
@@ -75,7 +76,12 @@ namespace Nocturno.Web
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory, IDbInitializer dbInitializer)
+        public async void Configure(
+            IApplicationBuilder app,
+            IHostingEnvironment env,
+            ILoggerFactory loggerFactory,
+            IDbInitializer dbInitializer,
+            IServiceProvider serviceProvider)
         {
             loggerFactory.AddConsole(Configuration.GetSection("Logging"));
             loggerFactory.AddDebug();
@@ -127,7 +133,46 @@ namespace Nocturno.Web
                 //    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbInitializer.InitializeDatabase();
+            dbInitializer.InitializeDatabaseAsync();
+            await CreateRolesAndUsersAsync(serviceProvider);
+        }
+
+        private async Task CreateRolesAndUsersAsync(IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roles = new List<string>
+            {
+                "Admin",
+                "Moderator"
+            };
+
+            foreach (var role in roles)
+            {
+                var roleExists = await roleManager.RoleExistsAsync(role);
+                if (!roleExists)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+
+            var users = new List<ApplicationUser>
+            {
+                new ApplicationUser {UserName = "admin@nocturno.cloud", Email = "admin@nocturno.cloud"},
+                new ApplicationUser {UserName = "editor@nocturno.cloud", Email = "editor@nocturno.cloud"}
+            };
+            var password = "Q!e3t5U&";
+
+            foreach (var user in users)
+            {
+                if (!userManager.Users.Any(x => x.UserName == user.UserName))
+                {
+                    await userManager.CreateAsync(user, password);
+                }
+
+                //TODO get current user and then add a role
+                //await userManager.AddToRoleAsync(user, "Admin");
+            }
         }
 
         // Entry point for the application.

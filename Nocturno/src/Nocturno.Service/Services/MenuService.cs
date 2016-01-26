@@ -22,13 +22,17 @@ namespace Nocturno.Service.Services
         public void AddToMenu(Page page, string menuName = MainMenu)
         {
             var menu = GetMenuByName(menuName);
-            _db.MenuItems.Add(new MenuItem
+            var item = _db.MenuItems.FirstOrDefault(x => x.MenuId == GetMenuId(menuName) && x.Name == page.Name);
+            if (!CheckIfPageExistsInMenu(page))
             {
-                MenuId = menu.Id,
-                Name = page.Name,
-                Hyperlink = CreateHyperlink(page.Name),
-                Order = _db.MenuItems.Count()
-            });
+                _db.MenuItems.Add(new MenuItem
+                {
+                    MenuId = menu.Id,
+                    Name = page.Name,
+                    Hyperlink = CreateHyperlink(page.Name),
+                    Order = _db.MenuItems.Count()
+                });
+            }
         }
 
         public bool CheckIfPageExistsInMenu(Page page, string menuName = MainMenu)

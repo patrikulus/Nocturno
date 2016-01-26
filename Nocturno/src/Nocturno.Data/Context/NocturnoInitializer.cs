@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNet.Hosting;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 using Nocturno.Data.Models;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,19 @@ namespace Nocturno.Data.Context
     {
         private readonly IDbContext _db;
         private readonly IHostingEnvironment _environment;
+        private readonly UserManager<ApplicationUser> _userManager;
 
-        public NocturnoInitializer(IDbContext db, IHostingEnvironment environment)
+        public NocturnoInitializer(
+            IDbContext db,
+            IHostingEnvironment environment,
+            UserManager<ApplicationUser> userManager)
         {
             _db = db;
             _environment = environment;
+            _userManager = userManager;
         }
 
-        public void InitializeDatabase()
+        public async void InitializeDatabaseAsync()
         {
             if (!_db.Settings.Any())
             {
@@ -30,6 +37,19 @@ namespace Nocturno.Data.Context
                 _db.Settings.AddRange(settings);
                 _db.SaveChanges();
             }
+
+            //if (!_db.Set<ApplicationUser>().Any())
+            //{
+            //    string name = "p.lotzwi@nocturno.cloud";
+            //    string password = "Q!e3t5U&";
+            //    var user = new ApplicationUser
+            //    {
+            //        UserName = name,
+            //        Email = name,
+            //    };
+
+            //    await _userManager.CreateAsync(user, password);
+            //}
 
             #region Icons
 
