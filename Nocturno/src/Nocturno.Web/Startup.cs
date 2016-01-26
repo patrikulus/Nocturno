@@ -168,10 +168,13 @@ namespace Nocturno.Web
                 if (!userManager.Users.Any(x => x.UserName == user.UserName))
                 {
                     await userManager.CreateAsync(user, password);
-                }
 
-                //TODO get current user and then add a role
-                //await userManager.AddToRoleAsync(user, "Admin");
+                    var adminUser = await userManager.FindByNameAsync("admin@nocturno.cloud");
+                    await userManager.AddToRoleAsync(adminUser, "Admin");
+
+                    var moderatorUser = await userManager.FindByNameAsync("editor@nocturno.cloud");
+                    await userManager.AddToRoleAsync(moderatorUser, "Moderator");
+                }
             }
         }
 
