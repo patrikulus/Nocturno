@@ -1,9 +1,12 @@
 ﻿using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.Extensions.DependencyInjection;
 using Nocturno.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 
 namespace Nocturno.Data.Context
 {
@@ -11,20 +14,22 @@ namespace Nocturno.Data.Context
     {
         private readonly IDbContext _db;
         private readonly IHostingEnvironment _environment;
-        private readonly UserManager<ApplicationUser> _userManager;
+        private readonly IServiceProvider _serviceProvider;
 
         public NocturnoInitializer(
             IDbContext db,
             IHostingEnvironment environment,
-            UserManager<ApplicationUser> userManager)
+            IServiceProvider serviceProvider)
         {
             _db = db;
             _environment = environment;
-            _userManager = userManager;
+            _serviceProvider = serviceProvider;
         }
 
         public async void InitializeDatabaseAsync()
         {
+            await CreateRolesAndUsersAsync(_serviceProvider);
+
             if (!_db.Settings.Any())
             {
                 var settings = new List<Setting>
@@ -37,19 +42,6 @@ namespace Nocturno.Data.Context
                 _db.Settings.AddRange(settings);
                 _db.SaveChanges();
             }
-
-            //if (!_db.Set<ApplicationUser>().Any())
-            //{
-            //    string name = "p.lotzwi@nocturno.cloud";
-            //    string password = "Q!e3t5U&";
-            //    var user = new ApplicationUser
-            //    {
-            //        UserName = name,
-            //        Email = name,
-            //    };
-
-            //    await _userManager.CreateAsync(user, password);
-            //}
 
             #region Icons
 
@@ -596,6 +588,47 @@ namespace Nocturno.Data.Context
                 };
                 _db.CollectionItems.AddRange(serviceItems);
                 _db.SaveChanges();
+            }
+        }
+
+        private async Task CreateRolesAndUsersAsync(IServiceProvider serviceProvider)
+        {
+            var roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+            var userManager = serviceProvider.GetRequiredService<UserManager<ApplicationUser>>();
+            var roles = new List<string>
+            {
+                "Admin",
+                "Moderator"
+            };
+
+            foreach (var role in roles)
+            {
+                var roleExists = await roleManager.RoleExistsAsync(role);
+                if (!roleExists)
+                {
+                    await roleManager.CreateAsync(new IdentityRole(role));
+                }
+            }
+
+            var users = new List<ApplicationUser>
+            {
+                new ApplicationUser {UserName = "admin@nocturno.cloud", Email = "admin@nocturno.cloud"},
+                new ApplicationUser {UserName = "editor@nocturno.cloud", Email = "editor@nocturno.cloud"}
+            };
+            var password = "Q!e3t5U&";
+
+            foreach (var user in users)
+            {
+                if (!userManager.Users.Any(x => x.UserName == user.UserName))
+                {
+                    await userManager.CreateAsync(user, password);
+
+                    var adminUser = await userManager.FindByNameAsync("admin@nocturno.cloud");
+                    await userManager.AddToRoleAsync(adminUser, "Admin");
+
+                    var moderatorUser = await userManager.FindByNameAsync("editor@nocturno.cloud");
+                    await userManager.AddToRoleAsync(moderatorUser, "Moderator");
+                }
             }
         }
     }
