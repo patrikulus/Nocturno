@@ -1,7 +1,4 @@
-﻿using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using Microsoft.AspNet.Authorization;
+﻿using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
@@ -10,6 +7,9 @@ using Nocturno.Data.Models;
 using Nocturno.Web.Controllers;
 using Nocturno.Web.Services;
 using Nocturno.Web.ViewModels.Account;
+using System.Linq;
+using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Nocturno.Web.Areas.Admin.Controllers
 {
@@ -88,7 +88,6 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         //
         // GET: /Account/Register
         [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
@@ -97,7 +96,6 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {

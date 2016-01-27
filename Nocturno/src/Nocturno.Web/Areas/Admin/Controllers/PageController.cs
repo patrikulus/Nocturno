@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Http.Internal;
 using Microsoft.AspNet.Mvc;
 using Nocturno.Data.Context;
@@ -11,6 +12,7 @@ using System.Linq;
 namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class PageController : Controller
     {
         private readonly IPageService _pageService;

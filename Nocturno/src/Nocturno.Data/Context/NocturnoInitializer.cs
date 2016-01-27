@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Data.Context
 {
+    //TODO Move to Migrations
     public class NocturnoInitializer : IDbInitializer
     {
         private readonly IDbContext _db;
@@ -612,24 +613,23 @@ namespace Nocturno.Data.Context
 
             var users = new List<ApplicationUser>
             {
-                new ApplicationUser {UserName = "admin@nocturno.cloud", Email = "admin@nocturno.cloud"},
-                new ApplicationUser {UserName = "editor@nocturno.cloud", Email = "editor@nocturno.cloud"}
+                new ApplicationUser {UserName = "admin", Email = "admin@nocturno.cloud"},
+                new ApplicationUser {UserName = "editor", Email = "editor@nocturno.cloud"}
             };
             var password = "Q!e3t5U&";
 
             foreach (var user in users)
             {
-                if (!userManager.Users.Any(x => x.UserName == user.UserName))
+                if (!userManager.Users.Any(x => x.Email == user.Email))
                 {
                     await userManager.CreateAsync(user, password);
-
-                    var adminUser = await userManager.FindByNameAsync("admin@nocturno.cloud");
-                    await userManager.AddToRoleAsync(adminUser, "Admin");
-
-                    var moderatorUser = await userManager.FindByNameAsync("editor@nocturno.cloud");
-                    await userManager.AddToRoleAsync(moderatorUser, "Moderator");
                 }
             }
+            var adminUser = await userManager.FindByEmailAsync("admin@nocturno.cloud");
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+
+            var moderatorUser = await userManager.FindByEmailAsync("editor@nocturno.cloud");
+            await userManager.AddToRoleAsync(moderatorUser, "Moderator");
         }
     }
 }

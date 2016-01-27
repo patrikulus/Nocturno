@@ -9,7 +9,7 @@ namespace Nocturno.Web.ViewModels.Account
     public class LoginViewModel
     {
         [Required]
-        [EmailAddress]
+        [Display(Name = "Username")]
         public string Email { get; set; }
 
         [Required]

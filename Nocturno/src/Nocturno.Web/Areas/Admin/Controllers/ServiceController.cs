@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
@@ -7,6 +8,7 @@ using System.Linq;
 namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class ServiceController : Controller
     {
         private NocturnoContext _context;

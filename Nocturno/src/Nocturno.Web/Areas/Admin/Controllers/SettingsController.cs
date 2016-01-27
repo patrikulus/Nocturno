@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
@@ -9,6 +10,7 @@ using System.Linq;
 namespace Nocturno.Web.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class SettingsController : Controller
     {
         private readonly ISettingService _settingService;

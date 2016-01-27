@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
@@ -8,6 +9,7 @@ using System.Linq;
 namespace Nocturno.Web.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class SimpleTextController : Controller
     {
         private NocturnoContext _context;

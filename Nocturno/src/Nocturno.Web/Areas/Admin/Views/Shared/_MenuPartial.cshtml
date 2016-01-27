@@ -99,9 +99,12 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Settings" ? "active" : "")">
-                <a href="~/Admin/Settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
-            </li>
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Settings" ? "active" : "")">
+                    <a href="~/Admin/Settings"><i class="fa fa-fw fa-cog"></i> Settings</a>
+                </li>
+            }
             <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Page" ? "active" : "")">
                 <a href="~/Admin/Page"><i class="fa fa-fw fa-file-text-o"></i> Pages</a>
             </li>
@@ -144,9 +147,13 @@
                 <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "Collection" ? "active" : "")">
                     <a href="~/Admin/Collection"><i class="fa fa-fw fa-th"></i> Collections</a>
                 </li>*@
-            <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "User" ? "active" : "")">
-                <a href="~/Admin/User"><i class="fa fa-fw fa-users"></i> Users</a>
-            </li>
+
+            @if (User.IsInRole("Admin"))
+            {
+                <li class="@(ViewContext.RouteData.Values["Controller"].ToString() == "User" ? "active" : "")">
+                    <a href="~/Admin/User"><i class="fa fa-fw fa-users"></i> Users</a>
+                </li>
+            }
 
             @*<li class="active">
                     <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>

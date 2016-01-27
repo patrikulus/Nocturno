@@ -1,3 +1,4 @@
+using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Hosting;
 using Microsoft.AspNet.Http;
 using Microsoft.AspNet.Mvc;
@@ -8,6 +9,7 @@ using System.Threading.Tasks;
 namespace Nocturno.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin,Moderator")]
     public class FileController : Controller
     {
         private readonly IFileService _fileService;
