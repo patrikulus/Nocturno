@@ -64,6 +64,7 @@ namespace Nocturno.Web
             services.AddTransient<IPageService, PageService>();
             services.AddTransient<ISectionService, SectionService>();
             services.AddTransient<IMenuService, MenuService>();
+            services.AddTransient<IMenuItemService, MenuItemService>();
             services.AddTransient<IFileService, FileService>();
             services.AddTransient<ISettingService, SettingService>();
             services.AddTransient<ICollectionService, CollectionService>();
@@ -73,6 +74,7 @@ namespace Nocturno.Web
             services.AddScoped<IDbContext, NocturnoContext>();
             services.AddTransient<IDbInitializer, NocturnoInitializer>();
 
+            // TODO Remove if not needed
             services.Configure<NocturnoSettings>(Configuration.GetSection("NocturnoSettings"));
             services.AddOptions();
 

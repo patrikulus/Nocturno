@@ -30,7 +30,7 @@ namespace Nocturno.Service.Services
                     MenuId = menu.Id,
                     Name = page.Name,
                     Hyperlink = CreateHyperlink(page.Name),
-                    Order = _db.MenuItems.Count()
+                    Order = _db.MenuItems.Count() + 1
                 });
             }
         }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nocturno.Service.IServices
 {
-    public interface IMenuService
+    public interface IMenuService : IBaseService<Menu>
     {
         void AddToMenu(Page page, string menuName = "Main");
 

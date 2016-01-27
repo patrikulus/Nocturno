@@ -1,3 +1,4 @@
+@model Nocturno.Web.Areas.Admin.ViewModels.SectionViewModel
 @{
     ViewData["Title"] = "Sections";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
@@ -12,34 +13,59 @@
     </div>
 </div>
 
-<table class="table table-bordered text-center" style="height: 768px;">
+<table class="table table-bordered table-striped text-center">
     <tr>
-        <td colspan="3" class="bg-info">Navigation</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Navigation" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Navigation") ? "" : "disabled")">Navigation</a>
+        </td>
     </tr>
     <tr>
-        <td colspan="3" class="bg-warning">Header Top</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Top") ? "" : "disabled")">Header Top</a>
+        </td>
     </tr>
     <tr>
-        <td colspan="3" class="bg-success">Breadcrumb</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Breadcrumb" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Breadcrumb") ? "" : "disabled")">Breadcrumb</a>
+        </td>
     </tr>
     <tr>
-        <td colspan="3" class="bg-warning">Header Bottom</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Bottom") ? "" : "disabled")">Header Bottom</a>
+        </td>
     </tr>
     <tr>
-        <td rowspan="3" class="bg-danger">Left sidebar</td>
-        <td class="bg-info">Main Top</td>
-        <td rowspan="3" class="bg-danger">Right sidebar</td>
+        <td rowspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Left sidebar" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Left sidebar") ? "" : "disabled")">Left sidebar</a>
+        </td>
+        <td>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Top") ? "" : "disabled")">Main Top</a>
+        </td>
+        <td rowspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Right sidebar" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Right sidebar") ? "" : "disabled")">Right sidebar</a>
+        </td>
     </tr>
     <tr>
-        <td class="bg-success">Main Middle</td>
+        <td>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Middle" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Middle") ? "" : "disabled")">Main Middle</a>
+        </td>
     </tr>
     <tr>
-        <td class="bg-info">Main Bottom</td>
+        <td>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Bottom") ? "" : "disabled")">Main Bottom</a>
+        </td>
     </tr>
     <tr>
-        <td colspan="3" class="bg-warning">Footer Top</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Top") ? "" : "disabled")">Footer Top</a>
+        </td>
     </tr>
     <tr>
-        <td colspan="3" class="bg-success">Footer Bottom</td>
+        <td colspan="3">
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Bottom") ? "" : "disabled")">Footer Bottom</a>
+        </td>
     </tr>
 </table>
+<div>
+    <a asp-action="Edit" class="btn btn-default">Back</a>
+</div>

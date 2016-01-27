@@ -520,6 +520,19 @@ namespace Nocturno.Data.Context
                 _db.SaveChanges();
             }
 
+            if (!_db.Pages.Any())
+            {
+                var pages = new List<Page>
+                {
+                    new Page { Name = "Home"},
+                    new Page { Name = "About"},
+                    new Page { Name = "Services"},
+                    new Page { Name = "Contact"}
+                };
+                _db.Pages.AddRange(pages);
+                _db.SaveChanges();
+            }
+
             if (!_db.Menus.Any())
             {
                 _db.Menus.Add(new Menu
