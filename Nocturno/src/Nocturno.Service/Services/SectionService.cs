@@ -87,5 +87,10 @@ namespace Nocturno.Service.Services
                 _db.Nodes.Remove(node);
             }
         }
+
+        public override Section GetByName(string name)
+        {
+            return _db.Sections.FirstOrDefault(x => x.Name == name);
+        }
     }
 }

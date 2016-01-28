@@ -4,6 +4,7 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Service.IServices;
 using System.Linq;
 
 namespace Nocturno.Web.Controllers
@@ -12,17 +13,17 @@ namespace Nocturno.Web.Controllers
     [Authorize(Roles = "Admin,Moderator")]
     public class SimpleTextController : Controller
     {
-        private NocturnoContext _context;
+        private readonly ISimpleTextService _simpleTextService;
 
-        public SimpleTextController(NocturnoContext context)
+        public SimpleTextController(ISimpleTextService simpleTextService)
         {
-            _context = context;
+            _simpleTextService = simpleTextService;
         }
 
         // GET: SimpleText
         public IActionResult Index()
         {
-            return View(_context.SimpleTexts.ToList());
+            return View(_simpleTextService.GetAll());
         }
 
         // GET: SimpleText/Details/5
@@ -33,7 +34,7 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            SimpleText simpleText = _context.SimpleTexts.Single(m => m.Id == id);
+            SimpleText simpleText = _simpleTextService.GetById(id);
             if (simpleText == null)
             {
                 return HttpNotFound();
@@ -55,8 +56,8 @@ namespace Nocturno.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.SimpleTexts.Add(simpleText);
-                _context.SaveChanges();
+                _simpleTextService.Create(simpleText);
+                _simpleTextService.Commit();
                 return RedirectToAction("Index");
             }
             return View(simpleText);
@@ -70,7 +71,7 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            SimpleText simpleText = _context.SimpleTexts.Single(m => m.Id == id);
+            SimpleText simpleText = _simpleTextService.GetById(id);
             if (simpleText == null)
             {
                 return HttpNotFound();
@@ -85,8 +86,8 @@ namespace Nocturno.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(simpleText);
-                _context.SaveChanges();
+                _simpleTextService.Update(simpleText);
+                _simpleTextService.Commit();
                 return RedirectToAction("Index");
             }
             return View(simpleText);
@@ -101,7 +102,7 @@ namespace Nocturno.Web.Controllers
                 return HttpNotFound();
             }
 
-            SimpleText simpleText = _context.SimpleTexts.Single(m => m.Id == id);
+            SimpleText simpleText = _simpleTextService.GetById(id);
             if (simpleText == null)
             {
                 return HttpNotFound();
@@ -115,9 +116,9 @@ namespace Nocturno.Web.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            SimpleText simpleText = _context.SimpleTexts.Single(m => m.Id == id);
-            _context.SimpleTexts.Remove(simpleText);
-            _context.SaveChanges();
+            SimpleText simpleText = _simpleTextService.GetById(id);
+            _simpleTextService.Delete(simpleText);
+            _simpleTextService.Commit();
             return RedirectToAction("Index");
         }
     }

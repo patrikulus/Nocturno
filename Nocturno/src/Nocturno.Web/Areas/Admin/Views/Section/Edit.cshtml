@@ -1,35 +1,60 @@
-@model Nocturno.Data.Models.Section
+@using Nocturno.Service.Services
+@model Nocturno.Web.Areas.Admin.ViewModels.SectionContentViewModel
 
 @{
     ViewData["Title"] = "Edit";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Assign</h2>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Section</h4>
+        <h4>Content</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
-        <input type="hidden" asp-for="Id" />
+        @*<input type="hidden" asp-for="NodeId" />*@
+
         <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <label class="col-md-2 control-label">Simple text items</label>
             <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" />
+                @foreach (var item in Model.SimpleTexts)
+                {
+                    <div class="checkbox checkbox-primary">
+                        <input asp-for="@Model.SimpleTexts[item.Key]" class="styled" />
+                        <label>
+                            @item.Key
+                        </label>
+                    </div>
+                }
             </div>
         </div>
+
+        <div class="form-group">
+            <label class="col-md-2 control-label">Collections</label>
+            <div class="col-md-10">
+                @foreach (var item in Model.Collections)
+                {
+                    <div class="checkbox checkbox-primary">
+                        <input asp-for="@Model.Collections[item.Key]" class="styled" />
+                        <label>
+                            @item.Key
+                        </label>
+                    </div>
+                }
+            </div>
+        </div>
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Save" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" class="btn btn-default">Back to Sections</a>
 </div>
 
 @section Scripts {

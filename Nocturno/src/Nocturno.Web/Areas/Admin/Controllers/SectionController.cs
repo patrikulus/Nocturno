@@ -5,6 +5,7 @@ using Nocturno.Data.Context;
 using Nocturno.Data.Models;
 using Nocturno.Service.IServices;
 using Nocturno.Web.Areas.Admin.ViewModels;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Nocturno.Web.Areas.Admin.Controllers
@@ -15,11 +16,22 @@ namespace Nocturno.Web.Areas.Admin.Controllers
     {
         private readonly IPageService _pageService;
         private readonly ISectionService _sectionService;
+        private readonly ISimpleTextService _simpleTextService;
+        private readonly ICollectionService _collectionService;
+        private readonly INodeService _nodeService;
 
-        public SectionController(IPageService pageService, ISectionService sectionService)
+        public SectionController(
+            IPageService pageService,
+            ISectionService sectionService,
+            ISimpleTextService simpleTextService,
+            ICollectionService collectionService,
+            INodeService nodeService)
         {
             _pageService = pageService;
             _sectionService = sectionService;
+            _simpleTextService = simpleTextService;
+            _collectionService = collectionService;
+            _nodeService = nodeService;
         }
 
         // GET: Section
@@ -39,8 +51,27 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         public IActionResult Edit(string section, int page)
         {
             var sectionId = _sectionService.GetByName(section).Id;
-            var node =
-            return View();
+            var model = new SectionContentViewModel();
+            model.Node = _nodeService.GetNode(page, sectionId);
+            model.Collections = new Dictionary<string, bool>();
+            foreach (var collection in _collectionService.GetAll())
+            {
+                model.Collections.Add(collection.Name, false);
+            }
+            model.SimpleTexts = new Dictionary<string, bool>();
+            foreach (var simpleText in _simpleTextService.GetAll())
+            {
+                model.SimpleTexts.Add(simpleText.Name, false);
+            }
+            //TODO ended here
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(SectionContentViewModel model)
+        {
+            // TODO implement
+            return RedirectToAction("Index");
         }
     }
 }
