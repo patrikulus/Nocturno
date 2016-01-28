@@ -6,7 +6,7 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Microsoft.Extensions.DependencyInjection;
 using Nocturno.Data.Models;
-using Nocturno.Web.Areas.Admin.ViewModels;
+using Nocturno.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;

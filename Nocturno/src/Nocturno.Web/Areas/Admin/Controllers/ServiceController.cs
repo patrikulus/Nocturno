@@ -2,7 +2,7 @@ using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Mvc;
 using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
-using Nocturno.Web.Areas.Admin.ViewModels;
+using Nocturno.Data.ViewModels;
 using System.Linq;
 
 namespace Nocturno.Web.Areas.Admin.Controllers

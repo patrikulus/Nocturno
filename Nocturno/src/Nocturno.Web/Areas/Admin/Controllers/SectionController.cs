@@ -3,8 +3,8 @@ using Microsoft.AspNet.Mvc;
 using Microsoft.AspNet.Mvc.Rendering;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Data.ViewModels;
 using Nocturno.Service.IServices;
-using Nocturno.Web.Areas.Admin.ViewModels;
 using System.Collections.Generic;
 using System.Linq;
 

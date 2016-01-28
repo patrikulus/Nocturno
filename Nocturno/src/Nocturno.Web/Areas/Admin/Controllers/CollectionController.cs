@@ -4,8 +4,8 @@ using Microsoft.AspNet.Mvc.Rendering;
 using Microsoft.Data.Entity;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Data.ViewModels;
 using Nocturno.Service.IServices;
-using Nocturno.Web.Areas.Admin.ViewModels;
 using System.Linq;
 
 namespace Nocturno.Web.Areas.Admin.Controllers

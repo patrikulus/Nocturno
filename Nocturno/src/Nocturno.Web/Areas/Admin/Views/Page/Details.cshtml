@@ -1,4 +1,5 @@
-@model Nocturno.Web.Areas.Admin.ViewModels.PageViewModel
+@using Nocturno.Data.ViewModels
+@model Nocturno.Data.ViewModels.PageViewModel
 
 @{
     ViewData["Title"] = "Details";
@@ -37,9 +38,6 @@
             @(Model.IsInMenu ? "yes" : "no")
         </dd>
     </dl>
-
-                       
-
 </div>
 <p>
     <a asp-action="Edit" asp-route-id="@Model.Page.Id" class="btn btn-warning">Edit</a>
