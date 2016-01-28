@@ -8,6 +8,6 @@ namespace Nocturno.Service.IServices
 {
     public interface INodeService : IBaseService<Node>
     {
-        Node GetNode(int pageId, int sectionId);
+        int GetNodeId(int pageId, int sectionId);
     }
 }

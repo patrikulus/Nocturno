@@ -14,10 +14,10 @@ namespace Nocturno.Service.Services
         {
         }
 
-        public Node GetNode(int pageId, int sectionId)
+        public int GetNodeId(int pageId, int sectionId)
         {
             var node = _db.Nodes.FirstOrDefault(x => x.PageId == pageId && x.SectionId == sectionId);
-            return node;
+            return node.Id;
         }
     }
 }

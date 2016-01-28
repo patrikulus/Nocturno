@@ -11,6 +11,6 @@ namespace Nocturno.Data.ViewModels
         public Dictionary<string, bool> Portfolios { get; set; }
         public Dictionary<string, bool> Businesses { get; set; }
 
-        public Node Node { get; set; }
+        public int NodeId { get; set; }
     }
 }

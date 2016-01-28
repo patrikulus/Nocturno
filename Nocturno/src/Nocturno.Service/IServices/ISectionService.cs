@@ -1,4 +1,5 @@
 ﻿using Nocturno.Data.Models;
+using Nocturno.Data.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,5 +16,7 @@ namespace Nocturno.Service.IServices
         Dictionary<string, bool> GetAllSectionsForPageWithFlag(int? pageId);
 
         void UpdatePageSections(IEnumerable<string> sections, int pageId);
+
+        void AssignSections(SectionContentViewModel model);
     }
 }

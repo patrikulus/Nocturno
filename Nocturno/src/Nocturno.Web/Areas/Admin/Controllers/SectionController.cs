@@ -52,7 +52,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         {
             var sectionId = _sectionService.GetByName(section).Id;
             var model = new SectionContentViewModel();
-            model.Node = _nodeService.GetNode(page, sectionId);
+            model.NodeId = _nodeService.GetNodeId(page, sectionId);
             model.Collections = new Dictionary<string, bool>();
             foreach (var collection in _collectionService.GetAll())
             {
@@ -63,14 +63,14 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             {
                 model.SimpleTexts.Add(simpleText.Name, false);
             }
-            //TODO ended here
             return View(model);
         }
 
         [HttpPost]
         public IActionResult Edit(SectionContentViewModel model)
         {
-            // TODO implement
+            _sectionService.AssignSections(model);
+            _sectionService.Commit();
             return RedirectToAction("Index");
         }
     }

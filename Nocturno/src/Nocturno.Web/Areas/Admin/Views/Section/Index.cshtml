@@ -22,48 +22,48 @@
     </tr>
     <tr>
         <td colspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Top") ? "" : "disabled")">Header Top</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Top" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Top") ? "" : "disabled")">Header Top</a>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Breadcrumb" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Breadcrumb") ? "" : "disabled")">Breadcrumb</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Breadcrumb" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Breadcrumb") ? "" : "disabled")">Breadcrumb</a>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Bottom") ? "" : "disabled")">Header Bottom</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Header Bottom" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Header Bottom") ? "" : "disabled")">Header Bottom</a>
         </td>
     </tr>
     <tr>
         <td rowspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Left sidebar" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Left sidebar") ? "" : "disabled")">Left sidebar</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Left sidebar" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Left sidebar") ? "" : "disabled")">Left sidebar</a>
         </td>
         <td>
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Top") ? "" : "disabled")">Main Top</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Top" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Top") ? "" : "disabled")">Main Top</a>
         </td>
         <td rowspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Right sidebar" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Right sidebar") ? "" : "disabled")">Right sidebar</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Right sidebar" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Right sidebar") ? "" : "disabled")">Right sidebar</a>
         </td>
     </tr>
     <tr>
         <td>
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Middle" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Middle") ? "" : "disabled")">Main Middle</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Middle" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Middle") ? "" : "disabled")">Main Middle</a>
         </td>
     </tr>
     <tr>
         <td>
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Bottom") ? "" : "disabled")">Main Bottom</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Main Bottom" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Main Bottom") ? "" : "disabled")">Main Bottom</a>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Top" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Top") ? "" : "disabled")">Footer Top</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Top" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Top") ? "" : "disabled")">Footer Top</a>
         </td>
     </tr>
     <tr>
         <td colspan="3">
-            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Bottom" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Bottom") ? "" : "disabled")">Footer Bottom</a>
+            <a asp-controller="Section" asp-action="Edit" asp-route-section="Footer Bottom" asp-route-page="@Model.PageId" class="btn btn-block @(Model.Sections.Any(x => x.Name == "Footer Bottom") ? "" : "disabled")">Footer Bottom</a>
         </td>
     </tr>
 </table>
