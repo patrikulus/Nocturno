@@ -1,6 +1,8 @@
 using Microsoft.AspNet.Mvc;
 using Nocturno.Data.Context;
 using Nocturno.Data.Models;
+using Nocturno.Data.ViewModels;
+using Nocturno.Service.IServices;
 using System.Linq;
 
 namespace Nocturno.Web.Areas.Admin.Controllers
@@ -8,17 +10,24 @@ namespace Nocturno.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class PortfolioController : Controller
     {
-        private NocturnoContext _context;
+        private readonly IPortfolioService _portfolioService;
+        private readonly IPortfolioItemService _portfolioItemService;
 
-        public PortfolioController(NocturnoContext context)
+        public PortfolioController(IPortfolioService portfolioService, IPortfolioItemService portfolioItemService)
         {
-            _context = context;
+            _portfolioService = portfolioService;
+            _portfolioItemService = portfolioItemService;
         }
 
-        // GET: Portfolios
+        // GET: PortfolioItem
         public IActionResult Index()
         {
-            return View(_context.Portfolios.ToList());
+            var model = new PortfolioViewModel
+            {
+                Portfolios = _portfolioService.GetAll(),
+                PortfolioItems = _portfolioItemService.GetAll()
+            };
+            return View(model);
         }
 
         // GET: Portfolios/Details/5
@@ -29,7 +38,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Portfolio portfolio = _context.Portfolios.Single(m => m.Id == id);
+            Portfolio portfolio = _portfolioService.GetById(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -51,8 +60,8 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Portfolios.Add(portfolio);
-                _context.SaveChanges();
+                _portfolioService.Create(portfolio);
+                _portfolioService.Commit();
                 return RedirectToAction("Index");
             }
             return View(portfolio);
@@ -66,7 +75,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Portfolio portfolio = _context.Portfolios.Single(m => m.Id == id);
+            Portfolio portfolio = _portfolioService.GetById(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -81,8 +90,8 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(portfolio);
-                _context.SaveChanges();
+                _portfolioService.Update(portfolio);
+                _portfolioService.Commit();
                 return RedirectToAction("Index");
             }
             return View(portfolio);
@@ -97,7 +106,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 return HttpNotFound();
             }
 
-            Portfolio portfolio = _context.Portfolios.Single(m => m.Id == id);
+            Portfolio portfolio = _portfolioService.GetById(id);
             if (portfolio == null)
             {
                 return HttpNotFound();
@@ -111,9 +120,9 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Portfolio portfolio = _context.Portfolios.Single(m => m.Id == id);
-            _context.Portfolios.Remove(portfolio);
-            _context.SaveChanges();
+            Portfolio portfolio = _portfolioService.GetById(id);
+            _portfolioService.Delete(portfolio);
+            _portfolioService.Commit();
             return RedirectToAction("Index");
         }
     }

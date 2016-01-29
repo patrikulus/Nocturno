@@ -1,33 +1,75 @@
-@model IEnumerable<Nocturno.Data.Models.Portfolio>
+@model Nocturno.Data.ViewModels.PortfolioViewModel
 
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-photo"></i>
+            @ViewData["Title"]
+        </h1>
+    </div>
+</div>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create" class="btn btn-primary">Create portfolio</a>
 </p>
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Name)
+            Name
         </th>
         <th></th>
     </tr>
-    
-@foreach (var item in Model) {
+
+    @foreach (var item in Model.Portfolios)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
+</table>
+<p>
+    <a asp-action="Create">Create portfolio item</a>
+</p>
+<table class="table">
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-            <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-            <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-        </td>
+
+        <th>
+            Name
+        </th>
+        <th>
+            Title
+        </th>
+
+        <th></th>
     </tr>
-}
+
+    @foreach (var item in Model.PortfolioItems)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
+                @*<a asp-action="Details" asp-route-id="@item.Id">Details</a>*@
+                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</a>
+            </td>
+        </tr>
+    }
 </table>
