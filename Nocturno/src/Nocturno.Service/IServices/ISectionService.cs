@@ -17,6 +17,8 @@ namespace Nocturno.Service.IServices
 
         void UpdatePageSections(IEnumerable<string> sections, int pageId);
 
-        void AssignSections(SectionContentViewModel model);
+        void UpdateAssignement(SectionContentViewModel model);
+
+        SectionContentViewModel CreateModel(int nodeId);
     }
 }

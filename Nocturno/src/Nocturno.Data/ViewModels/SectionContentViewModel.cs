@@ -7,9 +7,11 @@ namespace Nocturno.Data.ViewModels
     {
         public Dictionary<string, bool> SimpleTexts { get; set; }
         public Dictionary<string, bool> Baners { get; set; }
+        public Dictionary<string, bool> Panels { get; set; }
         public Dictionary<string, bool> Collections { get; set; }
         public Dictionary<string, bool> Portfolios { get; set; }
         public Dictionary<string, bool> Businesses { get; set; }
+        public Dictionary<string, bool> Sliders { get; set; }
 
         public int NodeId { get; set; }
     }

@@ -31,6 +31,7 @@ namespace Nocturno.Data.Context
         DbSet<CollectionItem> CollectionItems { get; set; }
         DbSet<Setting> Settings { get; set; }
         DbSet<SimpleText> SimpleTexts { get; set; }
+        DbSet<SimplePanel> SimplePanels { get; set; }
         DbSet<Slider> Sliders { get; set; }
         DbSet<Tag> Tags { get; set; }
 

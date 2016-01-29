@@ -1,1 +1,48 @@
 ﻿@model Nocturno.Data.Models.Node
+
+@foreach (var item in Model.BanerNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Baner.cshtml", item.Baner)
+    </div>
+}
+
+@foreach (var item in Model.SimpleTextNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_SimpleText.cshtml", item.SimpleText)
+    </div>
+}
+
+@foreach (var item in Model.CollectionNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Collection.cshtml", item.Collection)
+    </div>
+}
+
+@foreach (var item in Model.BusinessNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Business.cshtml", item.Business)
+    </div>
+}
+
+@foreach (var item in Model.PortfolioNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Portfolio.cshtml", item.Portfolio)
+    </div>
+}
+
+@foreach (var item in Model.SliderNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Slider.cshtml", item.Slider)
+    </div>
+}
+
+@foreach (var item in Model.SimplePanelNodes)
+{
+    @Html.Partial("~/Views/Templates/_SimplePanel.cshtml", item.SimplePanel)
+}

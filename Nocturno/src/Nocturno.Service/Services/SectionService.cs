@@ -1,11 +1,14 @@
-﻿using Nocturno.Data.Context;
+﻿using Nocturno.Data.BaseModels;
+using Nocturno.Data.Context;
 using Nocturno.Data.Models;
 using Nocturno.Data.ViewModels;
 using Nocturno.Service.IServices;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Threading.Tasks;
+using System.Xml.Schema;
 
 namespace Nocturno.Service.Services
 {
@@ -55,6 +58,11 @@ namespace Nocturno.Service.Services
             return result;
         }
 
+        public override Section GetByName(string name)
+        {
+            return _db.Sections.FirstOrDefault(x => x.Name == name);
+        }
+
         public void UpdatePageSections(IEnumerable<string> sections, int pageId)
         {
             foreach (var sectionName in sections)
@@ -89,83 +97,261 @@ namespace Nocturno.Service.Services
             }
         }
 
-        // TODO standarize -Node classes and do this via generic method
-        public void AssignSections(SectionContentViewModel model)
+        public void UpdateAssignement(SectionContentViewModel model)
         {
             if (model.SimpleTexts != null)
             {
-                foreach (var simpleText in model.SimpleTexts)
+                var toAdd = GetItems<SimpleText>(model.SimpleTexts).Select(x => x.Id);
+                var current = GetCurrent<SimpleTextNode>(model.NodeId).Select(x => x.SimpleTextId);
+
+                foreach (var item in toAdd)
                 {
-                    var id = _db.SimpleTexts.FirstOrDefault(x => x.Name == simpleText.Key).Id;
-                    var binder = new SimpleTextNode
+                    if (!current.Contains(item))
                     {
-                        NodeId = model.NodeId,
-                        SimpleTextId = id
-                    };
-                    _db.Set<SimpleTextNode>().Add(binder);
+                        BindItem<SimpleTextNode>(item, model.NodeId, new SimpleTextNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        //UnbindItem<SimpleTextNode>(item, model.NodeId);
+                        var element = _db.Set<SimpleTextNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.SimpleTextId == item);
+                        _db.Remove(element);
+                    }
                 }
             }
 
             if (model.Collections != null)
             {
-                foreach (var collection in model.Collections)
+                var toAdd = GetItems<Collection>(model.Collections).Select(x => x.Id);
+                var current = GetCurrent<CollectionNode>(model.NodeId).Select(x => x.CollectionId);
+
+                foreach (var item in toAdd)
                 {
-                    var id = _db.Collections.FirstOrDefault(x => x.Name == collection.Key).Id;
-                    var binder = new CollectionNode
+                    if (!current.Contains(item))
                     {
-                        NodeId = model.NodeId,
-                        CollectionId = id
-                    };
-                    _db.Set<CollectionNode>().Add(binder);
+                        BindItem<CollectionNode>(item, model.NodeId, new CollectionNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<CollectionNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.CollectionId == item);
+                        _db.Remove(element);
+                    }
                 }
             }
 
             if (model.Baners != null)
             {
-                foreach (var baner in model.Baners)
+                var toAdd = GetItems<Baner>(model.Baners).Select(x => x.Id);
+                var current = GetCurrent<BanerNode>(model.NodeId).Select(x => x.BanerId);
+
+                foreach (var item in toAdd)
                 {
-                    var id = _db.Baners.FirstOrDefault(x => x.Name == baner.Key).Id;
-                    var binder = new BanerNode
+                    if (!current.Contains(item))
                     {
-                        NodeId = model.NodeId,
-                        BanerId = id
-                    };
-                    _db.Set<BanerNode>().Add(binder);
+                        BindItem<BanerNode>(item, model.NodeId, new BanerNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<BanerNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.BanerId == item);
+                        _db.Remove(element);
+                    }
                 }
             }
 
             if (model.Businesses != null)
             {
-                foreach (var business in model.Businesses)
+                var toAdd = GetItems<Business>(model.Businesses).Select(x => x.Id);
+                var current = GetCurrent<BusinessNode>(model.NodeId).Select(x => x.BusinessId);
+
+                foreach (var item in toAdd)
                 {
-                    var id = _db.Businesses.FirstOrDefault(x => x.Name == business.Key).Id;
-                    var binder = new BusinessNode
+                    if (!current.Contains(item))
                     {
-                        NodeId = model.NodeId,
-                        BusinessId = id
-                    };
-                    _db.Set<BusinessNode>().Add(binder);
+                        BindItem<BusinessNode>(item, model.NodeId, new BusinessNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<BanerNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.BanerId == item);
+                        _db.Remove(element);
+                    }
+                }
+            }
+
+            if (model.Panels != null)
+            {
+                var toAdd = GetItems<SimplePanel>(model.Panels).Select(x => x.Id);
+                var current = GetCurrent<SimplePanelNode>(model.NodeId).Select(x => x.SimplePanelId);
+
+                foreach (var item in toAdd)
+                {
+                    if (!current.Contains(item))
+                    {
+                        BindItem<SimplePanelNode>(item, model.NodeId, new SimplePanelNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<SimplePanelNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.SimplePanelId == item);
+                        _db.Remove(element);
+                    }
                 }
             }
 
             if (model.Portfolios != null)
             {
-                foreach (var portfolio in model.Portfolios)
+                var toAdd = GetItems<Portfolio>(model.Portfolios).Select(x => x.Id);
+                var current = GetCurrent<PortfolioNode>(model.NodeId).Select(x => x.PortfolioId);
+
+                foreach (var item in toAdd)
                 {
-                    var id = _db.Portfolios.FirstOrDefault(x => x.Name == portfolio.Key).Id;
-                    var binder = new PortfolioNode
+                    if (!current.Contains(item))
                     {
-                        NodeId = model.NodeId,
-                        PortfolioId = id
-                    };
-                    _db.Set<PortfolioNode>().Add(binder);
+                        BindItem<PortfolioNode>(item, model.NodeId, new PortfolioNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<PortfolioNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.PortfolioId == item);
+                        _db.Remove(element);
+                    }
+                }
+            }
+
+            if (model.Sliders != null)
+            {
+                var toAdd = GetItems<Slider>(model.Sliders).Select(x => x.Id);
+                var current = GetCurrent<SliderNode>(model.NodeId).Select(x => x.SliderId);
+
+                foreach (var item in toAdd)
+                {
+                    if (!current.Contains(item))
+                    {
+                        BindItem<SliderNode>(item, model.NodeId, new SliderNode());
+                    }
+                }
+
+                foreach (var item in current)
+                {
+                    if (!toAdd.Contains(item))
+                    {
+                        var element = _db.Set<SliderNode>()
+                            .FirstOrDefault(x => x.NodeId == model.NodeId && x.SliderId == item);
+                        _db.Remove(element);
+                    }
                 }
             }
         }
 
-        public override Section GetByName(string name)
+        public SectionContentViewModel CreateModel(int nodeId)
         {
-            return _db.Sections.FirstOrDefault(x => x.Name == name);
+            var model = new SectionContentViewModel();
+            model.NodeId = nodeId;
+            model.Collections = FillValue<Collection, CollectionNode>(nodeId);
+            model.SimpleTexts = FillValue<SimpleText, SimpleTextNode>(nodeId);
+            model.Baners = FillValue<Baner, BanerNode>(nodeId);
+            model.Businesses = FillValue<Business, BusinessNode>(nodeId);
+            model.Panels = FillValue<SimplePanel, SimplePanelNode>(nodeId);
+            model.Portfolios = FillValue<Portfolio, PortfolioNode>(nodeId);
+            model.Sliders = FillValue<Slider, SliderNode>(nodeId);
+
+            return model;
+        }
+
+        private Dictionary<string, bool> FillValue<TContent, TBinder>(int nodeId)
+            where TContent : class
+            where TBinder : class
+        {
+            var items = _db.Set<TBinder>().Where(x => (int)x.GetType().GetProperty("NodeId").GetValue(x) == nodeId);
+            var dictionary = _db.Set<TContent>().ToDictionary(x => x.GetType().GetProperty("Name").GetValue(x).ToString(), x => false);
+
+            foreach (var binder in items)
+            {
+                var id = (int)binder.GetType()
+                        .GetProperties()
+                        .FirstOrDefault(x => x.Name.Contains("Id") && !x.Name.Contains("Node"))
+                        .GetValue(binder);
+                string key = GetNameById<TContent>(id);
+                dictionary[key] = true;
+            }
+            return dictionary;
+        }
+
+        private string GetNameById<TContent>(int id) where TContent : class
+        {
+            var item = _db.Set<TContent>().FirstOrDefault(x => (int)x.GetType().GetProperty("Id").GetValue(x) == id);
+            return item.GetType().GetProperty("Name").GetValue(item).ToString();
+        }
+
+        private IEnumerable<TContent> GetItems<TContent>(Dictionary<string, bool> dictionary) where TContent : BaseEntity
+        {
+            var result = new List<TContent>();
+            foreach (var item in dictionary)
+            {
+                if (item.Value)
+                {
+                    var entity = _db.Set<TContent>().FirstOrDefault(x => x.Name == item.Key);
+                    result.Add(entity);
+                }
+            }
+            return result;
+        }
+
+        private IEnumerable<TBinder> GetCurrent<TBinder>(int nodeId) where TBinder : class
+        {
+            var result = _db.Set<TBinder>().Where(x => (int)x.GetType().GetProperty("NodeId").GetValue(x) == nodeId);
+            return result;
+        }
+
+        private void BindItem<TBinder>(int contentId, int nodeId, TBinder binder) where TBinder : class
+        {
+            typeof(TBinder)
+                .GetProperty("NodeId")
+                .SetValue(binder, nodeId);
+            typeof(TBinder)
+                .GetProperties()
+                .FirstOrDefault(x => x.Name.Contains("Id") && !x.Name.Contains("Node"))
+                .SetValue(binder, contentId);
+            _db.Set<TBinder>().Add(binder);
+        }
+
+        // TODO it needs to be tested
+        private void UnbindItem<TBinder>(object contentId, object nodeId) where TBinder : class
+        {
+            var element = _db.Set<TBinder>()
+                .FirstOrDefault(x => x.GetType()
+                .GetProperty("NodeId")
+                .GetValue(x) == nodeId && x.GetType()
+                .GetProperties()
+                .FirstOrDefault(y => y.Name.Contains("Id") && !y.Name.Contains("Node"))
+                .GetValue(x) == contentId);
+            _db.Set<TBinder>().Remove(element);
         }
     }
 }

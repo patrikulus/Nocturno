@@ -170,6 +170,7 @@ namespace Nocturno.Data.Context
         public DbSet<CollectionType> CollectionTypes { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<SimpleText> SimpleTexts { get; set; }
+        public DbSet<SimplePanel> SimplePanels { get; set; }
         public DbSet<Slider> Sliders { get; set; }
         public DbSet<SliderItem> SliderItems { get; set; }
         public DbSet<Tag> Tags { get; set; }

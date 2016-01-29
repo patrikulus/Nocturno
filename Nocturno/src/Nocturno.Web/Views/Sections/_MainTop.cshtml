@@ -21,6 +21,13 @@
     </div>
 }
 
+@foreach (var item in Model.BusinessNodes)
+{
+    <div class="container">
+        @Html.Partial("~/Views/Templates/_Business.cshtml", item.Business)
+    </div>
+}
+
 @foreach (var item in Model.PortfolioNodes)
 {
     <div class="container">
@@ -37,5 +44,5 @@
 
 @foreach (var item in Model.SimplePanelNodes)
 {
-        @Html.Partial("~/Views/Templates/_SimplePanel.cshtml", item.SimplePanel)
+    @Html.Partial("~/Views/Templates/_SimplePanel.cshtml", item.SimplePanel)
 }

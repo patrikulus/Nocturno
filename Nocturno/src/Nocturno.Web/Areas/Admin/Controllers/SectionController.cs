@@ -51,25 +51,14 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         public IActionResult Edit(string section, int page)
         {
             var sectionId = _sectionService.GetByName(section).Id;
-            var model = new SectionContentViewModel();
-            model.NodeId = _nodeService.GetNodeId(page, sectionId);
-            model.Collections = new Dictionary<string, bool>();
-            foreach (var collection in _collectionService.GetAll())
-            {
-                model.Collections.Add(collection.Name, false);
-            }
-            model.SimpleTexts = new Dictionary<string, bool>();
-            foreach (var simpleText in _simpleTextService.GetAll())
-            {
-                model.SimpleTexts.Add(simpleText.Name, false);
-            }
+            var model = _sectionService.CreateModel(_nodeService.GetNodeId(page, sectionId));
             return View(model);
         }
 
         [HttpPost]
         public IActionResult Edit(SectionContentViewModel model)
         {
-            _sectionService.AssignSections(model);
+            _sectionService.UpdateAssignement(model);
             _sectionService.Commit();
             return RedirectToAction("Index");
         }
