@@ -16,36 +16,77 @@
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="NodeId" />
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">Simple text items</label>
-            <div class="col-md-10">
-                @foreach (var item in Model.SimpleTexts)
-                {
-                    <div class="checkbox checkbox-primary">
-                        <input asp-for="@Model.SimpleTexts[item.Key]" class="styled" />
-                        <label>
-                            @item.Key
-                        </label>
-                    </div>
-                }
+        @if (Model.SimpleTexts != null && Model.SimpleTexts.Count > 0)
+        {
+            <div class="form-group">
+                <label class="col-md-2 control-label">Simple text items</label>
+                <div class="col-md-10">
+                    @foreach (var item in Model.SimpleTexts)
+                    {
+                        <div class="checkbox checkbox-primary">
+                            <input asp-for="@Model.SimpleTexts[item.Key]" class="styled"/>
+                            <label>
+                                @item.Key
+                            </label>
+                        </div>
+                    }
+                </div>
             </div>
-        </div>
+        }
 
-        <div class="form-group">
-            <label class="col-md-2 control-label">Collections</label>
-            <div class="col-md-10">
-                @foreach (var item in Model.Collections)
-                {
-                    <div class="checkbox checkbox-primary">
-                        <input asp-for="@Model.Collections[item.Key]" class="styled" />
-                        <label>
-                            @item.Key
-                        </label>
-                    </div>
-                }
+        @if (Model.Collections != null && Model.Collections.Count > 0)
+        {
+            <div class="form-group">
+                <label class="col-md-2 control-label">Collections</label>
+                <div class="col-md-10">
+                    @foreach (var item in Model.Collections)
+                    {
+                        <div class="checkbox checkbox-primary">
+                            <input asp-for="@Model.Collections[item.Key]" class="styled"/>
+                            <label>
+                                @item.Key
+                            </label>
+                        </div>
+                    }
+                </div>
             </div>
-        </div>
+        }
 
+        @if (Model.Portfolios != null && Model.Portfolios.Count > 0)
+        {
+            <div class="form-group">
+                <label class="col-md-2 control-label">Portfolios</label>
+                <div class="col-md-10">
+                    @foreach (var item in Model.Portfolios)
+                    {
+                        <div class="checkbox checkbox-primary">
+                            <input asp-for="@Model.Collections[item.Key]" class="styled"/>
+                            <label>
+                                @item.Key
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
+
+        @if (Model.Businesses != null && Model.Businesses.Count > 0)
+        {
+            <div class="form-group">
+                <label class="col-md-2 control-label">Business cards</label>
+                <div class="col-md-10">
+                    @foreach (var item in Model.Businesses)
+                    {
+                        <div class="checkbox checkbox-primary">
+                            <input asp-for="@Model.Collections[item.Key]" class="styled"/>
+                            <label>
+                                @item.Key
+                            </label>
+                        </div>
+                    }
+                </div>
+            </div>
+        }
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Save" class="btn btn-primary" />

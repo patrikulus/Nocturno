@@ -12,31 +12,19 @@
         <h4>PortfolioItem</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control"/>
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
         <div class="form-group">
             <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
             <div class="col-md-10">
                 <input asp-for="ImageUrl" class="form-control" />
                 <span asp-validation-for="ImageUrl" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Name" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger" />
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="PortfolioId" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="PortfolioId" class ="form-control"></select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label asp-for="Text" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <input asp-for="Text" class="form-control" />
-                <span asp-validation-for="Text" class="text-danger" />
             </div>
         </div>
         <div class="form-group">
@@ -47,15 +35,30 @@
             </div>
         </div>
         <div class="form-group">
+            <label asp-for="Text" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="PortfolioId" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <select asp-for="PortfolioId" class="form-control"></select>
+            </div>
+        </div>
+        
+        
+        <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>
 </form>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index" asp-controller="Portfolio" class="btn btn-default">Back to List</a>
 </div>
 
 @section Scripts {

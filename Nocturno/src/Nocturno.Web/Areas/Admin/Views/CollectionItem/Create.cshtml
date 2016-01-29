@@ -5,11 +5,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-cubes"></i>
+            @ViewData["Title"] <small>collection item</small>
+        </h1>
+    </div>
+</div>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>CollectionItem</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
 
@@ -50,8 +56,9 @@
         </div>
         <div class="form-group">
             <label asp-for="Icon" class="col-md-2 control-label"></label>
-            <div class="col-md-10">
-                <select asp-for="Icon" asp-items="@ViewBag.Icons" class="form-control"></select>
+            <div class="col-md-1 text-center" id="iconContainer"></div>
+            <div class="col-md-9">
+                <select asp-for="Icon" asp-items="@ViewBag.Icons" class="form-control" id="iconControl"></select>
                 <span asp-validation-for="Icon" class="text-danger" />
             </div>
         </div>
@@ -82,5 +89,13 @@
     <script src="~/lib/bootstrap3-wysihtml5-bower/dist/bootstrap3-wysihtml5.all.min.js"></script>
     <script>
         $('#textarea').wysihtml5();
+        $('#iconControl').change(function () {
+            updateIcon();
+        });
+
+        var updateIcon = function () {
+            $('#iconContainer').html('<i class="fa fa-3x ' + $('#iconControl').val() + '"></i>');
+        }
+        updateIcon();
     </script>
 }
