@@ -76,6 +76,12 @@ namespace Nocturno.Web.Controllers
             {
                 return HttpNotFound();
             }
+
+            if (setting.Name == "Site theme")
+            {
+                ViewBag.Themes = new SelectList(_settingService.GetAllAvailableThemes(), setting.Name);
+            }
+
             return View(setting);
         }
 
