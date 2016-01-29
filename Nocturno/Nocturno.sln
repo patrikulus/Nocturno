@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		global.json = global.json
 		Prebuild.ps1 = Prebuild.ps1
 		RunTests.ps1 = RunTests.ps1
+		WE-Palette.css = WE-Palette.css
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PublishScripts", "PublishScripts", "{F95A703B-F991-4523-AE5D-BEA036E78CD4}"

@@ -3,15 +3,21 @@
 @model Nocturno.Data.ViewModels.SectionContentViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Assign";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Assign</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-puzzle-piece"></i>
+            @ViewData["Title"] <small>content</small>
+        </h1>
+    </div>
+</div>
 
 <form asp-action="Edit">
     <div class="form-horizontal">
-        <h4>Content</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <input type="hidden" asp-for="NodeId" />
