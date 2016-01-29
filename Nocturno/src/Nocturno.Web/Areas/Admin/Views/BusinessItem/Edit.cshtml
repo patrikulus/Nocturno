@@ -1,0 +1,95 @@
+@model Nocturno.Data.Models.BusinessItem
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+<form asp-action="Edit">
+    <div class="form-horizontal">
+        <h4>BusinessItem</h4>
+        <hr />
+        <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
+        <input type="hidden" asp-for="Id" />
+        <div class="form-group">
+            <label asp-for="BusinessId" class="control-label col-md-2">BusinessId</label>
+            <div class="col-md-10">
+                <select asp-for="BusinessId" class="form-control" />
+                <span asp-validation-for="BusinessId" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="FacebookLink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="FacebookLink" class="form-control" />
+                <span asp-validation-for="FacebookLink" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Header" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Header" class="form-control" />
+                <span asp-validation-for="Header" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="ImageUrl" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="ImageUrl" class="form-control" />
+                <span asp-validation-for="ImageUrl" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="LinkedInLink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="LinkedInLink" class="form-control" />
+                <span asp-validation-for="LinkedInLink" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Text" class="form-control" />
+                <span asp-validation-for="Text" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="Title" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <label asp-for="TwitterLink" class="col-md-2 control-label"></label>
+            <div class="col-md-10">
+                <input asp-for="TwitterLink" class="form-control" />
+                <span asp-validation-for="TwitterLink" class="text-danger" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}

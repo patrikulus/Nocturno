@@ -71,6 +71,11 @@ namespace Nocturno.Web
             services.AddTransient<ICollectionItemService, CollectionItemService>();
             services.AddTransient<IIconService, IconService>();
             services.AddTransient<ISimpleTextService, SimpleTextService>();
+            services.AddTransient<IBanerService, BanerService>();
+            services.AddTransient<IBusinessService, BusinessServie>();
+            services.AddTransient<IBusinessItemService, BusinessItemService>();
+            services.AddTransient<IPortfolioService, PortfolioService>();
+            services.AddTransient<IPortfolioItemService, PortfolioItemService>();
             services.AddTransient<INodeService, NodeService>();
 
             services.AddScoped<IDbContext, NocturnoContext>();
