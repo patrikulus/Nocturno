@@ -1,0 +1,30 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualMachineLocation": {
+            "value": "northeurope"
+        },
+        "imagePublisher": {
+            "value": "MicrosoftWindowsServer"
+        },
+        "imageOffer": {
+            "value": "WindowsServer"
+        },
+        "imageSku": {
+            "value": "2016-Technical-Preview-with-Containers"
+        },
+        "dnsNameForPublicIP": {
+            "value": "nocturno"
+        },
+        "virtualMachineSize": {
+            "value": "Basic_A0"
+        },
+        "adminUsername": {
+            "value": "plotzwi"
+        },
+        "newStorageAccountName": {
+            "value": "nocturnoc97a7b27"
+        }
+    }
+}

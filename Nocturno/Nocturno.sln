@@ -18,6 +18,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{585A6BB4-7020-4561-B083-98AB82DFAE17}"
 	ProjectSection(SolutionItems) = preProject
 		PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-AzureResourceGroup.ps1
+		PublishScripts\Scripts\Deploy-DockerAzureResourceGroup-2.ps1 = PublishScripts\Scripts\Deploy-DockerAzureResourceGroup-2.ps1
 		PublishScripts\Scripts\Deploy-DockerAzureResourceGroup.ps1 = PublishScripts\Scripts\Deploy-DockerAzureResourceGroup.ps1
 	EndProjectSection
 EndProject
@@ -25,7 +26,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Templates", "Templates", "{
 	ProjectSection(SolutionItems) = preProject
 		PublishScripts\Templates\Nocturno.json = PublishScripts\Templates\Nocturno.json
 		PublishScripts\Templates\Nocturno.param.dev.json = PublishScripts\Templates\Nocturno.param.dev.json
+		PublishScripts\Templates\Nocturno.WebDockerVM-2.json = PublishScripts\Templates\Nocturno.WebDockerVM-2.json
 		PublishScripts\Templates\Nocturno.WebDockerVM.json = PublishScripts\Templates\Nocturno.WebDockerVM.json
+		PublishScripts\Templates\Nocturno.WebDockerVM.param.dev-2.json = PublishScripts\Templates\Nocturno.WebDockerVM.param.dev-2.json
 		PublishScripts\Templates\Nocturno.WebDockerVM.param.dev.json = PublishScripts\Templates\Nocturno.WebDockerVM.param.dev.json
 	EndProjectSection
 EndProject
