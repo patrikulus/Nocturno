@@ -10,7 +10,7 @@ using System.Security.Cryptography.X509Certificates;
 
 namespace Nocturno.Data.Context
 {
-    public partial class NocturnoContext : IdentityDbContext<ApplicationUser>, IDbContext
+    public class NocturnoContext : IdentityDbContext<ApplicationUser>, IDbContext
     {
         private readonly IConfigurationRoot _config;
         private readonly bool _useInMemory;
@@ -19,7 +19,7 @@ namespace Nocturno.Data.Context
         {
         }
 
-        public NocturnoContext(bool useInMemory = false)
+        public NocturnoContext(bool useInMemory)
         {
             _useInMemory = useInMemory;
         }

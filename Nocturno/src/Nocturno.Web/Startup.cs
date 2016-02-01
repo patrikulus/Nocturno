@@ -150,7 +150,7 @@ namespace Nocturno.Web
                 //    template: "{controller=Home}/{action=Index}/{id?}");
             });
 
-            dbInitializer.InitializeDatabaseAsync();
+            //dbInitializer.InitializeDatabaseAsync();
         }
 
         // Entry point for the application.

@@ -8,68 +8,68 @@ using Xunit;
 
 namespace Nocturno.Service.Test.Services
 {
-    public class PageServiceTest
+    public class CollectionServiceTest
     {
         private readonly IDbContext _db;
-        private readonly IPageService _service;
+        private readonly ICollectionService _service;
 
-        public PageServiceTest()
+        public CollectionServiceTest()
         {
             _db = new NocturnoContext(true);
-            _service = new PageService(_db);
+            _service = new CollectionService(_db);
         }
 
         [Fact]
-        public void Create_CreatingPage_ShouldCreatePage()
+        public void Create_CreatingCollection_ShouldCreateCollection()
         {
             // Arrange
-            var entity = new Page
+            var entity = new Collection
             {
                 Name = "Test"
             };
-            var before = _db.Pages.Count();
+            var before = _db.Collections.Count();
 
             // Act
             _service.Create(entity);
             _service.Commit();
 
             // Assert
-            Assert.Equal(1, _db.Pages.Count() - before);
+            Assert.Equal(1, _db.Collections.Count() - before);
         }
 
         [Fact]
-        public void Remove_RemovingPage_ShouldRemovePage()
+        public void Remove_RemovingCollection_ShouldRemoveCollection()
         {
             // Arrange
 
-            var entity = new Page
+            var entity = new Collection
             {
                 Name = "Test"
             };
-            _db.Pages.Add(entity);
+            _db.Collections.Add(entity);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Collections.Count();
 
             // Act
             _service.Delete(entity);
             _db.SaveChanges();
 
             // Assert
-            Assert.Equal(1, before - _db.Pages.Count());
+            Assert.Equal(1, before - _db.Collections.Count());
         }
 
         [Fact]
-        public void Update_UpdatingPage_ShouldUpdatePage()
+        public void Update_UpdatingCollection_ShouldUpdateCollection()
         {
             // Arrange
 
-            var entity = new Page
+            var entity = new Collection
             {
                 Name = "Test"
             };
-            _db.Pages.Add(entity);
+            _db.Collections.Add(entity);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Collections.Count();
 
             // Act
             entity = _service.GetAll().FirstOrDefault();
@@ -78,8 +78,8 @@ namespace Nocturno.Service.Test.Services
             _db.SaveChanges();
 
             // Assert
-            Assert.Equal(before, _db.Pages.Count());
-            Assert.Equal("Another name", _db.Pages.FirstOrDefault().Name);
+            Assert.Equal(before, _db.Collections.Count());
+            Assert.Equal("Another name", _db.Collections.FirstOrDefault().Name);
         }
 
         [Fact]
@@ -87,15 +87,15 @@ namespace Nocturno.Service.Test.Services
         {
             // Arrange
 
-            var entities = new List<Page>
+            var entities = new List<Collection>
             {
-                new Page {Name = "Test"},
-                new Page {Name = "Test2"},
-                new Page {Name = "Test3"}
+                new Collection {Name = "Test"},
+                new Collection {Name = "Test2"},
+                new Collection {Name = "Test3"}
             };
-            _db.Pages.AddRange(entities);
+            _db.Collections.AddRange(entities);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Collections.Count();
 
             // Act
             var all = _service.GetAll();

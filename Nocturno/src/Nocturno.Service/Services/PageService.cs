@@ -13,11 +13,6 @@ namespace Nocturno.Service.Services
         {
         }
 
-        public override Page GetById(int? id)
-        {
-            return _db.Pages.FirstOrDefault(x => x.Id == id);
-        }
-
         public IDictionary<string, Node> GetNodesDictionary(string name)
         {
             IDictionary<string, Node> result = new Dictionary<string, Node>();

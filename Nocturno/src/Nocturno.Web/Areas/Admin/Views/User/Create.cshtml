@@ -6,11 +6,17 @@
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">
+            <i class="fa fa-fw fa-users"></i>
+            @ViewData["Title"] <small>new user</small>
+        </h1>
+    </div>
+</div>
 
 <form asp-action="Create">
     <div class="form-horizontal">
-        <h4>User</h4>
         <hr />
         <div asp-validation-summary="ValidationSummary.ModelOnly" class="text-danger"></div>
         <div class="form-group">

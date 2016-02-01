@@ -14,17 +14,18 @@
 <div class="container">
 
     <form asp-controller="Account" asp-action="Login" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post" class="form-signin" role="form">
-        <img class="img img-responsive img-rounded" src="~/images/logo.png" />
+        <img class="img img-responsive img-rounded" src="~/images/logo.png"/>
         <h2 class="form-signin-heading">Please log in</h2>
+        <div asp-validation-summary="ValidationSummary.All" class="text-danger"></div>
         <label asp-for="Email" class="sr-only"></label>
         <input asp-for="Email" class="form-control" placeholder="Login"/>
         <span asp-validation-for="Email" class="text-danger"></span>
         <label asp-for="Password" class="sr-only"></label>
-        <input asp-for="Password" class="form-control" placeholder="Password" />
+        <input asp-for="Password" class="form-control" placeholder="Password"/>
         <span asp-validation-for="Password" class="text-danger"></span>
         <div class="checkbox">
             <label asp-for="RememberMe">
-                <input asp-for="RememberMe" /> Remember me
+                <input asp-for="RememberMe"/> Remember me
             </label>
         </div>
         <button type="submit" class="btn btn-primary">Log in</button>

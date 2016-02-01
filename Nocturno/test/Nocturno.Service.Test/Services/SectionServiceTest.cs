@@ -8,68 +8,68 @@ using Xunit;
 
 namespace Nocturno.Service.Test.Services
 {
-    public class PageServiceTest
+    public class SectionServiceTest
     {
         private readonly IDbContext _db;
-        private readonly IPageService _service;
+        private readonly ISectionService _service;
 
-        public PageServiceTest()
+        public SectionServiceTest()
         {
             _db = new NocturnoContext(true);
-            _service = new PageService(_db);
+            _service = new SectionService(_db);
         }
 
         [Fact]
-        public void Create_CreatingPage_ShouldCreatePage()
+        public void Create_CreatingSection_ShouldCreateSection()
         {
             // Arrange
-            var entity = new Page
+            var entity = new Section
             {
                 Name = "Test"
             };
-            var before = _db.Pages.Count();
+            var before = _db.Sections.Count();
 
             // Act
             _service.Create(entity);
             _service.Commit();
 
             // Assert
-            Assert.Equal(1, _db.Pages.Count() - before);
+            Assert.Equal(1, _db.Sections.Count() - before);
         }
 
         [Fact]
-        public void Remove_RemovingPage_ShouldRemovePage()
+        public void Remove_RemovingSection_ShouldRemoveSection()
         {
             // Arrange
 
-            var entity = new Page
+            var entity = new Section
             {
                 Name = "Test"
             };
-            _db.Pages.Add(entity);
+            _db.Sections.Add(entity);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Sections.Count();
 
             // Act
             _service.Delete(entity);
             _db.SaveChanges();
 
             // Assert
-            Assert.Equal(1, before - _db.Pages.Count());
+            Assert.Equal(1, before - _db.Sections.Count());
         }
 
         [Fact]
-        public void Update_UpdatingPage_ShouldUpdatePage()
+        public void Update_UpdatingSection_ShouldUpdateSection()
         {
             // Arrange
 
-            var entity = new Page
+            var entity = new Section
             {
                 Name = "Test"
             };
-            _db.Pages.Add(entity);
+            _db.Sections.Add(entity);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Sections.Count();
 
             // Act
             entity = _service.GetAll().FirstOrDefault();
@@ -78,8 +78,8 @@ namespace Nocturno.Service.Test.Services
             _db.SaveChanges();
 
             // Assert
-            Assert.Equal(before, _db.Pages.Count());
-            Assert.Equal("Another name", _db.Pages.FirstOrDefault().Name);
+            Assert.Equal(before, _db.Sections.Count());
+            Assert.Equal("Another name", _db.Sections.FirstOrDefault().Name);
         }
 
         [Fact]
@@ -87,15 +87,15 @@ namespace Nocturno.Service.Test.Services
         {
             // Arrange
 
-            var entities = new List<Page>
+            var entities = new List<Section>
             {
-                new Page {Name = "Test"},
-                new Page {Name = "Test2"},
-                new Page {Name = "Test3"}
+                new Section {Name = "Test"},
+                new Section {Name = "Test2"},
+                new Section {Name = "Test3"}
             };
-            _db.Pages.AddRange(entities);
+            _db.Sections.AddRange(entities);
             _db.SaveChanges();
-            var before = _db.Pages.Count();
+            var before = _db.Sections.Count();
 
             // Act
             var all = _service.GetAll();

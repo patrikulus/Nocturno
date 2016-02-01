@@ -12,17 +12,5 @@ namespace Nocturno.Web.ViewModels.Master
         public Menu Menu { get; set; }
         public IDictionary<string, Node> Nodes { get; set; }
         public IDictionary<string, string> Settings { get; set; } 
-
-        //public Node Navigation { get; set; }
-        //public Node HeaderTop { get; set; }
-        //public Node Breadcrumb { get; set; }
-        //public Node HeaderBottom { get; set; }
-        //public Node MainTop { get; set; }
-        //public Node MainMiddle { get; set; }
-        //public Node MainBottom { get; set; }
-        //public Node LeftSidebar { get; set; }
-        //public Node RightSidebar { get; set; }
-        //public Node FooterTop { get; set; }
-        //public Node FooterBottom { get; set; }
     }
 }
