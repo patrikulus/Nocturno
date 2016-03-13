@@ -13,10 +13,12 @@ namespace Nocturno.Web.Areas.Admin.Controllers
     public class PortfolioItemController : Controller
     {
         private readonly IPortfolioItemService _portfolioItemService;
+        private readonly IPortfolioService _portfolioService;
 
-        public PortfolioItemController(IPortfolioItemService portfolioItemService)
+        public PortfolioItemController(IPortfolioItemService portfolioItemService, IPortfolioService portfolioService)
         {
             _portfolioItemService = portfolioItemService;
+            _portfolioService = portfolioService;
         }
 
         // GET: PortfolioItem
@@ -45,7 +47,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
         // GET: PortfolioItem/Create
         public IActionResult Create()
         {
-            ViewData["PortfolioId"] = new SelectList(_portfolioItemService.GetAll(), "Id", "Name");
+            ViewBag.PortfolioId = new SelectList(_portfolioService.GetAll(), "Id", "Name");
             return View();
         }
 
@@ -60,7 +62,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 _portfolioItemService.Commit();
                 return RedirectToAction("Index");
             }
-            ViewData["PortfolioId"] = new SelectList(_portfolioItemService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
+            ViewBag.PortfolioId = new SelectList(_portfolioService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
             return View(portfolioItem);
         }
 
@@ -77,7 +79,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
-            ViewData["PortfolioId"] = new SelectList(_portfolioItemService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
+            ViewBag.PortfolioId = new SelectList(_portfolioService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
             return View(portfolioItem);
         }
 
@@ -92,7 +94,7 @@ namespace Nocturno.Web.Areas.Admin.Controllers
                 _portfolioItemService.Commit();
                 return RedirectToAction("Index");
             }
-            ViewData["PortfolioId"] = new SelectList(_portfolioItemService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
+            ViewBag.PortfolioId = new SelectList(_portfolioService.GetAll(), "Id", "Name", portfolioItem.PortfolioId);
             return View(portfolioItem);
         }
 

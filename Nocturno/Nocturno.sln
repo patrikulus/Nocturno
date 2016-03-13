@@ -12,7 +12,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		RunTests.ps1 = RunTests.ps1
 	EndProjectSection
 EndProject
-Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Service", "src\Nocturno.Service\Nocturno.Service.xproj", "{6B07C95C-6178-4AAD-BB76-2543DE7FD168}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "Nocturno.Business", "src\Nocturno.Service\Nocturno.Business.xproj", "{6B07C95C-6178-4AAD-BB76-2543DE7FD168}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{6F6DFAF3-C68A-45BD-A3DE-56C37EEB6FF4}"
 EndProject
