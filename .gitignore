@@ -136,7 +136,7 @@ publish/
 ## TODO: Comment the next line if you want to checkin your
 ## web deploy settings but do note that will include unencrypted
 ## passwords
-#*.pubxml
+*.pubxml
 
 *.publishproj
 
@@ -210,3 +210,8 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+
+# Bower
+lib/
+# Azure Publish Scripts
+PublishScripts/
